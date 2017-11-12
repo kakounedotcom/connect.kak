@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ $KAK_SESSION ] && [ $KAK_CLIENT ]; then
+  # Support to target line and column for the first file
+  # $ kak <file> +<line>:[column]
+  if test $# -ge 2; then
+    file=$(realpath $1)
+    target=$(echo $2 | pcregrep --om-separator ' ' --only-matching={1,2} '^[+]([0-9]+)(?::([0-9]+))?$')
+    if test -n "$target"; then
+      command="edit $file $target"
+      shift
+      shift
+    fi
+  fi
+  for file in $@; do
+    command="edit $(realpath $file); $command"
+  done
+  echo "eval -client $KAK_CLIENT '$command'" | kak -p $KAK_SESSION
+elif [ $KAK_SESSION ]; then
+  kak -c $KAK_SESSION "$@"
+else
+  kak "$@"
+fi
