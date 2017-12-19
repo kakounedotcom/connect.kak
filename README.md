@@ -48,6 +48,19 @@ The file will be opened in the client from where `:terminal` was executed.
 
 You can configure your applications to use `kak-connect` instead of `kak`.
 
+Configuration
+-------------
+
+Configure your shell.
+
+``` sh
+EDITOR=kak-connect
+```
+
+``` sh
+alias kak=kak-connect
+```
+
 [Kakoune]: http://kakoune.org
 [freenode/kakoune]: https://webchat.freenode.net?channels=kakoune
 [shields/kakoune/badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
