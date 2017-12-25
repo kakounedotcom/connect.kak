@@ -12,7 +12,7 @@ if [ $KAK_SESSION ] && [ $KAK_CLIENT ]; then
       shift
     fi
   fi
-  for file in $@; do
+  for file in "$@"; do
     command="edit $(realpath $file); $command"
   done
   echo "eval -client $KAK_CLIENT '$command'" | kak -p $KAK_SESSION
