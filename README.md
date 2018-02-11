@@ -5,7 +5,7 @@
 Dependencies
 ------------
 
-- [shell.kak][]
+- [Shell][]
 
 Installation
 ------------
@@ -64,4 +64,4 @@ alias kak=kak-connect
 [Kakoune]: http://kakoune.org
 [IRC]: https://webchat.freenode.net?channels=kakoune
 [IRC Badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
-[shell.kak]: https://github.com/alexherbo2/shell.kak
+[Shell]: https://github.com/alexherbo2/shell.kak
