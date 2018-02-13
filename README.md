@@ -1,6 +1,11 @@
+Connect
+=======
+
 [![IRC][IRC Badge]][IRC]
 
-[Kakoune][] extension to connect to client / session.
+###### [Usage](#usage) | [Configuration](#configuration) | [Contributing](CONTRIBUTING)
+
+> [Kakoune][] extension to connect to client / session.
 
 Dependencies
 ------------
