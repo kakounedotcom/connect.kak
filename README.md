@@ -1,5 +1,4 @@
-Connect
-=======
+# Connect
 
 [![IRC][IRC Badge]][IRC]
 
@@ -7,27 +6,23 @@ Connect
 
 > [Kakoune][] extension to connect to client / session.
 
-Dependencies
-------------
+## Dependencies
 
 - [Shell][]
 
-Installation
-------------
+## Installation
 
 1. Download the [script](bin/kak-connect)
 2. Place it on your `$PATH` (`~/bin` is a good choice if it is on your path)
 3. Set it to be executable (`chmod +x <file>…`)
 
-Running
--------
+## Running
 
 - When `$KAK_{SESSION,CLIENT}` are set: Open in the specified client
 - When `$KAK_SESSION` is set: Connect to the specified session
 - Else: Fall back to `kak`
 
-Usage
------
+## Usage
 
 Add a `:terminal` command:
 
@@ -53,8 +48,7 @@ The file will be opened in the client from where `:terminal` was executed.
 
 You can configure your applications to use `kak-connect` instead of `kak`.
 
-Configuration
--------------
+## Configuration
 
 Configure your shell.
 
