@@ -12,9 +12,9 @@
 
 ## Installation
 
-1. Download the [script](bin/kak-connect)
-2. Place it on your `$PATH` (`~/bin` is a good choice if it is on your path)
-3. Set it to be executable (`chmod +x <file>…`)
+``` sh
+ln --symbolic $PWD/bin/kak-connect ~/.local/bin/
+```
 
 ## Running
 
