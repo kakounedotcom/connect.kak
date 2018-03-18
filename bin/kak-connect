@@ -8,8 +8,7 @@ if [ $KAK_SESSION ] && [ $KAK_CLIENT ]; then
     target=$(echo $2 | pcregrep --om-separator ' ' --only-matching={1,2} '^[+]([0-9]+)(?::([0-9]+))?$')
     if test -n "$target"; then
       command="edit $file $target"
-      shift
-      shift
+      shift 2
     fi
   fi
   for file in "$@"; do
