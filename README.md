@@ -2,13 +2,13 @@
 
 [![IRC][IRC Badge]][IRC]
 
-###### [Demo][] | [Usage](#usage) | [Configuration](#configuration) | [Contributing](CONTRIBUTING)
+###### [Demo] | [Usage](#usage) | [Configuration](#configuration) | [Contributing](CONTRIBUTING)
 
-> [Kakoune][] extension to connect to client / session.
+> [Kakoune] extension to connect to client / session.
 
 ## Dependencies
 
-- [Shell][]
+- [Shell]
 
 ## Installation
 
