@@ -1,5 +1,18 @@
 #!/bin/sh
 
+# Simple and naive implementation of realpath for macOS
+realpath() {
+  file=$1
+  case "$file" in
+    /*)
+      echo "$file"
+    ;;
+    *)
+      echo "$PWD/${file#./}"
+    ;;
+  esac
+}
+
 if [ $KAK_SESSION ] && [ $KAK_CLIENT ]; then
   # Support to target line and column for the first file
   # $ kak <file> +<line>:[column]
