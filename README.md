@@ -18,8 +18,8 @@ ln --symbolic $PWD/bin/kak-connect ~/.local/bin/
 
 ## Running
 
-- When `$KAK_{SESSION,CLIENT}` are set: Open in the specified client
-- When `$KAK_SESSION` is set: Connect to the specified session
+- When `$KAKOUNE_{SESSION,CLIENT}` are set: Open in the specified client
+- When `$KAKOUNE_SESSION` is set: Connect to the specified session
 - Else: Fall back to `kak`
 
 ## Usage

@@ -13,7 +13,7 @@ realpath() {
   esac
 }
 
-if [ $KAK_SESSION ] && [ $KAK_CLIENT ]; then
+if [ $KAKOUNE_SESSION ] && [ $KAKOUNE_CLIENT ]; then
   # Support to target line and column for the first file
   # $ kak <file> +<line>:[column]
   if test $# -ge 2; then
@@ -27,9 +27,9 @@ if [ $KAK_SESSION ] && [ $KAK_CLIENT ]; then
   for file in "$@"; do
     command="edit $(realpath $file); $command"
   done
-  echo "eval -client $KAK_CLIENT '$command'" | kak -p $KAK_SESSION
-elif [ $KAK_SESSION ]; then
-  kak -c $KAK_SESSION "$@"
+  echo "eval -client $KAKOUNE_CLIENT '$command'" | kak -p $KAKOUNE_SESSION
+elif [ $KAKOUNE_SESSION ]; then
+  kak -c $KAKOUNE_SESSION "$@"
 else
   kak "$@"
 fi
