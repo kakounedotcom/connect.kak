@@ -2,67 +2,42 @@
 
 [![IRC][IRC Badge]][IRC]
 
-###### [Usage](#usage) | [Configuration](#configuration) | [Contributing](CONTRIBUTING)
+###### [Usage](#usage) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
 
-> [Kakoune] extension to connect to client / session.
+> [Kakoune] extension to connect a program to the current client.
 
 [![YouTube](https://img.youtube.com/vi/v_Ffno9wiJ4/0.jpg)](https://youtu.be/v_Ffno9wiJ4)
 
-## Dependencies
-
-- [Shell]
-
 ## Installation
 
-``` sh
-ln --symbolic $PWD/bin/kak-connect ~/.local/bin/
+### [Pathogen]
+
+``` kak
+pathogen-infect /home/user/repositories/github.com/alexherbo2/connect.kak
 ```
-
-## Running
-
-- When `$KAKOUNE_{SESSION,CLIENT}` are set: Open in the specified client
-- When `$KAKOUNE_SESSION` is set: Connect to the specified session
-- Else: Fall back to `kak`
 
 ## Usage
 
-Add a `:terminal` command:
+Create a new terminal with `:connect` and edit a file with say, a file explorer.
 
-``` kak
-define-command terminal -params .. %{
-  shell \
-    -export session \
-    -export client \
-    %sh(echo $TERMINAL) -e %arg(@) \
-    %sh(test $# = 0 &&
-      echo $SHELL
-    )
-}
-```
+The file will be opened in the client from where `:connect` was executed by using `EDITOR`.
 
-Launch a terminal then execute in it:
+You can also configure your shell to alias `kak` to `rc/connect.sh`.
 
-``` sh
-kak-connect <file>
-```
+## Commands
 
-The file will be opened in the client from where `:terminal` was executed.
+- `connect-shell [program] [arguments]`: Run a shell with `EDITOR` connected to the current client
+- `connect-terminal [program] [arguments]`: Create a new terminal with `EDITOR` connected to the current client
 
-You can configure your applications to use `kak-connect` instead of `kak`.
+## Aliases
 
-## Configuration
+- `connect` → `connect-terminal`
 
-Configure your shell.
+## Options
 
-``` sh
-EDITOR=kak-connect
-```
-
-``` sh
-alias kak=kak-connect
-```
+- `connect_shell`: Default shell (Default: `SHELL`)
 
 [Kakoune]: https://kakoune.org
 [IRC]: https://webchat.freenode.net?channels=kakoune
 [IRC Badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
-[Shell]: https://github.com/alexherbo2/shell.kak
+[Pathogen]: https://github.com/alexherbo2/pathogen.kak

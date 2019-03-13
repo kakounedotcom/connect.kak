@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Simple and naive implementation of realpath for macOS
+realpath() {
+  file=$1
+  case "$file" in
+    /*)
+      printf '%s' "$file"
+    ;;
+    *)
+      printf '%s' "$PWD/${file#./}"
+    ;;
+  esac
+}
+
+if test "$KAKOUNE_SESSION" -a "$KAKOUNE_CLIENT"; then
+  commands=
+  # Support to target line and column for the first file
+  # $ kak {file} +{line}:{column}
+  if test $# -ge 2; then
+    file=$(realpath "$1")
+    target=$2
+    case "$target" in
+      +*:*)
+        line=${target#+}; line=${line%:*}
+        column=${target#*:}
+        commands="edit $file $line $column"
+        shift 2
+      ;;
+      +*)
+        line=${target#+}; line=${line%:*}
+        commands="edit $file $line"
+        shift 2
+      ;;
+    esac
+  fi
+  for file in "$@"; do
+    commands="edit $(realpath "$file"); $commands"
+  done
+  printf 'evaluate-commands -client "%s" "%s"' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"
+elif test "$KAKOUNE_SESSION"; then
+  kak -c "$KAKOUNE_SESSION" "$@"
+else
+  kak "$@"
+fi
