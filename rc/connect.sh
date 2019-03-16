@@ -15,6 +15,10 @@ realpath() {
 
 if test "$KAKOUNE_SESSION" -a "$KAKOUNE_CLIENT"; then
   commands=
+  # Ignore options
+  if test "$1" = '--'; then
+    shift
+  fi
   # Support to target line and column for the first file
   # $ kak {file} +{line}:{column}
   if test $# -ge 2; then
