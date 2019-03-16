@@ -6,7 +6,7 @@
 
 > [Kakoune] extension to connect a program to the current client.
 
-[![YouTube](https://img.youtube.com/vi/v_Ffno9wiJ4/0.jpg)](https://youtu.be/v_Ffno9wiJ4)
+[![asciicast](https://asciinema.org/a/234186.svg)](https://asciinema.org/a/234186)
 
 ## Installation
 
