@@ -22,12 +22,12 @@ Create a new terminal with `:connect` and edit a file with say, a file explorer.
 
 The file will be opened in the client from where `:connect` was executed by using `EDITOR`.
 
-You can also configure your shell to alias `kak` to `rc/connect.sh`.
+You can also use the `connect` shell command available in `PATH`.
 
 ## Commands
 
-- `connect-shell [program] [arguments]`: Run a shell with `EDITOR` connected to the current client
-- `connect-terminal [program] [arguments]`: Create a new terminal with `EDITOR` connected to the current client
+- `connect-shell [program] [arguments]`: Run a shell with `connect` and `EDITOR` connected to the current client
+- `connect-terminal [program] [arguments]`: Create a new terminal with `connect` and `EDITOR` connected to the current client
 
 ## Aliases
 
