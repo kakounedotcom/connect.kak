@@ -39,6 +39,10 @@ def fzf-files %(connect edit $(fzf))
 ```
 
 ``` kak
+alias global fzf fzf-files
+```
+
+``` kak
 def fzf-buffers %(connect buffer $(buffer | fzf))
 ```
 
