@@ -1,4 +1,4 @@
-declare-option -docstring 'Default shell' str connect_shell %sh(echo ${SHELL:-sh})
+declare-option -docstring 'Shell program to be used as default entry-point' str connect_shell %sh(echo ${SHELL:-sh})
 declare-option -hidden str connect_editor %sh(printf '%s/connect.sh' "${kak_source%/*}")
 declare-option -hidden str connect_cache %sh(printf '%s/kak/connect' "${XDG_CACHE_HOME:-~/.cache}")
 

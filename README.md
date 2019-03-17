@@ -35,7 +35,7 @@ You can also use the `connect` shell command available in `PATH`.
 
 ## Options
 
-- `connect_shell`: Default shell (Default: `SHELL`)
+- `connect_shell`: Shell program to be used as default entry-point (Default: `SHELL`)
 
 [Kakoune]: https://kakoune.org
 [IRC]: https://webchat.freenode.net?channels=kakoune
