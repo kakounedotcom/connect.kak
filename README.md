@@ -72,7 +72,7 @@ def fzf-buffers %(connect buffer $(buffer | fzf))
 - `EDITOR=edit`
 - `[e]dit [files]`: Open files in the client from where `:connect` was executed
 - `[b]uffer [buffers]`: Get buffer list or open buffers in the client from where `:connect` was executed
-- `get {type} {name}`: Get expansion value
+- `get {type} {name}`: Get a [value][Expansions] in the client from where `:connect` was executed
 
 ## Options
 
@@ -83,6 +83,7 @@ def fzf-buffers %(connect buffer $(buffer | fzf))
 Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstract the various windowing systems.
 
 [Kakoune]: https://kakoune.org
+[Expansions]: https://github.com/mawww/kakoune/blob/master/doc/pages/expansions.asciidoc
 [IRC]: https://webchat.freenode.net?channels=kakoune
 [IRC Badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
 [Pathogen]: https://github.com/alexherbo2/pathogen.kak
