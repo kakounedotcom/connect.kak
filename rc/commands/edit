@@ -38,7 +38,7 @@ if test "$KAKOUNE_SESSION" -a "$KAKOUNE_CLIENT"; then
       ;;
     esac
   fi
-  for file in "$@"; do
+  for file do
     commands="edit $(realpath "$file"); $commands"
   done
   printf 'evaluate-commands -client "%s" "%s"' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"

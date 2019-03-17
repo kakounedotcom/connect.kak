@@ -22,12 +22,12 @@ Create a new terminal with `:connect` and edit a file with say, a file explorer.
 
 The file will be opened in the client from where `:connect` was executed by using `EDITOR`.
 
-You can also use the `connect` shell command available in `PATH`.
+You can also use the `[e]dit` and `[b]uffer` shell commands available in `PATH`.
 
 ## Commands
 
-- `connect-shell [program] [arguments]`: Run a shell with `connect` and `EDITOR` connected to the current client
-- `connect-terminal [program] [arguments]`: Create a new terminal with `connect` and `EDITOR` connected to the current client
+- `connect-shell [program] [arguments]`: Run a shell with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
+- `connect-terminal [program] [arguments]`: Create a new terminal with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
 
 ## Aliases
 

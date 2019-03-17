@@ -1,0 +1,20 @@
+#!/bin/sh
+
+main() {
+  [ $# = 0 ] && list || edit "$@"
+}
+
+list() {
+  eval "set -- $KAKOUNE_BUFFERS"
+  printf '%s\n' "$@"
+}
+
+edit() {
+  commands=
+  for buffer do
+    commands="buffer $buffer; $commands"
+  done
+  printf 'evaluate-commands -client "%s" "%s"' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"
+}
+
+main "$@"
