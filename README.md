@@ -18,21 +18,33 @@ pathogen-infect /home/user/repositories/github.com/alexherbo2/connect.kak
 
 ## Usage
 
-Create a new terminal with `:connect` and edit a file with say, a file explorer.
+You can use `:connect` to create a new terminal with `[e]dit`, `[b]uffer` and `EDITOR` connected to the client.
 
-The file will be opened in the client from where `:connect` was executed by using `EDITOR`.
+If you open a file using the shell command `edit` or an application using the default editor,
+the file will be opened in the client from where `:connect` was executed.
 
-You can also use the `[e]dit` and `[b]uffer` shell commands available in `PATH`.
+You can also open a buffer by using the `buffer` command (or its alias `b`).
+With no argument, `buffer` will list the available buffers.
 
 ### Examples
 
-**Example** – [lf] integration:
+``` kak
+:connect # Spawn a terminal
+```
+
+From that terminal:
+
+``` sh
+$ edit example.txt
+```
+
+You can also run the shell commands from Kakoune.
+
+For example, [lf] and [fzf] integration can be:
 
 ``` kak
 def lf %(connect lf)
 ```
-
-**Example** – [fzf] integration:
 
 ``` kak
 def fzf-files %(connect edit $(fzf))
