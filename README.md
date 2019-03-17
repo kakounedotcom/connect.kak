@@ -58,17 +58,18 @@ alias global fzf fzf-files
 def fzf-buffers %(connect buffer $(buffer | fzf))
 ```
 
-## Kakoune – Commands
+## Commands
 
 - `connect-shell [program] [arguments]`: Run a shell with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
 - `connect-terminal [program] [arguments]`: Create a new terminal with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
 
-## Kakoune – Aliases
+## Aliases
 
 - `connect` → `connect-terminal`
 
-## Shell – Commands
+## Shell environment
 
+- `EDITOR=edit`
 - `[e]dit [files]`: Open files in the client from where `:connect` was executed
 - `[b]uffer [buffers]`: Get buffer list or open buffers in the client from where `:connect` was executed
 - `get {type} {name}`: Get expansion value
