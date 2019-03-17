@@ -11,7 +11,6 @@ define-command -hidden connect-configure %{
 }
 
 define-command connect-shell -params 1.. -shell-completion -docstring 'Run a shell with connect and EDITOR connected to the current client' %{
-  connect-configure
   nop %sh(PATH=$kak_opt_connect_cache/bin:$PATH EDITOR=connect KAKOUNE_SESSION=$kak_session KAKOUNE_CLIENT=$kak_client $@)
 }
 
@@ -26,8 +25,9 @@ define-command connect-terminal -params .. -shell-completion -docstring 'Create 
 }
 
 define-command -hidden connect-terminal- -params .. %{
-  connect-configure
   terminal sh -c "PATH=%opt(connect_cache)/bin:$PATH EDITOR=connect KAKOUNE_SESSION=%val(session) KAKOUNE_CLIENT=%val(client) %arg(@)"
 }
 
 alias global connect connect-terminal
+
+connect-configure
