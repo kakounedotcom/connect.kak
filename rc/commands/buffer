@@ -5,7 +5,7 @@ main() {
 }
 
 list() {
-  eval "set -- $KAKOUNE_BUFFERS"
+  eval "set -- $(get val buflist)"
   printf '%s\n' "$@"
 }
 

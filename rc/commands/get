@@ -1,0 +1,13 @@
+#!/bin/sh
+
+type=$1 name=$2 expansion="%$type($name)"
+
+TMP=$(mktemp -d)
+trap "rm -R $TMP" EXIT
+
+fifo=$TMP/fifo
+mkfifo "$fifo"
+
+printf 'evaluate-commands -client %s %%(connect-get %s %s)' "$KAKOUNE_CLIENT" "$fifo" "$expansion" | kak -p "$KAKOUNE_SESSION"
+
+cat "$fifo"

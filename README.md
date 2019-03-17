@@ -42,14 +42,20 @@ def fzf-files %(connect edit $(fzf))
 def fzf-buffers %(connect buffer $(buffer | fzf))
 ```
 
-## Commands
+## Kakoune – Commands
 
 - `connect-shell [program] [arguments]`: Run a shell with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
 - `connect-terminal [program] [arguments]`: Create a new terminal with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
 
-## Aliases
+## Kakoune – Aliases
 
 - `connect` → `connect-terminal`
+
+## Shell – Commands
+
+- `[e]dit [files]`: Open files in the client from where `:connect` was executed
+- `[b]uffer [buffers]`: Get buffer list or open buffers in the client from where `:connect` was executed
+- `get {type} {name}`: Get expansion value
 
 ## Options
 
