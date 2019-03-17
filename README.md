@@ -78,9 +78,15 @@ def fzf-buffers %(connect buffer $(buffer | fzf))
 
 - `connect_shell`: Shell program to be used as default entry-point (Default: `SHELL`)
 
+## Credits
+
+Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstract the various windowing systems.
+
 [Kakoune]: https://kakoune.org
 [IRC]: https://webchat.freenode.net?channels=kakoune
 [IRC Badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
 [Pathogen]: https://github.com/alexherbo2/pathogen.kak
+[@occivink]: https://github.com/occivink
+[:terminal]: https://github.com/mawww/kakoune/pull/2617
 [lf]: https://github.com/gokcehan/lf
 [fzf]: https://github.com/junegunn/fzf
