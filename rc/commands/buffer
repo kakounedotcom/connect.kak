@@ -12,9 +12,9 @@ list() {
 edit() {
   commands=
   for buffer do
-    commands="buffer $buffer; $commands"
+    commands="buffer %($buffer); $commands"
   done
-  printf 'evaluate-commands -client "%s" "%s"' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"
+  printf 'evaluate-commands -client %%(%s) %%(%s)' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"
 }
 
 main "$@"

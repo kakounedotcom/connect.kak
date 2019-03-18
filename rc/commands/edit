@@ -28,20 +28,20 @@ if test "$KAKOUNE_SESSION" -a "$KAKOUNE_CLIENT"; then
       +*:*)
         line=${target#+}; line=${line%:*}
         column=${target#*:}
-        commands="edit $file $line $column"
+        commands="edit %($file) %($line) %($column)"
         shift 2
       ;;
       +*)
         line=${target#+}; line=${line%:*}
-        commands="edit $file $line"
+        commands="edit %($file) %($line)"
         shift 2
       ;;
     esac
   fi
   for file do
-    commands="edit $(realpath "$file"); $commands"
+    commands="edit %($(realpath "$file")); $commands"
   done
-  printf 'evaluate-commands -client "%s" "%s"' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"
+  printf 'evaluate-commands -client %%(%s) %%(%s)' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"
 elif test "$KAKOUNE_SESSION"; then
   kak -c "$KAKOUNE_SESSION" "$@"
 else
