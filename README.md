@@ -18,7 +18,7 @@ pathogen-infect /home/user/repositories/github.com/alexherbo2/connect.kak
 
 ## Usage
 
-You can use `:connect` to create a new terminal with `[e]dit`, `[b]uffer` and `EDITOR` connected to the client.
+You can use `:connect` to create a new terminal with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the client.
 
 If you open a file using the shell command `edit` or an application using the default editor,
 the file will be opened in the client from where `:connect` was executed.
@@ -60,8 +60,8 @@ def fzf-buffers %(connect buffer $(buffer | fzf))
 
 ## Commands
 
-- `connect-shell [program] [arguments]`: Run a shell with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
-- `connect-terminal [program] [arguments]`: Create a new terminal with `[e]dit`, `[b]uffer` and `EDITOR` connected to the current client
+- `connect-shell [program] [arguments]`: Run a shell with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the current client
+- `connect-terminal [program] [arguments]`: Create a new terminal with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the current client
 
 ## Aliases
 
@@ -69,6 +69,7 @@ def fzf-buffers %(connect buffer $(buffer | fzf))
 
 ## Shell environment
 
+- `VISUAL=edit`
 - `EDITOR=edit`
 - `[e]dit [files]`: Open files in the client from where `:connect` was executed
 - `[b]uffer [buffers]`: Get buffer list or open buffers in the client from where `:connect` was executed
