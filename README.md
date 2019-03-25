@@ -40,14 +40,14 @@ $ edit example.txt
 
 You can also run the shell commands from Kakoune.
 
-For example, [ranger] and [fzf] integration can be:
+For example, [ranger] and [fzf][]⁺[ᶠᵈ][fd] integration can be:
 
 ``` kak
-def ranger %(connect ranger)
+define-command ranger -params .. -file-completion %(connect ranger %arg(@))
 ```
 
 ``` kak
-def fzf-files %(connect edit $(fzf))
+define-command fzf-files -params .. -file-completion %(connect edit $(fd . %arg(@) | fzf))
 ```
 
 ``` kak
@@ -55,7 +55,7 @@ alias global fzf fzf-files
 ```
 
 ``` kak
-def fzf-buffers %(connect buffer $(buffer | fzf))
+define-command fzf-buffers %(connect buffer $(buffer | fzf))
 ```
 
 ## Commands
@@ -92,3 +92,4 @@ Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstrac
 [:terminal]: https://github.com/mawww/kakoune/pull/2617
 [ranger]: https://ranger.github.io
 [fzf]: https://github.com/junegunn/fzf
+[fd]: https://github.com/sharkdp/fd
