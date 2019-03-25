@@ -40,10 +40,10 @@ $ edit example.txt
 
 You can also run the shell commands from Kakoune.
 
-For example, [lf] and [fzf] integration can be:
+For example, [ranger] and [fzf] integration can be:
 
 ``` kak
-def lf %(connect lf)
+def ranger %(connect ranger)
 ```
 
 ``` kak
@@ -90,5 +90,5 @@ Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstrac
 [Pathogen]: https://github.com/alexherbo2/pathogen.kak
 [@occivink]: https://github.com/occivink
 [:terminal]: https://github.com/mawww/kakoune/pull/2617
-[lf]: https://github.com/gokcehan/lf
+[ranger]: https://ranger.github.io
 [fzf]: https://github.com/junegunn/fzf
