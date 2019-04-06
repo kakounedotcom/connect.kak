@@ -47,7 +47,7 @@ define-command ranger -params .. -file-completion %(connect ranger %arg(@))
 ```
 
 ``` kak
-define-command fzf-files -params .. -file-completion %(connect edit $(fd . %arg(@) | fzf))
+define-command fzf-files -params .. -file-completion %(connect edit $(fd --type file . %arg(@) | fzf))
 ```
 
 ``` kak
