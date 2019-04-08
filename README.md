@@ -74,6 +74,7 @@ define-command fzf-buffers %(connect buffer $(buffer | fzf))
 - `[e]dit [files]`: Open files in the client from where `:connect` was executed
 - `[b]uffer [buffers]`: Get buffer list or open buffers in the client from where `:connect` was executed
 - `get {type} {name}`: Get a [value][Expansions] in the client from where `:connect` was executed
+- `send {commands}`: Send commands in the client from where `:connect` was executed
 
 ## Options
 

@@ -14,7 +14,7 @@ edit() {
   for buffer do
     commands="buffer %($buffer); $commands"
   done
-  printf 'evaluate-commands -client %%(%s) %%(%s)' "$KAKOUNE_CLIENT" "$commands" | kak -p "$KAKOUNE_SESSION"
+  send "$commands"
 }
 
 main "$@"

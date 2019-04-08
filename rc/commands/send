@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf 'evaluate-commands -client %%(%s) %%(%s)' "$KAKOUNE_CLIENT" "$@" | kak -p "$KAKOUNE_SESSION"
