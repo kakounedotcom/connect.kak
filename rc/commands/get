@@ -8,6 +8,6 @@ trap "rm -R $TMP" EXIT
 fifo=$TMP/fifo
 mkfifo "$fifo"
 
-printf 'evaluate-commands -client %%(%s) %%(connect-get %%(%s) %s)' "$KAKOUNE_CLIENT" "$fifo" "$expansion" | kak -p "$KAKOUNE_SESSION"
+printf 'evaluate-commands -client %%(%s) %%(echo -to-file %%(%s) %s)' "$KAKOUNE_CLIENT" "$fifo" "$expansion" | kak -p "$KAKOUNE_SESSION"
 
 cat "$fifo"

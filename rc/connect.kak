@@ -20,11 +20,3 @@ define-command -hidden connect-terminal- -params .. %{
 }
 
 alias global connect connect-terminal
-
-define-command -hidden connect-get -params 1.. %{
-  edit %arg(1)
-  set-register dquote %arg(@)
-  execute-keys '<a-R>)<space>d'
-  write
-  delete-buffer
-}
