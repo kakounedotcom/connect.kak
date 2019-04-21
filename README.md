@@ -16,6 +16,12 @@
 pathogen-infect /home/user/repositories/github.com/alexherbo2/connect.kak
 ```
 
+**Optional** – To install globally:
+
+``` sh
+ln -s $PWD/rc/commands/edit ~/.local/bin/kak-connect
+```
+
 ## Usage
 
 You can use `:connect` to create a new terminal with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the client.
@@ -25,6 +31,16 @@ the file will be opened in the client from where `:connect` was executed.
 
 You can also open a buffer by using the `buffer` command (or its alias `b`).
 With no argument, `buffer` will list the available buffers.
+
+If in your workflow you use [one session for all projects],
+it can be useful to have Connect [installed globally](#installation).
+
+**Example** – Shell configuration to default in [Othala] session:
+
+``` sh
+KAKOUNE_SESSION=othala
+alias kak=kak-connect
+```
 
 ### Examples
 
@@ -94,3 +110,5 @@ Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstrac
 [ranger]: https://ranger.github.io
 [fzf]: https://github.com/junegunn/fzf
 [fd]: https://github.com/sharkdp/fd
+[One session for all projects]: https://discuss.kakoune.com/t/one-session-for-all-projects/473
+[Othala]: https://stargate.fandom.com/wiki/Othala_(planet)
