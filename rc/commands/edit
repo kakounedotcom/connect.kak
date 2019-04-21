@@ -1,5 +1,8 @@
 #!/bin/sh
 
+TMP=$(mktemp -d)
+trap "rm -Rf $TMP" EXIT
+
 # Simple and naive implementation of realpath for macOS
 realpath() {
   file=$1
@@ -12,6 +15,31 @@ realpath() {
     ;;
   esac
 }
+
+# Handle disconnected sessions
+if test -n "$KAKOUNE_SESSION"; then
+  exist=false
+  valid=false
+  kak -l > $TMP/session-list
+  while read session; do
+    if test "$session" = "$KAKOUNE_SESSION"; then
+      exist=true
+      valid=true
+      break
+    fi
+    if test "$session" = "$KAKOUNE_SESSION (dead)"; then
+      exist=true
+      valid=false
+      break
+    fi
+  done < $TMP/session-list
+  if test "$exist" = true -a "$valid" = false; then
+    kak -clear
+    kak -d -s "$KAKOUNE_SESSION"
+  elif test "$exist" = false; then
+    kak -d -s "$KAKOUNE_SESSION"
+  fi
+fi
 
 if test "$KAKOUNE_SESSION" -a "$KAKOUNE_CLIENT"; then
   commands=
