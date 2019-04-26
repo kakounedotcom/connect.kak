@@ -74,6 +74,16 @@ alias global fzf fzf-files
 define-command fzf-buffers %(connect buffer $(buffer | fzf))
 ```
 
+To use with [Rofi]⁺[ᶠᵈ][fd]:
+
+``` kak
+define-command rofi-files -params .. -file-completion %(connect-shell edit $(fd --type file . %arg(@) | rofi -dmenu -p "'Select files'"))
+```
+
+``` kak
+alias global rofi rofi-files
+```
+
 ## Commands
 
 - `connect-shell [program] [arguments]`: Run a shell with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the current client
@@ -110,5 +120,6 @@ Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstrac
 [ranger]: https://ranger.github.io
 [fzf]: https://github.com/junegunn/fzf
 [fd]: https://github.com/sharkdp/fd
+[Rofi]: https://github.com/davatorium/rofi
 [One session for all projects]: https://discuss.kakoune.com/t/one-session-for-all-projects/473
 [Othala]: https://stargate.fandom.com/wiki/Othala_(planet)
