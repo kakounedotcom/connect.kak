@@ -9,10 +9,10 @@ realpath() {
   case "$file" in
     /*)
       printf '%s' "$file"
-    ;;
+      ;;
     *)
       printf '%s' "$PWD/${file#./}"
-    ;;
+      ;;
   esac
 }
 
@@ -58,12 +58,12 @@ if test "$KAKOUNE_SESSION" -a "$KAKOUNE_CLIENT"; then
         column=${target#*:}
         commands="edit %($file) %($line) %($column)"
         shift 2
-      ;;
+        ;;
       +*)
         line=${target#+}; line=${line%:*}
         commands="edit %($file) %($line)"
         shift 2
-      ;;
+        ;;
     esac
   fi
   for file do
