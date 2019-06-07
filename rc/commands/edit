@@ -3,17 +3,12 @@
 TMP=$(mktemp -d)
 trap "rm -Rf $TMP" EXIT
 
-# Simple and naive implementation of realpath for macOS
+# realpath for macOS
 realpath() {
-  file=$1
-  case "$file" in
-    /*)
-      printf '%s' "$file"
-      ;;
-    *)
-      printf '%s' "$PWD/${file#./}"
-      ;;
-  esac
+  target_directory=$(dirname "$1")
+  target_directory=$(cd "$target_directory"; pwd)
+  target_file=$(basename "$1")
+  printf '%s/%s' "$target_directory" "$target_file"
 }
 
 # Handle disconnected sessions
