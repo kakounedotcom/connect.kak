@@ -54,6 +54,12 @@ From that terminal:
 $ edit example.txt
 ```
 
+To render Markdown for the current buffer with [Glow]:
+
+``` sh
+glow $(it) # Equivalent to `get val buffile`
+```
+
 You can also run the shell commands from Kakoune.
 
 For example, [ranger] and [fzf][]⁺[ᶠᵈ][fd] integration can be:
@@ -122,5 +128,6 @@ Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstrac
 [fzf]: https://github.com/junegunn/fzf
 [fd]: https://github.com/sharkdp/fd
 [Rofi]: https://github.com/davatorium/rofi
+[Glow]: https://github.com/charmbracelet/glow
 [One session for all projects]: https://discuss.kakoune.com/t/one-session-for-all-projects/473
 [Othala]: https://stargate.fandom.com/wiki/Othala_(planet)
