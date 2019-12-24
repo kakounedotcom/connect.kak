@@ -99,6 +99,7 @@ alias global rofi rofi-files
 - `EDITOR=edit`
 - `[e]dit [files]`: Open files in the client from where `:connect` was executed
 - `[b]uffer [buffers]`: Get buffer list or open buffers in the client from where `:connect` was executed
+- `it`: Get the current buffer (equivalent to `get val buffile`)
 - `get {type} {name}`: Get a [value][Expansions] in the client from where `:connect` was executed
 - `send {commands}`: Send commands in the client from where `:connect` was executed
 
