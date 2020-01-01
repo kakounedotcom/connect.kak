@@ -8,6 +8,10 @@
 
 [![asciicast](https://asciinema.org/a/234300.svg)](https://asciinema.org/a/234300)
 
+> “Connect is by far my most used plugin, nothing else even comes close.  
+> I use this every single time I use Kakoune.”  
+> — [@robertmeta] – [Connect – Render Markdown with Glow](https://discuss.kakoune.com/t/connect-render-markdown-with-glow/821/2 "2019-12-31")
+
 ## Installation
 
 ### [Pathogen]
@@ -123,6 +127,7 @@ Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstrac
 [IRC Badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
 [Pathogen]: https://github.com/alexherbo2/pathogen.kak
 [@occivink]: https://github.com/occivink
+[@robertmeta]: https://github.com/robertmeta
 [:terminal]: https://github.com/mawww/kakoune/pull/2617
 [ranger]: https://ranger.github.io
 [fzf]: https://github.com/junegunn/fzf
