@@ -23,7 +23,7 @@ pathogen-infect /home/user/repositories/github.com/alexherbo2/connect.kak
 **Optional** – To install globally:
 
 ``` sh
-ln -s $PWD/rc/commands/edit ~/.local/bin/kak-connect
+ln -s "$PWD/rc/commands/edit" ~/.local/bin/kak-connect
 ```
 
 ## Usage
