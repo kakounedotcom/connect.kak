@@ -3,7 +3,7 @@
 type=$1 name=$2 expansion="%$type($name)"
 
 TMP=$(mktemp -d)
-trap "rm -R $TMP" EXIT
+trap 'rm -R "$TMP"' EXIT
 
 fifo=$TMP/fifo
 mkfifo "$fifo"
