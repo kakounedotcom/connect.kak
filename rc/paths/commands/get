@@ -1,0 +1,8 @@
+#!/bin/sh
+
+state=$(mktemp -d)
+trap 'rm -Rf "$state"' EXIT
+mkfifo "$state/fifo"
+
+send echo -to-file "$state/fifo" "$@"
+cat "$state/fifo"

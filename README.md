@@ -1,138 +1,152 @@
-# Connect
+# connect.kak
 
-[![IRC][IRC Badge]][IRC]
-
-###### [Usage](#usage) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
-
-> [Kakoune] extension to connect a program to the current client.
-
-[![asciicast](https://asciinema.org/a/234300.svg)](https://asciinema.org/a/234300)
-
-> “Connect is by far my most used plugin, nothing else even comes close.  
-> I use this every single time I use Kakoune.”  
-> — [@robertmeta] – [Connect – Render Markdown with Glow](https://discuss.kakoune.com/t/connect-render-markdown-with-glow/821/2 "2019-12-31")
+Connect a program to [Kakoune] clients.
 
 ## Installation
 
-### [Pathogen]
-
-``` kak
-pathogen-infect /home/user/repositories/github.com/alexherbo2/connect.kak
-```
-
-**Optional** – To install globally:
-
-``` sh
-ln -s "$PWD/rc/commands/edit" ~/.local/bin/kak-connect
-```
+Add [`rc`] to your autoload or source [`connect.kak`] and its [modules] manually.
 
 ## Usage
 
-You can use `:connect` to create a new terminal with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the client.
+Connect a terminal with [`connect-terminal`].  Open files with [`edit`] or your
+favorite program; buffers with the [`buffer`] command…
 
-If you open a file using the shell command `edit` or an application using the default editor,
-the file will be opened in the client from where `:connect` was executed.
+If you loaded the [modules], [`fzf-files`] and [`fzf-buffers`] (Kakoune commands)
+are also available.  connect.kak currently has batteries for [fzf], [Rofi], [lf]
+and [yank-ring.kak].
 
-You can also open a buffer by using the `buffer` command (or its alias `b`).
-With no argument, `buffer` will list the available buffers.
+**Note**: [`fzf`] and [`rofi`] modules require [fd] for listing files.
 
-If in your workflow you use [one session for all projects],
-it can be useful to have Connect [installed globally](#installation).
+**Example** – **Kakoune** – Connect a terminal with [`connect-terminal`]:
 
-**Example** – Shell configuration to default in [Othala] session:
+``` kak
+connect-terminal
+```
+
+Or simply [`t`].
+
+**Example** – **Terminal** – Send a file to the client with [`edit`] or its alias [`e`]:
 
 ``` sh
-KAKOUNE_SESSION=othala
-alias kak=kak-connect
+edit file.txt
 ```
 
-### Examples
-
-``` kak
-:connect # Spawn a terminal
-```
-
-From that terminal:
+**Example** – **Terminal** – Open multiple files:
 
 ``` sh
-$ edit example.txt
+e *.txt
 ```
 
-To render Markdown for the current buffer with [Glow]:
+**Example** – **Terminal** – Open files with [lf]:
 
 ``` sh
-glow $(it) # Equivalent to `get val buffile`
+lf
 ```
 
-You can also run the shell commands from Kakoune.
-
-For example, [ranger] and [fzf][]⁺[ᶠᵈ][fd] integration can be:
+**Example** – **Kakoune** – Open selected files with [Rofi]:
 
 ``` kak
-define-command ranger -params .. -file-completion %(connect ranger %arg(@))
+connect-shell %{
+  edit $(fd --type file | rofi -dmenu)
+}
 ```
+
+**Example** – **Terminal** – List all buffers with [`buffer`] or its alias [`b`]:
+
+``` sh
+buffer
+```
+
+**Example** – **Terminal** – Open buffers with [fzf]:
+
+``` sh
+b $(b | fzf)
+```
+
+**Example** – **Terminal** – [`git-add`] the current buffer:
+
+``` sh
+git add $(it)
+```
+
+**Example** – **Terminal** – Render Markdown with [Glow]:
+
+``` sh
+glow $(it)
+```
+
+**Example** – **Terminal** – Load a previous yank with [fzf], by sending the result to [`yank-ring-load-from-file`]:
+
+``` sh
+send yank-ring-load-from-file $(find $(get %opt{yank_ring_path}) -type f | sort -n -r | fzf --preview 'cat {}')
+```
+
+## Configuration
 
 ``` kak
-define-command fzf-files -params .. -file-completion %(connect edit $(fd --type file . %arg(@) | fzf))
+require-module connect-fzf
+require-module connect-rofi
+require-module connect-lf
+require-module connect-yank-ring
+
+map global normal <c-t> ': connect-terminal<ret>'
+map global normal Y ': yank-ring<ret>'
 ```
 
-``` kak
-alias global fzf fzf-files
-```
+## Kakoune commands
 
-``` kak
-define-command fzf-buffers %(connect buffer $(buffer | fzf))
-```
+- [`connect-terminal`] | [`t`]
+- [`connect-shell`]
+- [`fzf-files`] | [`fzf`]
+- [`fzf-buffers`]
+- [`rofi-files`] | [`rofi`]
+- [`rofi-buffers`]
+- [`lf`]
+- [`yank-ring`] | [`y`]
 
-To use with [Rofi]⁺[ᶠᵈ][fd]:
+[`rc`]: rc
+[modules]: rc/modules
 
-``` kak
-define-command rofi-files -params .. -file-completion %(connect-shell edit $(fd --type file . %arg(@) | rofi -dmenu -p "'Select files'"))
-```
+[`connect.kak`]: rc/connect.kak
+[`connect-terminal`]: rc/connect.kak
+[`connect-shell`]: rc/connect.kak
+[`t`]: rc/connect.kak
 
-``` kak
-alias global rofi rofi-files
-```
+[`fzf`]: rc/modules/fzf.kak
+[`fzf-files`]: rc/modules/fzf.kak
+[`fzf-buffers`]: rc/modules/fzf.kak
 
-## Commands
+[`rofi`]: rc/modules/rofi.kak
+[`rofi-files`]: rc/modules/rofi.kak
+[`rofi-buffers`]: rc/modules/rofi.kak
 
-- `connect-shell [program] [arguments]`: Run a shell with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the current client
-- `connect-terminal [program] [arguments]`: Create a new terminal with `[e]dit`, `[b]uffer` and `VISUAL`, `EDITOR` connected to the current client
+[`lf`]: rc/modules/lf.kak
 
-## Aliases
+[`yank-ring`]: rc/modules/yank-ring.kak
+[`y`]: rc/modules/yank-ring.kak
 
-- `connect` → `connect-terminal`
+## Shell commands
 
-## Shell environment
+- [`edit`] | [`e`]
+- [`buffer`] | [`b`]
+- [`it`]
+- [`send`]
+- [`get`]
 
-- `VISUAL=edit`
-- `EDITOR=edit`
-- `[e]dit [files]`: Open files in the client from where `:connect` was executed
-- `[b]uffer [buffers]`: Get buffer list or open buffers in the client from where `:connect` was executed
-- `it`: Get the current buffer (equivalent to `get val buffile`)
-- `get {type} {name}`: Get a [value][Expansions] in the client from where `:connect` was executed
-- `send {commands}`: Send commands in the client from where `:connect` was executed
-
-## Options
-
-- `connect_shell`: Shell program to be used as default entry-point (Default: `SHELL`)
-
-## Credits
-
-Thanks to [@occivink] :heart: for his work on the [:terminal] command to abstract the various windowing systems.
+[`edit`]: rc/paths/commands/edit
+[`e`]: rc/paths/aliases/e
+[`buffer`]: rc/paths/commands/buffer
+[`b`]: rc/paths/aliases/b
+[`it`]: rc/paths/commands/it
+[`send`]: rc/paths/commands/send
+[`get`]: rc/paths/commands/get
 
 [Kakoune]: https://kakoune.org
-[Expansions]: https://github.com/mawww/kakoune/blob/master/doc/pages/expansions.asciidoc
-[IRC]: https://webchat.freenode.net/#kakoune
-[IRC Badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
-[Pathogen]: https://github.com/alexherbo2/pathogen.kak
-[@occivink]: https://github.com/occivink
-[@robertmeta]: https://github.com/robertmeta
-[:terminal]: https://github.com/mawww/kakoune/pull/2617
-[ranger]: https://ranger.github.io
 [fzf]: https://github.com/junegunn/fzf
-[fd]: https://github.com/sharkdp/fd
 [Rofi]: https://github.com/davatorium/rofi
+[lf]: https://github.com/gokcehan/lf
+[fd]: https://github.com/sharkdp/fd
+[yank-ring.kak]: https://github.com/alexherbo2/yank-ring.kak
+[`yank-ring-load-from-file`]: https://github.com/alexherbo2/yank-ring.kak
+[`git-add`]: https://git-scm.com/docs/git-add
 [Glow]: https://github.com/charmbracelet/glow
-[One session for all projects]: https://discuss.kakoune.com/t/one-session-for-all-projects/473
-[Othala]: https://stargate.fandom.com/wiki/Othala_(planet)

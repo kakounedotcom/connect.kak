@@ -1,0 +1,25 @@
+#!/bin/sh
+
+main() {
+  if test $# -eq 0; then
+    list
+  else
+    edit "$@"
+  fi
+}
+
+list() {
+  kak_quoted_buflist=$(get '%val{buflist}')
+  eval "set -- $kak_quoted_buflist"
+  printf '%s\n' "$@"
+}
+
+edit() {
+  commands=''
+  for buffer do
+    commands="buffer %{$buffer}; $commands"
+  done
+  send "$commands"
+}
+
+main "$@"

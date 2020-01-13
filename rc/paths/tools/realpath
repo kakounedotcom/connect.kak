@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# realpath for macOS
+# https://flummox-engineering.blogspot.com/2014/06/getting-absolute-path-in-bash-in-osx.html
+case "$1" in
+  /*) path=$1 ;;
+  *) path=$PWD/$1 ;;
+esac
+
+printf '%s' "$path"

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+commands=''
+while test $# -gt 0; do
+  file=$(realpath "$1")
+  shift
+  # Optional coordinates
+  case "$2" in
+    +*:*)
+      line=${2#+}; line=${line%:*}
+      column=${2#*:}
+      shift
+      commands="edit %{$file} $line $column; $commands"
+      ;;
+    +*)
+      line=${2#+}
+      shift
+      commands="edit %{$file} $line; $commands"
+      ;;
+    *)
+      commands="edit %{$file}; $commands"
+      ;;
+  esac
+done
+
+send "$commands"
