@@ -43,6 +43,9 @@ e *.txt
 lf
 ```
 
+**Note**: Not to be confused with [`:lf`][`lf`].  connect.kak pairs with [modules]
+that you can load with the [`require-module`] command.
+
 **Example** – **Kakoune** – Open selected files with [Rofi]:
 
 ``` kak
@@ -150,3 +153,4 @@ map global normal Y ': yank-ring<ret>'
 [`yank-ring-load-from-file`]: https://github.com/alexherbo2/yank-ring.kak
 [`git-add`]: https://git-scm.com/docs/git-add
 [Glow]: https://github.com/charmbracelet/glow
+[`require-module`]: https://github.com/mawww/kakoune/blob/master/doc/pages/commands.asciidoc#module-commands
