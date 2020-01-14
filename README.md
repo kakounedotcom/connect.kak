@@ -15,7 +15,10 @@ If you loaded the [modules], [`fzf-files`] and [`fzf-buffers`] (Kakoune commands
 are also available.  connect.kak currently has batteries for [fzf], [Rofi], [lf]
 and [yank-ring.kak].
 
-**Note**: [`fzf`] and [`rofi`] modules require [fd] for listing files.
+**Notes**
+
+- [`fzf`] and [`rofi`] modules require [fd] for listing files.
+- [`yank-ring`] module requires [jq] to preview the registers.
 
 **Example** – **Kakoune** – Connect a terminal with [`connect-terminal`]:
 
@@ -152,6 +155,7 @@ map global normal Y ': yank-ring<ret>'
 [Rofi]: https://github.com/davatorium/rofi
 [lf]: https://github.com/gokcehan/lf
 [fd]: https://github.com/sharkdp/fd
+[jq]: https://stedolan.github.io/jq/
 [yank-ring.kak]: https://github.com/alexherbo2/yank-ring.kak
 [`yank-ring-load-from-file`]: https://github.com/alexherbo2/yank-ring.kak
 [`git-add`]: https://git-scm.com/docs/git-add
