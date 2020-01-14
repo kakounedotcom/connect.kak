@@ -12,13 +12,9 @@ Connect a terminal with [`connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
 If you loaded the [modules], [`fzf-files`] and [`fzf-buffers`] (Kakoune commands)
-are also available.  connect.kak currently has batteries for [fzf], [Rofi], [lf]
-and [yank-ring.kak].
+are also available.  connect.kak currently has batteries for [fzf], [Rofi] and [lf].
 
-**Notes**
-
-- [`fzf`] and [`rofi`] modules require [fd] for listing files.
-- [`yank-ring`] module requires [jq] to preview the registers.
+**Note**: [`fzf`] and [`rofi`] modules require [fd] for listing files.
 
 **Example** – **Kakoune** – Connect a terminal with [`connect-terminal`]:
 
@@ -87,16 +83,16 @@ glow $(it)
 send yank-ring-load-from-file $(find $(get %opt{yank_ring_path}) -type f | sort -n -r | fzf --preview 'cat {}')
 ```
 
+**Note**: If you have [yank-ring.kak] installed, you can simply call [`yank-ring`] from Kakoune.
+
 ## Configuration
 
 ``` kak
 require-module connect-fzf
 require-module connect-rofi
 require-module connect-lf
-require-module connect-yank-ring
 
 map global normal <c-t> ': connect-terminal<ret>'
-map global normal Y ': yank-ring<ret>'
 ```
 
 ## Kakoune commands
@@ -108,7 +104,6 @@ map global normal Y ': yank-ring<ret>'
 - [`rofi-files`] | [`rofi`]
 - [`rofi-buffers`]
 - [`lf`]
-- [`yank-ring`] | [`y`]
 
 [`rc`]: rc
 [modules]: rc/modules
@@ -127,9 +122,6 @@ map global normal Y ': yank-ring<ret>'
 [`rofi-buffers`]: rc/modules/rofi.kak
 
 [`lf`]: rc/modules/lf.kak
-
-[`yank-ring`]: rc/modules/yank-ring.kak
-[`y`]: rc/modules/yank-ring.kak
 
 ## Shell commands
 
@@ -157,6 +149,7 @@ map global normal Y ': yank-ring<ret>'
 [fd]: https://github.com/sharkdp/fd
 [jq]: https://stedolan.github.io/jq/
 [yank-ring.kak]: https://github.com/alexherbo2/yank-ring.kak
+[`yank-ring`]: https://github.com/alexherbo2/yank-ring.kak
 [`yank-ring-load-from-file`]: https://github.com/alexherbo2/yank-ring.kak
 [`git-add`]: https://git-scm.com/docs/git-add
 [Glow]: https://github.com/charmbracelet/glow
