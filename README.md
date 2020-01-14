@@ -132,6 +132,7 @@ map global normal Y ': yank-ring<ret>'
 
 - [`edit`] | [`e`]
 - [`buffer`] | [`b`]
+- [`open`] | [`o`]
 - [`it`]
 - [`send`]
 - [`get`]
@@ -140,6 +141,8 @@ map global normal Y ': yank-ring<ret>'
 [`e`]: rc/paths/aliases/e
 [`buffer`]: rc/paths/commands/buffer
 [`b`]: rc/paths/aliases/b
+[`open`]: rc/paths/commands/open
+[`o`]: rc/paths/aliases/o
 [`it`]: rc/paths/commands/it
 [`send`]: rc/paths/commands/send
 [`get`]: rc/paths/commands/get
