@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
+  edit "$@"
+elif test -t 1; then
+  kak "$@"
+else
+  kak -ui dummy -e "
+    new %{
+      hook -always -once global ClientClose %val{client} kill!
+      edit %{$@}
+    }
+  "
+fi

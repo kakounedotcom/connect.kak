@@ -6,6 +6,22 @@ Connect a program to [Kakoune] clients.
 
 Add [`rc`] to your autoload or source [`connect.kak`] and its [modules] manually.
 
+### Add to desktop
+
+1. Copy [`kakoune-connect.desktop`] to `$XDG_DATA_HOME/applications`.
+2. Add [`kak-connect`] to your path.
+3. Open `$XDG_CONFIG_HOME/mimeapps.list` and add the following MIME type association.
+
+```
+[Default Applications]
+text/plain=kakoune-connect.desktop
+```
+
+Add more entries to your liking.
+
+[`kakoune-connect.desktop`]: share/applications/kakoune-connect.desktop
+[`kak-connect`]: bin/kak-connect
+
 ## Usage
 
 Connect a terminal with [`connect-terminal`].  Open files with [`edit`] or your
