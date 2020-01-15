@@ -28,7 +28,8 @@ Connect a terminal with [`connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
 If you loaded the [modules], [`fzf-files`] and [`fzf-buffers`] (Kakoune commands)
-are also available.  connect.kak currently has batteries for [fzf], [Rofi] and [lf].
+are also available.  connect.kak currently has batteries for [fzf], [Rofi], [lf]
+and [Dolphin].
 
 **Note**: [`fzf`] and [`rofi`] modules require [fd] for listing files.
 
@@ -60,6 +61,16 @@ lf
 
 **Note**: Not to be confused with [`:lf`][`lf`].  connect.kak pairs with [modules]
 that you can load with the [`require-module`] command.
+
+Works also great with GUI programs.
+
+**Example** – **Kakoune** – Open files with [Dolphin]:
+
+``` kak
+connect-shell dolphin
+```
+
+Or simply [`:dolphin`][`dolphin`] if you have loaded the module.
 
 **Example** – **Kakoune** – Open selected files with [Rofi]:
 
@@ -107,6 +118,7 @@ send yank-ring-load-from-file $(find $(get %opt{yank_ring_path}) -type f | sort 
 require-module connect-fzf
 require-module connect-rofi
 require-module connect-lf
+require-module connect-dolphin
 
 map global normal <c-t> ': connect-terminal<ret>'
 ```
@@ -120,6 +132,7 @@ map global normal <c-t> ': connect-terminal<ret>'
 - [`rofi-files`] | [`rofi`]
 - [`rofi-buffers`]
 - [`lf`]
+- [`dolphin`]
 
 [`rc`]: rc
 [modules]: rc/modules
@@ -138,6 +151,8 @@ map global normal <c-t> ': connect-terminal<ret>'
 [`rofi-buffers`]: rc/modules/rofi.kak
 
 [`lf`]: rc/modules/lf.kak
+
+[`dolphin`]: rc/modules/dolphin.kak
 
 ## Shell commands
 
@@ -162,6 +177,7 @@ map global normal <c-t> ': connect-terminal<ret>'
 [fzf]: https://github.com/junegunn/fzf
 [Rofi]: https://github.com/davatorium/rofi
 [lf]: https://github.com/gokcehan/lf
+[Dolphin]: https://dolphin.kde.org
 [fd]: https://github.com/sharkdp/fd
 [jq]: https://stedolan.github.io/jq/
 [yank-ring.kak]: https://github.com/alexherbo2/yank-ring.kak
