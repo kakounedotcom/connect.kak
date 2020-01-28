@@ -127,12 +127,16 @@ map global normal <c-t> ': connect-terminal<ret>'
 
 - [`:connect-terminal`] | [`:t`]
 - [`:connect-shell`]
-- [`:fzf-files`] | [`:fzf`]
-- [`:fzf-buffers`]
-- [`:rofi-files`] | [`:rofi`]
-- [`:rofi-buffers`]
-- [`:lf`]
-- [`:dolphin`]
+- [`fzf`]
+  - [`:fzf-files`] | [`:fzf`]
+  - [`:fzf-buffers`]
+- [`rofi`]
+  - [`:rofi-files`] | [`:rofi`]
+  - [`:rofi-buffers`]
+- [`lf`]
+  - [`:lf`]
+- [`dolphin`]
+  - [`:dolphin`]
 
 [`rc`]: rc
 [modules]: rc/modules
