@@ -53,6 +53,9 @@ edit file.txt
 e *.txt
 ```
 
+**Note**: If you have [explore.kak] installed and configured the file explorer,
+you can also explore directories with the `:e[dit]` command.
+
 **Example** – **Terminal** – Open files with [lf]:
 
 ``` sh
@@ -91,6 +94,9 @@ buffer
 ``` sh
 b $(b | fzf)
 ```
+
+**Note**: If you have [explore.kak] installed and configured to use [`:fzf-buffers`],
+you can also explore buffers with the `:b[uffer]` command.
 
 **Example** – **Terminal** – [`git-add`] the current buffer:
 
@@ -178,6 +184,8 @@ map global normal <c-t> ': connect-terminal<ret>'
 [`send`]: rc/paths/commands/send
 [`get`]: rc/paths/commands/get
 
+See also [explore.kak].
+
 [Kakoune]: https://kakoune.org
 [fzf]: https://github.com/junegunn/fzf
 [Rofi]: https://github.com/davatorium/rofi
@@ -185,6 +193,7 @@ map global normal <c-t> ': connect-terminal<ret>'
 [Dolphin]: https://dolphin.kde.org
 [fd]: https://github.com/sharkdp/fd
 [jq]: https://stedolan.github.io/jq/
+[explore.kak]: https://github.com/alexherbo2/explore.kak
 [yank-ring.kak]: https://github.com/alexherbo2/yank-ring.kak
 [`:yank-ring`]: https://github.com/alexherbo2/yank-ring.kak
 [`:yank-ring-load-from-file`]: https://github.com/alexherbo2/yank-ring.kak
