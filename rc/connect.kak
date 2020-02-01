@@ -7,6 +7,7 @@ provide-module connect %{
       . "$kak_opt_connect_path/env/default.env"
       . "$kak_opt_connect_path/env/overrides.env"
       . "$kak_opt_connect_path/env/kakoune.env"
+      . "$kak_opt_connect_path/env/git.env"
       shift 4
       "${@:-$SHELL}"
     } -- %opt{connect_path} %val{session} %val{client} %val{client_env_SHELL} %arg{@}
@@ -17,6 +18,7 @@ provide-module connect %{
       . "$kak_opt_connect_path/env/default.env"
       . "$kak_opt_connect_path/env/overrides.env"
       . "$kak_opt_connect_path/env/kakoune.env"
+      . "$kak_opt_connect_path/env/git.env"
       setsid sh -c "$@" < /dev/null > /dev/null 2>&1 &
     }
   }
