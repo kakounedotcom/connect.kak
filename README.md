@@ -2,6 +2,9 @@
 
 Connect a program to [Kakoune] clients.
 
+[![connect.kak demo](https://img.youtube.com/vi_webp/jca2N-cE_mM/maxresdefault.webp)](https://youtu.be/jca2N-cE_mM "YouTube – connect.kak demo")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/jca2N-cE_mM) · [connect.kak demo](https://youtu.be/jca2N-cE_mM)
+
 ## Installation
 
 Add [`rc`] to your autoload or source [`connect.kak`] and its [modules] manually.
