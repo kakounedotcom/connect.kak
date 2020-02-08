@@ -18,6 +18,7 @@ Add [`rc`] to your autoload or source [`connect.kak`] and its [modules] manually
 ```
 [Default Applications]
 text/plain=kakoune-connect.desktop
+text/xml=kakoune-connect.desktop
 ```
 
 Add more entries to your liking.
