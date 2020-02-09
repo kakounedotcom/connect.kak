@@ -45,6 +45,17 @@ connect-terminal
 
 Or simply [`:t`].
 
+If you are in [tmux], you might want at some point to request a terminal in a
+new window.  It can be done with the [`:connect-shell`] command.
+
+**Example** – **Kakoune** – Connect [Alacritty] with [`:connect-shell`]:
+
+``` kak
+connect-shell alacritty
+```
+
+Or simply [`:T`] followed by `alacritty`.
+
 **Example** – **Terminal** – Send a file to the client with [`edit`] or its alias [`e`]:
 
 ``` sh
@@ -136,7 +147,7 @@ map global normal <c-t> ': connect-terminal<ret>'
 ## Kakoune commands
 
 - [`:connect-terminal`] | [`:t`]
-- [`:connect-shell`]
+- [`:connect-shell`] | [`:T`]
 - [`fzf`]
   - [`:fzf-files`] | [`:fzf`]
   - [`:fzf-buffers`]
@@ -155,6 +166,7 @@ map global normal <c-t> ': connect-terminal<ret>'
 [`:connect-terminal`]: rc/connect.kak
 [`:t`]: rc/connect.kak
 [`:connect-shell`]: rc/connect.kak
+[`:T`]: rc/connect.kak
 
 [`fzf`]: rc/modules/fzf.kak
 [`:fzf-files`]: rc/modules/fzf.kak
@@ -191,6 +203,8 @@ map global normal <c-t> ': connect-terminal<ret>'
 See also [explore.kak].
 
 [Kakoune]: https://kakoune.org
+[tmux]: https://github.com/tmux/tmux
+[Alacritty]: https://github.com/alacritty/alacritty
 [fzf]: https://github.com/junegunn/fzf
 [Rofi]: https://github.com/davatorium/rofi
 [lf]: https://github.com/gokcehan/lf

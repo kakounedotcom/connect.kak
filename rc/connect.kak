@@ -23,6 +23,7 @@ provide-module connect %{
     }
   }
   alias global t connect-terminal
+  alias global T connect-shell
 }
 
 require-module connect
