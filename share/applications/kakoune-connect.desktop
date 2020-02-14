@@ -1,3 +1,4 @@
 [Desktop Entry]
+Type=Application
 Name=Kakoune (connect.kak)
 Exec=kak-connect %F
