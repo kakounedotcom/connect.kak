@@ -32,10 +32,10 @@ Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
-also available.  connect.kak currently has batteries for [fzf], [Rofi], [lf]
+also available.  connect.kak currently has batteries for [fzf], [dmenu], [Rofi], [lf]
 and [Dolphin].
 
-**Note**: [`fzf`] and [`rofi`] modules require [fd] for listing files.
+**Note**: [`fzf`] and [`dmenu`]-like modules require [fd] for listing files.
 
 **Example** – **Kakoune** – Connect a terminal with [`:connect-terminal`]:
 
@@ -90,11 +90,11 @@ connect-shell dolphin
 
 Or simply [`:dolphin`] if you have loaded the module.
 
-**Example** – **Kakoune** – Open selected files with [Rofi]:
+**Example** – **Kakoune** – Open selected files with [dmenu]:
 
 ``` kak
 connect-shell %{
-  edit $(fd --type file | rofi -dmenu)
+  edit $(fd --type file | dmenu)
 }
 ```
 
@@ -137,6 +137,7 @@ send yank-ring-load-from-file $(find $(get %opt{yank_ring_path}) -type f | sort 
 
 ``` kak
 require-module connect-fzf
+require-module connect-dmenu
 require-module connect-rofi
 require-module connect-lf
 require-module connect-dolphin
@@ -151,6 +152,9 @@ map global normal <c-t> ': connect-terminal<ret>'
 - [`fzf`]
   - [`:fzf-files`] | [`:fzf`]
   - [`:fzf-buffers`]
+- [`dmenu`]
+  - [`:dmenu-files`] | [`:dmenu`]
+  - [`:dmenu-buffers`]
 - [`rofi`]
   - [`:rofi-files`] | [`:rofi`]
   - [`:rofi-buffers`]
@@ -172,6 +176,11 @@ map global normal <c-t> ': connect-terminal<ret>'
 [`:fzf-files`]: rc/modules/fzf.kak
 [`:fzf`]: rc/modules/fzf.kak
 [`:fzf-buffers`]: rc/modules/fzf.kak
+
+[`dmenu`]: rc/modules/dmenu.kak
+[`:dmenu-files`]: rc/modules/dmenu.kak
+[`:dmenu`]: rc/modules/dmenu.kak
+[`:dmenu-buffers`]: rc/modules/dmenu.kak
 
 [`rofi`]: rc/modules/rofi.kak
 [`:rofi-files`]: rc/modules/rofi.kak
@@ -206,6 +215,7 @@ See also [explore.kak].
 [tmux]: https://github.com/tmux/tmux
 [Alacritty]: https://github.com/alacritty/alacritty
 [fzf]: https://github.com/junegunn/fzf
+[dmenu]: https://tools.suckless.org/dmenu/
 [Rofi]: https://github.com/davatorium/rofi
 [lf]: https://github.com/gokcehan/lf
 [Dolphin]: https://dolphin.kde.org
