@@ -32,8 +32,8 @@ Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
-also available.  connect.kak currently has batteries for [fzf], [dmenu], [Rofi], [lf]
-and [Dolphin].
+also available.  connect.kak currently has batteries for [fzf], [dmenu], [Rofi],
+[Wofi], [lf] and [Dolphin].
 
 **Note**: [`fzf`] and [`dmenu`]-like modules require [fd] for listing files.
 
@@ -139,6 +139,7 @@ send yank-ring-load-from-file $(find $(get %opt{yank_ring_path}) -type f | sort 
 require-module connect-fzf
 require-module connect-dmenu
 require-module connect-rofi
+require-module connect-wofi
 require-module connect-lf
 require-module connect-dolphin
 
@@ -158,6 +159,9 @@ map global normal <c-t> ': connect-terminal<ret>'
 - [`rofi`]
   - [`:rofi-files`] | [`:rofi`]
   - [`:rofi-buffers`]
+- [`wofi`]
+  - [`:wofi-files`] | [`:wofi`]
+  - [`:wofi-buffers`]
 - [`lf`]
   - [`:lf`]
 - [`dolphin`]
@@ -186,6 +190,11 @@ map global normal <c-t> ': connect-terminal<ret>'
 [`:rofi-files`]: rc/modules/rofi.kak
 [`:rofi`]: rc/modules/rofi.kak
 [`:rofi-buffers`]: rc/modules/rofi.kak
+
+[`wofi`]: rc/modules/wofi.kak
+[`:wofi-files`]: rc/modules/wofi.kak
+[`:wofi`]: rc/modules/wofi.kak
+[`:wofi-buffers`]: rc/modules/wofi.kak
 
 [`lf`]: rc/modules/lf.kak
 [`:lf`]: rc/modules/lf.kak
@@ -217,6 +226,7 @@ See also [explore.kak].
 [fzf]: https://github.com/junegunn/fzf
 [dmenu]: https://tools.suckless.org/dmenu/
 [Rofi]: https://github.com/davatorium/rofi
+[Wofi]: https://hg.sr.ht/~scoopta/wofi
 [lf]: https://github.com/gokcehan/lf
 [Dolphin]: https://dolphin.kde.org
 [fd]: https://github.com/sharkdp/fd
