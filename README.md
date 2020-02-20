@@ -146,6 +146,17 @@ require-module connect-dolphin
 map global normal <c-t> ': connect-terminal<ret>'
 ```
 
+By setting the option `connect_environment` you can specify commands that
+are run before the shell is executed. This might be useful, if you want to
+change or export environment variables:
+
+``` kak
+set-option global connect_environment %{
+  GIT_EDITOR='kak -c $KAKOUNE_SESSION'
+  export LYEDITOR='edit %(file)s +%(line)s:%(column)s'
+}
+```
+
 ## Kakoune commands
 
 - [`:connect-terminal`] | [`:t`]
