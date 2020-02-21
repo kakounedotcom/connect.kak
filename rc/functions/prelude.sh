@@ -32,4 +32,5 @@ kak_escape() {
       esac
     done
   done
+  printf '\n'
 }
