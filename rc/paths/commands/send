@@ -1,3 +1,6 @@
 #!/bin/sh
 
-printf 'evaluate-commands -try-client %s %%{%s}' "$KAKOUNE_CLIENT" "$*" | kak -p "$KAKOUNE_SESSION"
+# Prelude
+. "$KAKOUNE_CONNECT_PATH/functions/prelude.sh"
+
+kak_escape evaluate-commands -try-client "$KAKOUNE_CLIENT" "$@" | kak -p "$KAKOUNE_SESSION"

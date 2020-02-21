@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Prelude
+. "$KAKOUNE_CONNECT_PATH/functions/prelude.sh"
+
 main() {
   if test $# -eq 0; then
     list
@@ -17,7 +20,8 @@ list() {
 edit() {
   commands=''
   for buffer do
-    commands="buffer %{$buffer}; $commands"
+    kak_quoted_buffer=$(kak_escape "$buffer")
+    commands="buffer $kak_quoted_buffer; $commands"
   done
   send "$commands"
 }

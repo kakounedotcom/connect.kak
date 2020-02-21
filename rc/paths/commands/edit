@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Prelude
+. "$KAKOUNE_CONNECT_PATH/functions/prelude.sh"
+
 # Option parser
 # For the simplicity of parsing, we only parse the first argument.
 wait=false
@@ -11,27 +14,29 @@ commands=''
 regex=''
 while test $# -gt 0; do
   file=$(realpath "$1")
+  kak_quoted_file=$(kak_escape "$file")
   # Optional coordinates
   case "$2" in
     +*:*)
       line=${2#+}; line=${line%:*}
       column=${2#*:}
       shift 2
-      commands="edit %{$file} $line $column; $commands"
+      commands="edit $kak_quoted_file $line $column; $commands"
       ;;
     +*)
       line=${2#+}
       shift 2
-      commands="edit %{$file} $line; $commands"
+      commands="edit $kak_quoted_file $line; $commands"
       ;;
     *)
       shift
-      commands="edit %{$file}; $commands"
+      commands="edit $kak_quoted_file; $commands"
       ;;
   esac
   regex="${regex}|\\Q${file}\\E"
 done
 regex=${regex#|}
+kak_quoted_regex=$(kak_escape "$regex")
 
 send "$commands"
 
@@ -40,12 +45,12 @@ if test "$wait" = true; then
   trap 'rm -Rf "$state"' EXIT
   mkfifo "$state/status"
   send "
-    hook -group connect-detach global BufWritePost $regex %{
+    hook -group connect-detach global BufWritePost $kak_quoted_regex %{
       remove-hooks global connect-detach
       delete-buffer %val{hook_param}
       echo -to-file $state/status 0
     }
-    hook -group connect-detach global BufClose $regex %{
+    hook -group connect-detach global BufClose $kak_quoted_regex %{
       remove-hooks global connect-detach
       echo -to-file $state/status 1
     }

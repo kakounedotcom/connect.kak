@@ -5,10 +5,11 @@ if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
 elif test -t 1; then
   kak "$@"
 else
+  file=$1 line=$2 column=$3
   kak -ui dummy -e "
     new %{
       hook -always -once global ClientClose %val{client} kill!
-      edit %{$@}
+      edit %{$file} $line $column
     }
   "
 fi
