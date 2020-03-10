@@ -13,7 +13,7 @@ Add [`rc`] to your autoload or source [`connect.kak`] and its [modules] manually
 
 1. Copy [`kakoune-connect.desktop`] to `$XDG_DATA_HOME/applications`.
 2. Add [`kak-connect`] to your path.
-3. Open `$XDG_CONFIG_HOME/mimeapps.list` and add the following MIME type association.
+3. Open `$XDG_CONFIG_HOME/mimeapps.list` and add the following MIME type association:
 
 ```
 [Default Applications]
