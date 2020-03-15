@@ -149,6 +149,8 @@ require-module connect-wofi
 require-module connect-lf
 require-module connect-dolphin
 
+# Create a new window
+map global normal <c-n> ': new<ret>'
 map global normal <c-t> ': connect-terminal<ret>'
 map global normal <c-w> ': connect-shell alacritty<ret>'
 ```
