@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Prelude
-. "$KAKOUNE_CONNECT_PATH/functions/prelude.sh"
+. "$KAKOUNE_PRELUDE"
 
 main() {
   if test $# -eq 0; then

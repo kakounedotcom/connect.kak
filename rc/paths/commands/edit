@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Prelude
-. "$KAKOUNE_CONNECT_PATH/functions/prelude.sh"
+. "$KAKOUNE_PRELUDE"
 
 # Option parser
 # For the simplicity of parsing, we only parse the first argument.

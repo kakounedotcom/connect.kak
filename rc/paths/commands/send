@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Prelude
-. "$KAKOUNE_CONNECT_PATH/functions/prelude.sh"
+. "$KAKOUNE_PRELUDE"
 
 kak_escape evaluate-commands -try-client "$KAKOUNE_CLIENT" "$@" | kak -p "$KAKOUNE_SESSION"
