@@ -16,7 +16,7 @@ provide-module connect %{
   }
   define-command connect-shell -params 1.. -shell-completion -docstring 'Connect a shell' %{
     nop %sh{
-      # kak_opt_prelude kak_opt_connect_path kak_session kak_client kak_client_env_SHELL
+      # kak_opt_prelude kak_opt_connect_path kak_opt_connect_environment kak_session kak_client kak_client_env_SHELL
       . "$kak_opt_connect_path/env/default.env"
       . "$kak_opt_connect_path/env/overrides.env"
       . "$kak_opt_connect_path/env/kakoune.env"
