@@ -38,17 +38,12 @@ done
 regex=${regex#|}
 kak_quoted_regex=$(kak_escape "$regex")
 
+[[ $KAK_CONNECT_RETURN_FOCUS -eq 1 && -z $TMUX ]] && commands="$commands; focus"
+
 send "$commands"
 
-if [[ $kak_opt_connect_focus -eq 1 ]]; then
-    if [[ -z $TMUX ]]; then
-        i3-msg "[title = \"${KAKOUNE_CLIENT}\"] focus"
-    else
-        # This totally does **not** work, because we don't know in which
-        # direction the kakoune pane is.
-        tmux select-pane -L
-    fi
-fi
+# This is unreliable, because we don't know in which direction the kakoune pane lies.
+[[ $KAK_CONNECT_RETURN_FOCUS -eq 1 && -n $TMUX ]] && tmux select-pane -L
 
 if test "$wait" = true; then
   state=$(mktemp -d)

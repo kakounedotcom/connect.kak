@@ -10,7 +10,7 @@ provide-module connect %{
       . "$kak_opt_connect_path/env/overrides.env"
       . "$kak_opt_connect_path/env/kakoune.env"
       . "$kak_opt_connect_path/env/git.env"
-      export kak_opt_connect_focus
+      . "$kak_opt_connect_path/env/behavior.env"
       eval "$kak_opt_connect_environment"
       shift 7
       "${@:-$SHELL}"
