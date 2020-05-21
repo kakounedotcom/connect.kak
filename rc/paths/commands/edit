@@ -35,8 +35,6 @@ while test $# -gt 0; do
   esac
   regex="${regex}|\\Q${file}\\E"
 done
-# Focus back the client on open.
-commands="$commands; focus"
 regex=${regex#|}
 kak_quoted_regex=$(kak_escape "$regex")
 
