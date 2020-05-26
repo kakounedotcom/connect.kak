@@ -38,12 +38,9 @@ done
 regex=${regex#|}
 kak_quoted_regex=$(kak_escape "$regex")
 
-[[ $KAK_CONNECT_RETURN_FOCUS -eq 1 && -z $TMUX ]] && commands="$commands; focus"
+[[ $(get '%opt{connect_focus}') -eq 1 ]] && commands="$commands; focus"
 
 send "$commands"
-
-# This is unreliable, because we don't know in which direction the kakoune pane lies.
-[[ $KAK_CONNECT_RETURN_FOCUS -eq 1 && -n $TMUX ]] && tmux select-pane -L
 
 if test "$wait" = true; then
   state=$(mktemp -d)
