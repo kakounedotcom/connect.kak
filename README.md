@@ -2,8 +2,8 @@
 
 Connect a program to [Kakoune] clients.
 
-[![connect.kak demo](https://img.youtube.com/vi_webp/jca2N-cE_mM/maxresdefault.webp)](https://youtu.be/jca2N-cE_mM "YouTube – connect.kak demo")
-[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtu.be/jca2N-cE_mM) · [connect.kak demo](https://youtu.be/jca2N-cE_mM)
+[![connect.kak](https://img.youtube.com/vi_webp/jca2N-cE_mM/maxresdefault.webp)](https://youtube.com/playlist?list=PLdr-HcjEDx_k-Y_9uSV0YAUCNHzqHjmz3 "YouTube – connect.kak")
+[![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtube.com/playlist?list=PLdr-HcjEDx_k-Y_9uSV0YAUCNHzqHjmz3) · [connect.kak](https://youtube.com/playlist?list=PLdr-HcjEDx_k-Y_9uSV0YAUCNHzqHjmz3)
 
 ## Dependencies
 
