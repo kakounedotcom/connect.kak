@@ -39,10 +39,30 @@ Add more entries to your liking.
 Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
-**Tip**: You can connect to your current terminal – in a similar way to [vim-vinegar] – with the [`kak-connect`] shell command.
+**Tip**: You can connect to your current terminal (open in the same terminal window) – in a similar way to [vim-vinegar] – with the [`kak-connect`] shell command.
 Try: `$ kak-connect` → `:connect-terminal` → `$ edit`.
 
 [vim-vinegar]: https://github.com/tpope/vim-vinegar
+
+**Example** – Open a connected shell and reattach with [`edit`]:
+
+```
+$ kak-connect → :connect-terminal → $ edit → Quit to return to your shell
+```
+
+**Tip**: Map <kbd>Control</kbd> + <kbd>q</kbd> to quit.
+
+**Example** – Open a connected shell and [lf]:
+
+```
+$ kak-connect → :connect-terminal → $ lf → Open a file → Quit to return to lf
+```
+
+**Example** – Open [lf] connected to the Kakoune session:
+
+```
+$ kak-connect → :lf
+```
 
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
 also available.  connect.kak currently has batteries for [fzf], [dmenu], [Rofi],
