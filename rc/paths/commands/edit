@@ -60,3 +60,6 @@ if test "$wait" = true; then
   read status < "$state/status"
   exit "$status"
 fi
+
+# Try to attach a connect terminal command
+attach

@@ -39,6 +39,10 @@ Add more entries to your liking.
 Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
+**Tip**: You can connect to your current terminal – in a similar way to [vim-vinegar] – with the [`kak-connect`] shell command.
+
+[vim-vinegar]: https://github.com/tpope/vim-vinegar
+
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
 also available.  connect.kak currently has batteries for [fzf], [dmenu], [Rofi],
 [Wofi], [lf] and [Dolphin].
@@ -172,6 +176,7 @@ set-option global connect_environment %{
 
 - [`:connect-terminal`] | [`:t`]
 - [`:connect-shell`] | [`:T`]
+- [`:connect-detach`] | [`:d`]
 - [`fzf`]
   - [`:fzf-files`] | [`:fzf`]
   - [`:fzf-buffers`]
@@ -197,6 +202,8 @@ set-option global connect_environment %{
 [`:t`]: rc/connect.kak
 [`:connect-shell`]: rc/connect.kak
 [`:T`]: rc/connect.kak
+[`:connect-detach`]: rc/connect.kak
+[`:d`]: rc/connect.kak
 
 [`fzf`]: rc/modules/fzf.kak
 [`:fzf-files`]: rc/modules/fzf.kak
@@ -228,6 +235,7 @@ set-option global connect_environment %{
 
 - [`edit`] | [`e`]
 - [`buffer`] | [`b`]
+- [`attach`] | [`a`]
 - [`it`]
 - [`send`]
 - [`get`]
@@ -236,6 +244,8 @@ set-option global connect_environment %{
 [`e`]: rc/paths/aliases/e
 [`buffer`]: rc/paths/commands/buffer
 [`b`]: rc/paths/aliases/b
+[`attach`]: rc/paths/commands/attach
+[`a`]: rc/paths/aliases/a
 [`it`]: rc/paths/commands/it
 [`send`]: rc/paths/commands/send
 [`get`]: rc/paths/commands/get

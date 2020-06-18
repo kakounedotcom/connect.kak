@@ -2,4 +2,8 @@
 
 . "$KAKOUNE_PRELUDE"
 
-kak_escape evaluate-commands -try-client "$KAKOUNE_CLIENT" "$@" | kak -p "$KAKOUNE_SESSION"
+if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
+  kak_escape evaluate-commands -try-client "$KAKOUNE_CLIENT" "$@" | kak -p "$KAKOUNE_SESSION"
+elif test -n "$KAKOUNE_SESSION"; then
+  kak -c "$KAKOUNE_SESSION" -e "$@"
+fi

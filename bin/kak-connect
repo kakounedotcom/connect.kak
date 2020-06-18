@@ -1,9 +1,24 @@
 #!/bin/sh
 
-if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
+if test -n "$KAKOUNE_SESSION" -o -n "$KAKOUNE_CLIENT"; then
   edit "$@"
 elif test -t 1; then
-  kak "$@"
+  kak_session=$$
+  kak -s "$kak_session" -d
+  kak -c "$kak_session" -e "
+    alias global terminal connect-detach
+    set-option global connect_environment %{
+      KAKOUNE_CLIENT=''
+    }
+    connect-terminal edit $@
+  "
+  # Attach the connect terminal command
+  script_path=$XDG_DATA_HOME/kak/connect/$kak_session/script.sh
+  if test -e "$script_path"; then
+    mv "$script_path" "$script_path~"
+    sh "$script_path~"
+    rm -f "$script_path~"
+  fi
 else
   file=$1 line=$2 column=$3
   kak -ui dummy -e "
