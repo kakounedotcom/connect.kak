@@ -160,6 +160,9 @@ require-module connect-dolphin
 map global normal <c-n> ': new<ret>'
 map global normal <c-t> ': connect-terminal<ret>'
 map global normal <c-w> ': connect-shell alacritty<ret>'
+
+# Quit
+map global normal <c-q> ': quit<ret>'
 ```
 
 By setting the option `connect_environment` you can specify commands that
