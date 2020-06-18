@@ -40,6 +40,7 @@ Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
 **Tip**: You can connect to your current terminal – in a similar way to [vim-vinegar] – with the [`kak-connect`] shell command.
+Try: `$ kak-connect` → `:connect-terminal` → `$ edit`.
 
 [vim-vinegar]: https://github.com/tpope/vim-vinegar
 
