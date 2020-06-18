@@ -1,5 +1,7 @@
 # connect.kak
 
+###### [Installation](#installation) | [Usage](#usage) | [Configuration](#configuration) | [Documentation](#documentation) | [Contributing](CONTRIBUTING)
+
 Connect a program to [Kakoune] clients.
 
 [![connect.kak](https://img.youtube.com/vi_webp/jca2N-cE_mM/maxresdefault.webp)](https://youtube.com/playlist?list=PLdr-HcjEDx_k-Y_9uSV0YAUCNHzqHjmz3 "YouTube – connect.kak")
@@ -196,7 +198,9 @@ set-option global connect_environment %{
 }
 ```
 
-## Kakoune commands
+## Documentation
+
+### Kakoune commands
 
 - [`:connect-terminal`] | [`:t`]
 - [`:connect-shell`] | [`:T`]
@@ -255,7 +259,7 @@ set-option global connect_environment %{
 [`dolphin`]: rc/modules/dolphin.kak
 [`:dolphin`]: rc/modules/dolphin.kak
 
-## Shell commands
+### Shell commands
 
 - [`edit`] | [`e`]
 - [`buffer`] | [`b`]
