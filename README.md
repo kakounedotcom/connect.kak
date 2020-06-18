@@ -18,7 +18,7 @@ Add [`rc`] to your autoload or source [`connect.kak`] and its [modules] manually
 ### Add to desktop
 
 1. Copy [`kakoune-connect.desktop`] to `$XDG_DATA_HOME/applications`.
-2. Copy [Kakoune's logo] to `$XDG_DATA_HOME/icons/hicolor/scalable/apps/kakoune.svg`.
+2. Copy [Kakoune’s logo] to `$XDG_DATA_HOME/icons/hicolor/scalable/apps/kakoune.svg`.
 3. Add [`kak-connect`] to your path.
 4. Open `$XDG_CONFIG_HOME/mimeapps.list` and add the following MIME type association:
 
@@ -32,7 +32,7 @@ Add more entries to your liking.
 
 [`kakoune-connect.desktop`]: share/applications/kakoune-connect.desktop
 [`kak-connect`]: bin/kak-connect
-[Kakoune's logo]: https://github.com/mawww/kakoune/blob/master/doc/kakoune_logo.svg
+[Kakoune’s logo]: https://github.com/mawww/kakoune/blob/master/doc/kakoune_logo.svg
 
 ## Usage
 
