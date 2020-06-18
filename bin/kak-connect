@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Environment variables
+XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
+
 if test -n "$KAKOUNE_SESSION" -o -n "$KAKOUNE_CLIENT"; then
   edit "$@"
 elif test -t 1; then
