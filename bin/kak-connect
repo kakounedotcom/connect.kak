@@ -6,13 +6,21 @@ XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 if test -n "$KAKOUNE_SESSION" -o -n "$KAKOUNE_CLIENT"; then
   edit "$@"
 elif test -t 1; then
+  kak_session=$$
   # Start a connected shell or edit files.
   if test $# -eq 0; then
+    cat <<EOF
+Starting a shell connected to the '$kak_session' Kakoune session.
+
+• [e]dit to attach
+• CTRL-D to quit
+
+❯ (connect-shell) █
+EOF
     set -- "$SHELL"
   else
     set -- 'edit' "$@"
   fi
-  kak_session=$$
   kak -s "$kak_session" -d
   kak -c "$kak_session" -e "
     alias global terminal connect-detach
