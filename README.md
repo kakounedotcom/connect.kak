@@ -1,6 +1,6 @@
 # connect.kak
 
-###### [Installation](#installation) | [Usage](#usage) | [Configuration](#configuration) | [Documentation](#documentation) | [Contributing](CONTRIBUTING)
+###### [Installation](#installation) | [Usage](#usage) | [Configuration](#configuration) | [Documentation](#documentation) | [Resources](#resources) | [Contributing](CONTRIBUTING)
 
 Connect a program to [Kakoune] clients.
 
@@ -277,6 +277,8 @@ set-option global connect_environment %{
 [`it`]: rc/paths/commands/it
 [`send`]: rc/paths/commands/send
 [`get`]: rc/paths/commands/get
+
+## Resources
 
 See also [explore.kak].
 
