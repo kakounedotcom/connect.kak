@@ -21,7 +21,10 @@ EOF
   else
     set -- 'edit' "$@"
   fi
+  # Start the session in daemon mode.
   kak -s "$kak_session" -d
+  # Alias terminal to connect-detach and enter in the connect environment.
+  # connect-detach allows to run CLI commands in the same terminal window.
   kak -c "$kak_session" -e "
     alias global terminal connect-detach
     set-option global connect_environment %{
@@ -29,7 +32,8 @@ EOF
     }
     connect-terminal $@
   "
-  # Attach the connect terminal command
+  # Attach the connect terminal command.
+  # Act as a “boot loader”.
   script_path=$XDG_DATA_HOME/kak/connect/$kak_session/script.sh
   if test -e "$script_path"; then
     mv "$script_path" "$script_path~"
