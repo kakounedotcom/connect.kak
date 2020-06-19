@@ -6,6 +6,12 @@ XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 if test -n "$KAKOUNE_SESSION" -o -n "$KAKOUNE_CLIENT"; then
   edit "$@"
 elif test -t 1; then
+  # Start a connected shell or edit files.
+  if test $# -eq 0; then
+    set -- "$SHELL"
+  else
+    set -- 'edit' "$@"
+  fi
   kak_session=$$
   kak -s "$kak_session" -d
   kak -c "$kak_session" -e "
@@ -13,7 +19,7 @@ elif test -t 1; then
     set-option global connect_environment %{
       KAKOUNE_CLIENT=''
     }
-    connect-terminal edit $@
+    connect-terminal $@
   "
   # Attach the connect terminal command
   script_path=$XDG_DATA_HOME/kak/connect/$kak_session/script.sh
