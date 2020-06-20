@@ -33,9 +33,9 @@ provide-module connect %{
   }
   define-command connect-detach -params .. -shell-completion -docstring 'Write the given shell command to your connect data path and detach the client' %{
     evaluate-commands %sh{
-      mkdir -p "$kak_opt_connect_data_path/$kak_session"
+      mkdir -p "$kak_opt_connect_data_path"
     }
-    echo -to-file "%opt{connect_data_path}/%val{session}/script.sh" -quoting shell %arg{@}
+    echo -to-file "%opt{connect_data_path}/script.sh" -quoting shell %arg{@}
     quit!
   }
   alias global t connect-terminal

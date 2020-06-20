@@ -39,7 +39,7 @@ EOF
   "
   # Attach the connect terminal command.
   # Act as a “boot loader”.
-  script_path=$XDG_DATA_HOME/kak/connect/$kak_session/script.sh
+  script_path=$XDG_DATA_HOME/kak/connect/script.sh
   if test -e "$script_path"; then
     mv "$script_path" "$script_path~"
     sh "$script_path~"

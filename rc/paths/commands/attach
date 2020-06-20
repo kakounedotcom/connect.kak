@@ -1,6 +1,6 @@
 #!/bin/sh
 
-script_path=$XDG_DATA_HOME/kak/connect/$KAKOUNE_SESSION/script.sh
+script_path=$XDG_DATA_HOME/kak/connect/script.sh
 
 if test -e "$script_path"; then
   mv "$script_path" "$script_path~"
