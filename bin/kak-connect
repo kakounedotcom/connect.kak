@@ -1,14 +1,23 @@
 #!/bin/sh
 
-# Environment variables
+# Environment variables ────────────────────────────────────────────────────────
+
 XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 CONNECT_SCRIPT_PATH=$XDG_DATA_HOME/kak/connect/script.sh
 
+# Main ─────────────────────────────────────────────────────────────────────────
+
 main() {
+
+  # Send the edit command to the session / client.
   if test -n "$KAKOUNE_SESSION" -o -n "$KAKOUNE_CLIENT"; then
     edit "$@"
+
+  # Try to connect to an existing session from a previous :connect-detach command.
   elif test -t 1 -a -e "$CONNECT_SCRIPT_PATH"; then
     attach
+
+  # Create a session and attach if there is a terminal.
   elif test -t 1; then
     kak_session=$$
     # Start a connected shell or edit files.
@@ -46,6 +55,8 @@ EOF
     if test -e "$CONNECT_SCRIPT_PATH"; then
       attach
     fi
+
+  # GUI apps.
   else
     file=$1 line=$2 column=$3
     kak -ui dummy -e "
@@ -56,6 +67,8 @@ EOF
     "
   fi
 }
+
+# Functions ────────────────────────────────────────────────────────────────────
 
 attach() {
   mv "$CONNECT_SCRIPT_PATH" "$CONNECT_SCRIPT_PATH~"
