@@ -28,7 +28,12 @@ EOF
   kak -c "$kak_session" -e "
     alias global terminal connect-detach
     set-option global connect_environment %{
-      KAKOUNE_CLIENT=''
+      # Unset KAKOUNE_CLIENT when attached to a terminal.
+      # Motivation: GUI apps can connect to the client.
+      # Example: :connect-shell dolphin
+      if test -t 1; then
+        KAKOUNE_CLIENT=''
+      fi
     }
     connect-terminal $@
   "
