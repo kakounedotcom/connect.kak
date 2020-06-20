@@ -2,9 +2,18 @@
 
 # Environment variables
 XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
+CONNECT_SCRIPT_PATH=$XDG_DATA_HOME/kak/connect/script.sh
+
+attach() {
+  mv "$CONNECT_SCRIPT_PATH" "$CONNECT_SCRIPT_PATH~"
+  sh "$CONNECT_SCRIPT_PATH~"
+  rm -f "$CONNECT_SCRIPT_PATH~"
+}
 
 if test -n "$KAKOUNE_SESSION" -o -n "$KAKOUNE_CLIENT"; then
   edit "$@"
+elif test -t 1 -a -e "$CONNECT_SCRIPT_PATH"; then
+  attach
 elif test -t 1; then
   kak_session=$$
   # Start a connected shell or edit files.
@@ -39,11 +48,8 @@ EOF
   "
   # Attach the connect terminal command.
   # Act as a “boot loader”.
-  script_path=$XDG_DATA_HOME/kak/connect/script.sh
-  if test -e "$script_path"; then
-    mv "$script_path" "$script_path~"
-    sh "$script_path~"
-    rm -f "$script_path~"
+  if test -e "$CONNECT_SCRIPT_PATH"; then
+    attach
   fi
 else
   file=$1 line=$2 column=$3
