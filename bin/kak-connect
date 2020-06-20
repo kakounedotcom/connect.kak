@@ -22,14 +22,14 @@ main() {
     kak_session=$$
     # Start a connected shell or edit files.
     if test $# -eq 0; then
-      cat <<EOF
-Starting a shell connected to the '$kak_session' Kakoune session.
+      cat <<-EOF | sed -E 's/^ {8}//'
+        Starting a shell connected to the '$kak_session' Kakoune session.
 
-• [e]dit to attach
-• CTRL-D to quit
+        • [e]dit to attach
+        • CTRL-D to quit
 
-❯ (connect-shell) █
-EOF
+        ❯ (connect-shell) █
+			EOF
       set -- "$SHELL"
     else
       set -- 'edit' "$@"
