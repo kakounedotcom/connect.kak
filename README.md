@@ -278,6 +278,11 @@ set-option global connect_environment %{
 [`send`]: rc/paths/commands/send
 [`get`]: rc/paths/commands/get
 
+### Options
+
+- `connect_attach`: Attach to terminal.  Default is `no`.
+- `connect_data_path`: Path to connect data.  Default is `$XDG_DATA_HOME/kak/connect` or `~/.local/share/kak/connect`.
+
 ## Resources
 
 See also [explore.kak].
