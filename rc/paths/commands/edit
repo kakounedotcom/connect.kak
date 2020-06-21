@@ -40,7 +40,15 @@ commands="$commands; focus"
 regex=${regex#|}
 kak_quoted_regex=$(kak_escape "$regex")
 
-send "$commands"
+# Attach to terminal.
+# Note: Ensure there is a terminal.
+# Motivation: GUI apps can connect to the client.
+# Example: :connect-shell dolphin
+if test -t 1 -a "$KAKOUNE_CONNECT_ATTACH" = true; then
+  kak -c "$KAKOUNE_SESSION" -e "$commands"
+else
+  send "$commands"
+fi
 
 if test "$wait" = true; then
   state=$(mktemp -d)

@@ -3,7 +3,7 @@
 # Environment variables ────────────────────────────────────────────────────────
 
 XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
-CONNECT_SCRIPT_PATH=$XDG_DATA_HOME/kak/connect/script.sh
+KAKOUNE_CONNECT_SCRIPT=$XDG_DATA_HOME/kak/connect/script.sh
 
 # Main ─────────────────────────────────────────────────────────────────────────
 
@@ -14,7 +14,7 @@ main() {
     edit "$@"
 
   # Try to connect to an existing session from a previous :connect-detach command.
-  elif test -t 1 -a -e "$CONNECT_SCRIPT_PATH"; then
+  elif test -t 1 -a -e "$KAKOUNE_CONNECT_SCRIPT"; then
     attach
 
   # Create a session and attach if there is a terminal.
@@ -40,19 +40,12 @@ EOF
     # connect-detach allows to run CLI commands in the same terminal window.
     kak -c "$kak_session" -e "
       alias global terminal connect-detach
-      set-option global connect_environment %{
-        # Unset KAKOUNE_CLIENT when attached to a terminal.
-        # Motivation: GUI apps can connect to the client.
-        # Example: :connect-shell dolphin
-        if test -t 1; then
-          KAKOUNE_CLIENT=''
-        fi
-      }
+      set-option global connect_attach yes
       connect-terminal $@
     "
     # Attach the connect terminal command.
     # Act as a “boot loader”.
-    if test -e "$CONNECT_SCRIPT_PATH"; then
+    if test -e "$KAKOUNE_CONNECT_SCRIPT"; then
       attach
     fi
 
@@ -71,9 +64,9 @@ EOF
 # Functions ────────────────────────────────────────────────────────────────────
 
 attach() {
-  mv "$CONNECT_SCRIPT_PATH" "$CONNECT_SCRIPT_PATH~"
-  sh "$CONNECT_SCRIPT_PATH~"
-  rm -f "$CONNECT_SCRIPT_PATH~"
+  mv "$KAKOUNE_CONNECT_SCRIPT" "$KAKOUNE_CONNECT_SCRIPT~"
+  sh "$KAKOUNE_CONNECT_SCRIPT~"
+  rm -f "$KAKOUNE_CONNECT_SCRIPT~"
 }
 
 main "$@"

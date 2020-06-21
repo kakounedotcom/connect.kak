@@ -1,9 +1,14 @@
 #!/bin/sh
 
-script_path=$XDG_DATA_HOME/kak/connect/script.sh
-
-if test -e "$script_path"; then
-  mv "$script_path" "$script_path~"
-  sh "$script_path~"
-  rm -f "$script_path~"
+if test -e "$KAKOUNE_CONNECT_SCRIPT"; then
+  mv "$KAKOUNE_CONNECT_SCRIPT" "$KAKOUNE_CONNECT_SCRIPT~"
+  sh "$KAKOUNE_CONNECT_SCRIPT~"
+  # Note:
+  # This script is deleted by :connect-detach when reattaching to the session.
+  # If the script still exists, sh <connect-script> did not reattach.
+  # Mitigate the need to manually reattach.
+  if test -e "$KAKOUNE_CONNECT_SCRIPT~"; then
+    rm -f "$KAKOUNE_CONNECT_SCRIPT~"
+    edit
+  fi
 fi

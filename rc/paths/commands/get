@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Environment variables
-# Set a default client value
-KAKOUNE_CLIENT=${KAKOUNE_CLIENT:-client0}
-
 state=$(mktemp -d)
 trap 'rm -Rf "$state"' EXIT
 mkfifo "$state/fifo"
