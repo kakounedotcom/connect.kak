@@ -35,7 +35,7 @@ EOF
       set -- 'edit' "$@"
     fi
     # Start the session in daemon mode.
-    kak -s "$kak_session" -d
+    setsid kak -s "$kak_session" -d < /dev/null > /dev/null 2>&1
     # Alias terminal to connect-detach and enter in the connect environment.
     # connect-detach allows to run CLI commands in the same terminal window.
     kak -c "$kak_session" -e "
