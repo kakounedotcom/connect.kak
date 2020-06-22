@@ -1,6 +1,15 @@
 declare-option -hidden str connect_path %sh(dirname "$kak_source")
 declare-option str connect_environment
 
+hook global ModuleLoaded connect %{
+  hook global ModuleLoaded terminal-mode %{
+    require-module connect-terminal-mode
+  }
+  hook global KakBegin .* %{
+    require-module connect-terminal-mode
+  }
+}
+
 provide-module connect %{
   declare-option -docstring 'Attach to terminal' bool connect_attach no
   declare-option -docstring 'Path to connect data' str connect_data_path %sh{
@@ -48,6 +57,32 @@ provide-module connect %{
   alias global t connect-terminal
   alias global T connect-shell
   alias global d connect-detach
+}
+
+provide-module connect-terminal-mode %{
+  require-module connect
+  require-module terminal-mode
+
+  declare-user-mode connect
+
+  # Set the terminal to :connect-detach.
+  # connect-set-detach <scope>
+  define-command -hidden connect-set-detach -params 1 %{
+    set-option %arg{1} connect_attach yes
+    alias %arg{1} terminal connect-detach
+  }
+
+  # Reset terminal settings.
+  # connect-set-terminal <scope>
+  define-command -hidden connect-set-terminal -params 1 %{
+    set-option %arg{1} connect_attach no
+    enter-user-mode terminal
+  }
+
+  # Mappings
+  map global terminal c ': enter-user-mode connect<ret>' -docstring 'connect'
+  map global connect d ': connect-set-detach global<ret>' -docstring 'Detach'
+  map global connect r ': connect-set-terminal global<ret>' -docstring 'Reset'
 }
 
 require-module connect

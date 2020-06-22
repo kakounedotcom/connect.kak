@@ -10,8 +10,10 @@ Connect a program to [Kakoune] clients.
 ## Dependencies
 
 - [prelude.kak]
+- [terminal-mode.kak]
 
 [prelude.kak]: https://github.com/alexherbo2/prelude.kak
+[terminal-mode.kak]: https://github.com/alexherbo2/terminal-mode.kak
 
 ## Installation
 
