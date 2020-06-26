@@ -4,10 +4,12 @@
 XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 KAKOUNE_CONNECT_SCRIPT=$XDG_DATA_HOME/kak/connect/script.sh
 
-# Kakoune session
-KAKOUNE_SESSION=${KAKOUNE_SESSION:-$$}
-
 main() {
+  # Interactively set the Kakoune session.
+  if test -z "$KAKOUNE_SESSION"; then
+    printf 'Kakoune session:'
+    read KAKOUNE_SESSION
+  fi
   # Start an interactive shell.
   start "$@"
 }
