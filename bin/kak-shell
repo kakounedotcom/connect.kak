@@ -7,6 +7,9 @@ KAKOUNE_CONNECT_SCRIPT=$XDG_DATA_HOME/kak/connect/script.sh
 main() {
   # Interactively set the Kakoune session.
   if test -z "$KAKOUNE_SESSION"; then
+    printf 'Kakoune sessions:\n'
+    kak -l
+    printf '+ create new session\n'
     printf 'Kakoune session:'
     read KAKOUNE_SESSION
   fi
