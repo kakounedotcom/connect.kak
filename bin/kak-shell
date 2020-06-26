@@ -1,23 +1,15 @@
 #!/bin/sh
 
-# Usage
-USAGE='kak-shell [-s <session>] [-c <session>] [program]: Start an interactive shell.'
-
 # Environment variables
 XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 KAKOUNE_CONNECT_SCRIPT=$XDG_DATA_HOME/kak/connect/script.sh
 
+# Kakoune session
+KAKOUNE_SESSION=${KAKOUNE_SESSION:-$$}
+
 main() {
-  # Usage
-  if test $# -eq 0; then
-    printf '%s\n' "$USAGE" > /dev/stderr
-    exit 1
-  fi
-  # Option parser
-  case "$1" in
-    -s) KAKOUNE_SESSION=$2; shift 2; start "$@" ;;
-    -c) KAKOUNE_SESSION=$2; shift 2; connect "$@" ;;
-  esac
+  # Start an interactive shell.
+  start "$@"
 }
 
 start() {
