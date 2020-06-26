@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# Usage
+USAGE='kak-shell [-s <session>] [-c <session>] [program]: Start an interactive shell.'
+
+# Environment variables
+XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
+KAKOUNE_CONNECT_SCRIPT=$XDG_DATA_HOME/kak/connect/script.sh
+
+main() {
+  # Usage
+  if test $# -eq 0; then
+    printf '%s\n' "$USAGE" > /dev/stderr
+    exit 1
+  fi
+  # Option parser
+  case "$1" in
+    -s) KAKOUNE_SESSION=$2; shift 2; start "$@" ;;
+    -c) KAKOUNE_SESSION=$2; shift 2; connect "$@" ;;
+  esac
+}
+
+start() {
+  # Start the session in daemon mode.
+  setsid kak -s "$KAKOUNE_SESSION" -d < /dev/null > /dev/null 2>&1
+  connect "$@"
+}
+
+connect() {
+  # Alias terminal to connect-detach and enter in the connect environment.
+  # connect-detach allows to run CLI apps in the same terminal window.
+  kak -c "$KAKOUNE_SESSION" -e "
+    connect-set-detach global
+    connect-terminal $@
+  "
+  # Attach the connect terminal command.
+  # Act as a “boot loader”.
+  if test -e "$KAKOUNE_CONNECT_SCRIPT"; then
+    attach
+  fi
+}
+
+attach() {
+  mv "$KAKOUNE_CONNECT_SCRIPT" "$KAKOUNE_CONNECT_SCRIPT~"
+  sh "$KAKOUNE_CONNECT_SCRIPT~"
+  rm -f "$KAKOUNE_CONNECT_SCRIPT~"
+}
+
+main "$@"

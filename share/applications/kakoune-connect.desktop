@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Kakoune (C)
-Exec=kak-connect %F
+Exec=kak-desktop %F
 Icon=kakoune.svg

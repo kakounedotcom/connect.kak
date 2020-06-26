@@ -1,0 +1,23 @@
+#!/bin/sh
+
+main() {
+  # Send the edit command to the client.
+  if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
+    edit "$@"
+  # GUI apps.
+  else
+    launch "$@"
+  fi
+}
+
+launch() {
+  file=$1 line=$2 column=$3
+  kak -ui dummy -e "
+    new %{
+      hook -always -once global ClientClose %val{client} kill!
+      edit %{$file} $line $column
+    }
+  "
+}
+
+main "$@"

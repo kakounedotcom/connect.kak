@@ -19,11 +19,17 @@ Connect a program to [Kakoune] clients.
 
 Add [`rc`] to your autoload or source [`connect.kak`] and its [modules] manually.
 
+### Start an interactive shell
+
+Add [`kak-shell`] to your path.
+
+[`kak-shell`]: bin/kak-shell
+
 ### Add to desktop
 
 1. Copy [`kakoune-connect.desktop`] to `$XDG_DATA_HOME/applications`.
 2. Copy [Kakoune’s logo] to `$XDG_DATA_HOME/icons/hicolor/scalable/apps/kakoune.svg`.
-3. Add [`kak-connect`] to your path.
+3. Add [`kak-desktop`] to your path.
 4. Open `$XDG_CONFIG_HOME/mimeapps.list` and add the following MIME type association:
 
 ```
@@ -35,7 +41,7 @@ text/xml=kakoune-connect.desktop
 Add more entries to your liking.
 
 [`kakoune-connect.desktop`]: share/applications/kakoune-connect.desktop
-[`kak-connect`]: bin/kak-connect
+[`kak-desktop`]: bin/kak-desktop
 [Kakoune’s logo]: https://github.com/mawww/kakoune/blob/master/doc/kakoune_logo.svg
 
 ## Usage
@@ -43,15 +49,15 @@ Add more entries to your liking.
 Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
-**Tip**: You can connect to your current terminal (open in the same terminal window) – in a similar way to [vim-vinegar] – with the [`kak-connect`] shell command.
-Try: `$ kak-connect` → `:connect-terminal` → `$ edit`.
+**Tip**: You can connect to your current terminal (open in the same terminal window) – in a similar way to [vim-vinegar] – with the [`kak-shell`] shell command.
+Try: `$ kak-shell` → `:connect-terminal` → `$ edit`.
 
 [vim-vinegar]: https://github.com/tpope/vim-vinegar
 
 **Example** – Open a connected shell and reattach with [`edit`]:
 
 ```
-$ kak-connect → :connect-terminal → $ edit → Quit to return to your shell
+$ kak-shell → :connect-terminal → $ edit → Quit to return to your shell
 ```
 
 **Tip**: Map <kbd>Control</kbd> + <kbd>q</kbd> to quit.
@@ -59,13 +65,13 @@ $ kak-connect → :connect-terminal → $ edit → Quit to return to your shell
 **Example** – Open a connected shell and [lf]:
 
 ```
-$ kak-connect → :connect-terminal → $ lf → Open a file → Quit to return to lf
+$ kak-shell → :connect-terminal → $ lf → Open a file → Quit to return to lf
 ```
 
 **Example** – Open [lf] connected to the Kakoune session:
 
 ```
-$ kak-connect → :lf
+$ kak-shell → :lf
 ```
 
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
