@@ -50,14 +50,13 @@ Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
 **Tip**: You can connect to your current terminal (open in the same terminal window) – in a similar way to [vim-vinegar] – with the [`kak-shell`] shell command.
-Try: `$ kak-shell` → `:connect-terminal` → `$ edit`.
 
 [vim-vinegar]: https://github.com/tpope/vim-vinegar
 
 **Example** – Open a connected shell and reattach with [`edit`]:
 
 ```
-$ kak-shell → :connect-terminal → $ edit → Quit to return to your shell
+$ kak-shell → $ edit → Quit to return to your shell
 ```
 
 **Tip**: Map <kbd>Control</kbd> + <kbd>q</kbd> to quit.
@@ -65,13 +64,13 @@ $ kak-shell → :connect-terminal → $ edit → Quit to return to your shell
 **Example** – Open a connected shell and [lf]:
 
 ```
-$ kak-shell → :connect-terminal → $ lf → Open a file → Quit to return to lf
+$ kak-shell → $ lf → Open a file → Quit to return to lf
 ```
 
 **Example** – Open [lf] connected to the Kakoune session:
 
 ```
-$ kak-shell → :lf
+$ kak-shell lf
 ```
 
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
