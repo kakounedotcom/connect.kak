@@ -20,15 +20,17 @@ provide-module connect %{
   }
   define-command connect-terminal -params .. -shell-completion -docstring 'Connect a terminal' %{
     terminal sh -c %{
-      kak_opt_prelude=$1 kak_opt_connect_path=$2 kak_opt_connect_data_path=$3 kak_opt_connect_attach=$4 kak_opt_connect_environment=$5 kak_session=$6 kak_client=$7 kak_client_env_SHELL=$8
+      kak_opt_prelude=$1 kak_opt_connect_path=$2 kak_opt_connect_data_path=$3 kak_opt_connect_attach=$4 kak_opt_connect_environment=$5 kak_session=$6 kak_client=$7 kak_client_env_SHELL=$8 kak_sh_pwd=$9
       . "$kak_opt_connect_path/env/default.env"
       . "$kak_opt_connect_path/env/overrides.env"
       . "$kak_opt_connect_path/env/kakoune.env"
       . "$kak_opt_connect_path/env/git.env"
       eval "$kak_opt_connect_environment"
-      shift 8
+      shift 9
+      # Start the shell in the current working directory.
+      cd "$kak_sh_pwd"
       "${@:-$SHELL}"
-    } -- %opt{prelude} %opt{connect_path} %opt{connect_data_path} %opt{connect_attach} %opt{connect_environment} %val{session} %val{client} %val{client_env_SHELL} %arg{@}
+    } -- %opt{prelude} %opt{connect_path} %opt{connect_data_path} %opt{connect_attach} %opt{connect_environment} %val{session} %val{client} %val{client_env_SHELL} %sh{pwd} %arg{@}
   }
   define-command connect-shell -params 1.. -shell-completion -docstring 'Connect a shell' %{
     nop %sh{
