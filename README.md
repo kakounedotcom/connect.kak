@@ -73,6 +73,8 @@ $ kak-shell → $ lf → Open a file → Quit to return to lf
 $ kak-shell lf
 ```
 
+**Tip**: Type <kbd>,</kbd> (user mode), <kbd>t</kbd> (terminal), <kbd>c</kbd> (connect), <kbd>r</kbd> (reset) to reset terminal settings.
+
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
 also available.  connect.kak currently has batteries for [fzf], [dmenu], [Rofi],
 [Wofi], [lf] and [Dolphin].
