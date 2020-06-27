@@ -13,6 +13,10 @@ main() {
     printf 'Kakoune session:'
     read KAKOUNE_SESSION
   fi
+  # Exit if the Kakoune session is empty.
+  if test -z "$KAKOUNE_SESSION"; then
+    exit 1
+  fi
   # Start an interactive shell.
   start "$@"
 }
