@@ -56,8 +56,9 @@ Add more entries to your liking.
 
 ## Usage
 
-Connect a terminal with `:connect-terminal`.  Open files with the `edit` shell command or your
-favorite program; buffers with the `buffer` shell command…
+Connect a terminal with `:connect-terminal`.
+Open files with the `edit` shell command or your favorite program;
+buffers with the `buffer` shell command…
 
 You can start an interactive shell (or a program) connected to a session, in the same way [nix-shell] does.
 By default, the connections occur in the same terminal window (try `:fzf-files` or `:fzf-buffers` to see);
