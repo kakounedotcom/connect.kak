@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Get a property.
+
 state=$(mktemp -d)
 trap 'rm -Rf "$state"' EXIT
 mkfifo "$state/fifo"

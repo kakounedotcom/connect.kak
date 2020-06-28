@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Open buffers.  With no argument, list buffers instead.
+
 . "$KAKOUNE_PRELUDE"
 
 main() {

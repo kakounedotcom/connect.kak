@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Open files.
+
 . "$KAKOUNE_PRELUDE"
 
 # Option parser

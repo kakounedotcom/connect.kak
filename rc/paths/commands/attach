@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Attach a command ran from Kakoune with :connect-detach.
+
 if test -e "$KAKOUNE_CONNECT_SCRIPT"; then
   mv "$KAKOUNE_CONNECT_SCRIPT" "$KAKOUNE_CONNECT_SCRIPT~"
   sh "$KAKOUNE_CONNECT_SCRIPT~"
