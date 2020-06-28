@@ -77,17 +77,19 @@ Kakoune session: kanto█
 ## Configuration
 
 ``` kak
+# Modules
 require-module connect-fzf
-require-module connect-dmenu
-require-module connect-rofi
-require-module connect-wofi
-require-module connect-lf
-require-module connect-dolphin
+
+# Explore files and buffers with fzf
+alias global explore-files fzf-files
+alias global explore-buffers fzf-buffers
+
+# Terminal settings
+map global user t ': enter-user-mode terminal<ret>' -docstring 'Terminal'
 
 # Create a new window
 map global normal <c-n> ': new<ret>'
 map global normal <c-t> ': connect-terminal<ret>'
-map global normal <c-w> ': connect-shell alacritty<ret>'
 
 # Quit
 map global normal <c-q> ': quit<ret>'
