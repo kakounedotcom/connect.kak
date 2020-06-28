@@ -53,6 +53,31 @@ favorite program; buffers with the [`buffer`] command…
 
 [vim-vinegar]: https://github.com/tpope/vim-vinegar
 
+You can start an interactive shell (or a program) connected to a session, in the same way [nix-shell] does.
+By default, the connections occur in the same terminal window (try [`:fzf-files`] or [`:fzf-buffers`] to see);
+you can change the terminal settings with `,tcr` (for _user mode_ – _terminal_ – _connect_ – _reset_),
+which resets the detach option and prompts you to choose your preferred windowing system ([X11], [tmux], etc.).
+You can change it at your will with `,t`.
+The [terminal-mode.kak] interface is similar to [i3’s split commands].
+
+**Illustration**
+
+```
+$ kak-shell
+# Kakoune sessions:
+# kanto
+# johto
+# + create new session
+# Kakoune session: kanto█
+(kak-shell) $ edit
+:fzf-files
+```
+
+[nix-shell]: https://nixos.org/nix/manual#sec-nix-shell
+[X11]: https://x.org
+[tmux]: https://github.com/tmux/tmux
+[i3’s split commands]: https://i3wm.org/docs/userguide.html#OrientationSplit
+
 **Example** – Open a connected shell and reattach with [`edit`]:
 
 ```
