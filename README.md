@@ -56,7 +56,7 @@ favorite program; buffers with the [`buffer`] command…
 You can start an interactive shell (or a program) connected to a session, in the same way [nix-shell] does.
 By default, the connections occur in the same terminal window (try [`:fzf-files`] or [`:fzf-buffers`] to see);
 you can change the terminal settings with `,tcr` (for _user mode_ – _terminal_ – _connect_ – _reset_),
-which resets the detach option and prompts you to choose your preferred windowing system ([X11], [tmux], etc.).
+which resets the detach option and prompts you to choose a windowing system ([X11], [tmux], etc.).
 You can change it at your will with `,t`.
 The [terminal-mode.kak] interface is similar to [i3’s split commands].
 
