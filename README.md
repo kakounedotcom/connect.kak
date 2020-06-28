@@ -49,10 +49,6 @@ Add more entries to your liking.
 Connect a terminal with [`:connect-terminal`].  Open files with [`edit`] or your
 favorite program; buffers with the [`buffer`] command…
 
-**Tip**: You can connect to your current terminal (open in the same terminal window) – in a similar way to [vim-vinegar] – with the [`kak-shell`] shell command.
-
-[vim-vinegar]: https://github.com/tpope/vim-vinegar
-
 You can start an interactive shell (or a program) connected to a session, in the same way [nix-shell] does.
 By default, the connections occur in the same terminal window (try [`:fzf-files`] or [`:fzf-buffers`] to see);
 you can change the terminal settings with `,tcr` (for _user mode_ – _terminal_ – _connect_ – _reset_),
@@ -77,28 +73,6 @@ Kakoune session: kanto█
 [X11]: https://x.org
 [tmux]: https://github.com/tmux/tmux
 [i3’s split commands]: https://i3wm.org/docs/userguide.html#OrientationSplit
-
-**Example** – Open a connected shell and reattach with [`edit`]:
-
-```
-$ kak-shell → $ edit → Quit to return to your shell
-```
-
-**Tip**: Map <kbd>Control</kbd> + <kbd>q</kbd> to quit.
-
-**Example** – Open a connected shell and [lf]:
-
-```
-$ kak-shell → $ lf → Open a file → Quit to return to lf
-```
-
-**Example** – Open [lf] connected to the Kakoune session:
-
-```
-$ kak-shell lf
-```
-
-**Tip**: Type <kbd>,</kbd> (user mode), <kbd>t</kbd> (terminal), <kbd>c</kbd> (connect), <kbd>r</kbd> (reset) to reset terminal settings.
 
 If you loaded the [modules], [`:fzf-files`] and [`:fzf-buffers`] commands are
 also available.  connect.kak currently has batteries for [fzf], [dmenu], [Rofi],
