@@ -24,7 +24,13 @@ edit() {
     kak_quoted_buffer=$(kak_escape "$buffer")
     commands="buffer $kak_quoted_buffer; $commands"
   done
-  send "$commands"
+  # Attach to terminal.
+  # Ensure there is a terminal.
+  if test -t 1 -a "$KAKOUNE_CONNECT_ATTACH" = true; then
+    kak -c "$KAKOUNE_SESSION" -e "$commands"
+  else
+    send "$commands"
+  fi
 }
 
 main "$@"
