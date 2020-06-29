@@ -141,6 +141,7 @@ Defined in [`connect.kak`](rc/connect.kak).
 
 Defined in [`modules`](rc/modules).
 
+- `connect-broot`
 - `connect-dmenu`
 - `connect-dolphin`
 - `connect-fzf`
