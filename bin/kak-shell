@@ -8,7 +8,7 @@ main() {
   # Interactively set the Kakoune session.
   if test -z "$KAKOUNE_SESSION"; then
     printf 'Kakoune sessions:\n'
-    kak -l
+    kak -l | sort
     printf '+ create new session\n'
     printf 'Kakoune session:'
     read KAKOUNE_SESSION
