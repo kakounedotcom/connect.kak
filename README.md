@@ -107,6 +107,23 @@ map global normal <c-q> ': quit<ret>'
 
 # Yank ring
 map global normal Y ': yank-ring<ret>'
+
+# Delapouite – More controversial mappings
+# https://github.com/Delapouite/kakoune-buffers#more-controversial-mappings
+
+# Buffers
+map global normal b ': fzf-buffers<ret>'
+map global normal B ': enter-user-mode -lock buffers<ret>'
+
+# Move [b] to [q], so that [qwe] actions are aligned.
+map global normal q b
+map global normal Q B
+map global normal <a-q> <a-b>
+map global normal <a-Q> <a-B>
+
+# Move macros to ^
+map global normal ^ q
+map global normal <a-^> Q
 ```
 
 By setting the option `connect_environment`, you can specify commands that
