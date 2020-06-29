@@ -139,6 +139,8 @@ set-option global connect_environment %{
 
 #### Commands
 
+Defined in [`commands`](rc/paths/commands) and [`aliases`](rc/paths/aliases).
+
 - `edit` (alias: `e`): Open files.
 - `buffer` (alias: `b`): Open buffers.  With no argument, list buffers instead.
 - `attach` (alias: `a`): Attach a command ran from Kakoune with `:connect-detach`.
