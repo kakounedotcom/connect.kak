@@ -1,3 +1,9 @@
+# Rofi
+# https://github.com/davatorium/rofi
+
+# Dependencies:
+# – fd (https://github.com/sharkdp/fd)
+
 provide-module connect-rofi %{
   require-module connect
   define-command rofi-files -params .. -file-completion -docstring 'Open selected files with Rofi' %{

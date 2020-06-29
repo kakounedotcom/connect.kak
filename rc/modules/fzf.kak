@@ -1,3 +1,9 @@
+# fzf
+# https://github.com/junegunn/fzf
+
+# Dependencies:
+# – fd (https://github.com/sharkdp/fd)
+
 provide-module connect-fzf %{
   require-module connect
   define-command fzf-files -params .. -file-completion -docstring 'Open selected files with fzf' %{
