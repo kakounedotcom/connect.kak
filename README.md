@@ -60,7 +60,7 @@ Connect a terminal with `:connect-terminal`.
 Open files with the `edit` shell command or your favorite program;
 buffers with the `buffer` shell command…
 
-You can start an interactive shell (or a program) connected to a session, in the same way [nix-shell] does.
+You can start an interactive shell (or a program) connected to a session – in the same way [nix-shell] does – with `kak-shell`.
 By default, the connections occur in the same terminal window (try `:fzf-files` or `:fzf-buffers` to see);
 you can change the terminal settings with `,tcr` (for _user mode_ – _terminal_ – _connect_ – _reset_),
 which resets the detach option and prompts you to choose a windowing system ([X11], [tmux], etc.).
