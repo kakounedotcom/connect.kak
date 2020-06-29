@@ -145,3 +145,17 @@ set-option global connect_environment %{
 - `it`: Get the current buffer.
 - `send`: Send a command.
 - `get`: Get a property.
+
+#### Environment variables
+
+Defined in [`env`](rc/env).
+
+- `KAKOUNE_SESSION`: Kakoune session.
+- `KAKOUNE_CLIENT`: Kakoune client.
+- `KAKOUNE_CONNECT_SCRIPT`: Path to connect script, used by `:connect-detach` for writing shell commands.
+- `KAKOUNE_CONNECT_ATTACH`: Whether to attach to terminal.
+- `EDITOR`: Editor to be used.  Default is `edit`.
+- `VISUAL`: Visual editor to be used.  Default is `edit`.
+- `GIT_EDITOR`: [Git] editor to be used.  Default is `edit -wait`.
+
+[Git]: https://git-scm.com
