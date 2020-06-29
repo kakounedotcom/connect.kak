@@ -124,6 +124,8 @@ set-option global connect_environment %{
 
 ### Kakoune
 
+Defined in [`connect.kak`](rc/connect.kak).
+
 #### Commands
 
 - `connect-terminal` (alias: `t`): Connect a terminal.
