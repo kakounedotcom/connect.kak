@@ -137,6 +137,17 @@ Defined in [`connect.kak`](rc/connect.kak).
 - `connect_attach`: Attach to terminal.  Default is `no`.
 - `connect_data_path`: Path to connect data.  Default is `$XDG_DATA_HOME/kak/connect` or `~/.local/share/kak/connect`.
 
+#### Modules
+
+Defined in [`modules`](rc/modules).
+
+- `connect-dmenu`
+- `connect-dolphin`
+- `connect-fzf`
+- `connect-lf`
+- `connect-rofi`
+- `connect-wofi`
+
 ### Shell
 
 #### Commands
