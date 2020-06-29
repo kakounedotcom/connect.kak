@@ -4,6 +4,9 @@ main() {
   # Send the edit command to the client.
   if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
     edit "$@"
+  # Terminal.
+  elif test -t 1; then
+    kak "$@"
   # GUI apps.
   else
     launch "$@"
