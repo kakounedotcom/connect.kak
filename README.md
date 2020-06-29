@@ -145,6 +145,7 @@ Defined in [`modules`](rc/modules).
 - `connect-dolphin`
 - `connect-fzf`
 - `connect-lf`
+- `connect-nnn`
 - `connect-rofi`
 - `connect-wofi`
 
