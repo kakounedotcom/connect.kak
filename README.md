@@ -107,10 +107,24 @@ map global normal <c-q> ': quit<ret>'
 
 # Yank ring
 map global normal Y ': yank-ring<ret>'
+```
 
-# Delapouite – More controversial mappings
-# https://github.com/Delapouite/kakoune-buffers#more-controversial-mappings
+By setting the option `connect_environment`, you can specify commands that
+are run before the shell is executed.  This might be useful, if you want to
+change or export environment variables:
 
+``` kak
+set-option global connect_environment %{
+  GIT_EDITOR='kak -c $KAKOUNE_SESSION'
+  export LYEDITOR='edit %(file)s +%(line)s:%(column)s'
+}
+```
+
+### More controversial mappings
+
+[Delapouite – More controversial mappings](https://github.com/Delapouite/kakoune-buffers#more-controversial-mappings)
+
+``` kak
 # Buffers
 map global normal b ': fzf-buffers<ret>'
 map global normal B ': enter-user-mode -lock buffers<ret>'
@@ -124,17 +138,6 @@ map global normal <a-Q> <a-B>
 # Move macros to ^
 map global normal ^ q
 map global normal <a-^> Q
-```
-
-By setting the option `connect_environment`, you can specify commands that
-are run before the shell is executed.  This might be useful, if you want to
-change or export environment variables:
-
-``` kak
-set-option global connect_environment %{
-  GIT_EDITOR='kak -c $KAKOUNE_SESSION'
-  export LYEDITOR='edit %(file)s +%(line)s:%(column)s'
-}
 ```
 
 ## Documentation
