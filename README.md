@@ -54,6 +54,17 @@ Add more entries to your liking.
 [`kak-desktop`]: bin/kak-desktop
 [Kakoune’s logo]: https://github.com/mawww/kakoune/blob/master/doc/kakoune_logo.svg
 
+### Prompt
+
+1. Copy the [`prompt`] to `$XDG_DATA_HOME/kak/connect/prompt`.
+2. Depending on your shell:
+
+``` bash
+PS1='$($XDG_DATA_HOME/kak/connect/prompt) $ '
+```
+
+[`prompt`]: share/kak/connect/prompt
+
 ## Usage
 
 Connect a terminal with `:connect-terminal`.
