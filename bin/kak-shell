@@ -6,12 +6,18 @@ KAKOUNE_CONNECT_SCRIPT=$XDG_DATA_HOME/kak/connect/script.sh
 
 main() {
   # Interactively set the Kakoune session.
+  # Support to connect to a session by its index.
   if test -z "$KAKOUNE_SESSION"; then
-    printf 'Kakoune sessions:\n'
-    kak -l | sort
-    printf '+ create new session\n'
-    printf 'Kakoune session:'
-    read KAKOUNE_SESSION
+    kak_session_list=$(kak -l | sort)
+    echo 'Kakoune sessions:'
+    echo "$kak_session_list" | number_lines
+    echo '+ create new session'
+    echo_n 'Kakoune session:'
+    read kak_session
+    if is_number "$kak_session"; then
+      kak_session=$(echo "$kak_session_list" | get_line "$kak_session")
+    fi
+    KAKOUNE_SESSION=$kak_session
   fi
   # Exit if the Kakoune session is empty.
   if test -z "$KAKOUNE_SESSION"; then
@@ -45,6 +51,28 @@ attach() {
   mv "$KAKOUNE_CONNECT_SCRIPT" "$KAKOUNE_CONNECT_SCRIPT~"
   sh "$KAKOUNE_CONNECT_SCRIPT~"
   rm -f "$KAKOUNE_CONNECT_SCRIPT~"
+}
+
+# Utilities
+
+echo() {
+  printf '%s\n' "$*"
+}
+
+echo_n() {
+  printf '%s' "$*"
+}
+
+is_number() {
+  test "$1" -eq "$1" 2> /dev/null
+}
+
+number_lines() {
+  awk '{ print NR, $0 }'
+}
+
+get_line() {
+  sed "${1}q;d"
 }
 
 main "$@"
