@@ -5,6 +5,6 @@ none='\033[0m'
 yellow='\033[33m'
 magenta='\033[35m'
 
-if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
+if test -n "$IN_KAKOUNE_CONNECT"; then
   printf "${magenta}${KAKOUNE_CLIENT}${none} at ${yellow}${KAKOUNE_SESSION}${none}"
 fi

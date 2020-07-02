@@ -198,6 +198,7 @@ Defined in [`commands`](rc/paths/commands) and [`aliases`](rc/paths/aliases).
 
 Defined in [`env`](rc/env).
 
+- `IN_KAKOUNE_CONNECT`: Determine whether the shell is connected to a Kakoune session.
 - `KAKOUNE_SESSION`: Kakoune session.
 - `KAKOUNE_CLIENT`: Kakoune client.
 - `KAKOUNE_CONNECT_SCRIPT`: Path to connect script, used by `:connect-detach` for writing shell commands.

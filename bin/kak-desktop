@@ -2,7 +2,7 @@
 
 main() {
   # Send the edit command to the client.
-  if test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"; then
+  if test -n "$IN_KAKOUNE_CONNECT"; then
     edit "$@"
   # Terminal.
   elif test -t 1; then
