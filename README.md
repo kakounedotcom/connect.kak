@@ -83,11 +83,11 @@ The [terminal-mode.kak] interface is similar to [i3’s split commands].
 ```
 $ kak-shell
 Kakoune sessions:
-kanto
-johto
+1 kanto
+2 johto
 + create new session
-Kakoune session: kanto█
-(kak-shell) $ edit
+Kakoune session: 1█
+client0 at kanto $ edit
 :fzf-files
 ```
 
