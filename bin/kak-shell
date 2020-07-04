@@ -10,7 +10,7 @@ main() {
   if test -z "$KAKOUNE_SESSION"; then
     kak_session_list=$(kak -l | sort)
     echo 'Kakoune sessions:'
-    echo "$kak_session_list" | number_lines
+    echo_n "$kak_session_list" | number_lines
     echo '+ create new session'
     echo_n 'Kakoune session:'
     read kak_session
