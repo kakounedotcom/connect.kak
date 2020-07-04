@@ -127,7 +127,7 @@ change or export environment variables:
 ``` kak
 set-option global connect_environment %{
   SHELL=elvish
-  GIT_EDITOR='kak -c $KAKOUNE_SESSION'
+  GIT_EDITOR='kak -c "$KAKOUNE_SESSION"'
   export LYEDITOR='edit %(file)s +%(line)s:%(column)s'
 }
 ```
