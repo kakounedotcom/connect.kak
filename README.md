@@ -194,6 +194,7 @@ Defined in [`commands`](rc/paths/commands) and [`aliases`](rc/paths/aliases).
 - `it`: Get the current buffer.
 - `send`: Send a command.
 - `get`: Get a property.
+- `cd!`: Sync the Kakoune working directory to your current working directory.
 
 #### Environment variables
 
