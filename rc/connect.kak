@@ -11,6 +11,7 @@ hook global ModuleLoaded connect %{
 }
 
 provide-module connect %{
+  require-module prelude
   declare-option -docstring 'Attach to terminal' bool connect_attach no
   declare-option -docstring 'Path to connect data' str connect_data_path %sh{
     # Environment variables
