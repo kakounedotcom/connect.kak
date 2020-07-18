@@ -132,26 +132,6 @@ set-option global connect_environment %{
 }
 ```
 
-### More controversial mappings
-
-[Delapouite – More controversial mappings](https://github.com/Delapouite/kakoune-buffers#more-controversial-mappings)
-
-``` kak
-# Buffers
-map global normal b ': fzf-buffers<ret>'
-map global normal B ': enter-user-mode -lock buffers<ret>'
-
-# Move [b] to [q], so that [qwe] actions are aligned.
-map global normal q b
-map global normal Q B
-map global normal <a-q> <a-b>
-map global normal <a-Q> <a-B>
-
-# Move macros to ^
-map global normal ^ q
-map global normal <a-^> Q
-```
-
 ## Documentation
 
 ### Kakoune
