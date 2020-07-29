@@ -110,8 +110,8 @@ alias global explore-buffers fzf-buffers
 map global user t ': enter-user-mode terminal<ret>' -docstring 'Terminal'
 
 # Create a new window
-map global normal <c-n> ': new<ret>'
 map global normal <c-t> ': connect-terminal<ret>'
+map global normal <c-n> ': connect-shell alacritty<ret>'
 
 # Quit
 map global normal <c-q> ': quit<ret>'
