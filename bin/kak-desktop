@@ -5,7 +5,7 @@ main() {
   if test -n "$IN_KAKOUNE_CONNECT"; then
     edit "$@"
   # Terminal.
-  elif test -t 1; then
+  elif test -t 0 -a -t 1; then
     kak "$@"
   # GUI apps.
   else
