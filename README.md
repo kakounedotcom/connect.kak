@@ -114,7 +114,7 @@ map global normal <c-t> ': connect-terminal<ret>'
 map global normal <c-n> ': connect-shell alacritty<ret>'
 
 # Quit
-map global normal <c-q> ': quit<ret>'
+map global normal <c-q> ': quit!<ret>'
 
 # Yank ring
 map global normal Y ': yank-ring<ret>'
