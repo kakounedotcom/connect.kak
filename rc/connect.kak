@@ -58,7 +58,7 @@ provide-module connect %{
     quit!
   }
   alias global t connect-terminal
-  alias global T connect-shell
+  alias global $ connect-shell
   alias global d connect-detach
 }
 

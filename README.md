@@ -141,7 +141,7 @@ Defined in [`connect.kak`](rc/connect.kak).
 #### Commands
 
 - `connect-terminal` (alias: `t`): Connect a terminal.
-- `connect-shell` (alias: `T`): Connect a shell.
+- `connect-shell` (alias: `$`): Connect a shell.
 - `connect-detach` (alias: `d`): Write the given shell command to your connect data path and detach the client.
 
 #### Options
