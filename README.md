@@ -51,6 +51,14 @@ Add [`rc`](rc) to your autoload or source [`connect.kak`](rc/connect.kak) and it
 
 ### Example 2
 
+**Terminal** – Same in a new client:
+
+``` sh
+:o *.txt
+```
+
+### Example 3
+
 **Kakoune** – Open [Dolphin]:
 
 ``` kak
@@ -59,7 +67,7 @@ $ dolphin
 
 [Dolphin]: https://dolphin.kde.org
 
-### Example 3
+### Example 4
 
 **Kakoune** – Same with [modules]:
 
@@ -69,7 +77,7 @@ require-module connect-dolphin
 dolphin
 ```
 
-### Example 4
+### Example 5
 
 **Terminal** – Manage sessions:
 
