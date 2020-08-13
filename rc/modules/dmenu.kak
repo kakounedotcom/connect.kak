@@ -6,15 +6,14 @@
 
 provide-module connect-dmenu %{
   require-module connect
-  define-command dmenu-files -params .. -file-completion -docstring 'Open selected files with Rofi' %{
-    connect-shell %{
-      edit $(fd --type file . "$@" | dmenu -l 20 -i -p 'Open selected files')
-    } -- %arg{@}
+
+  define-command dmenu-files -params .. -file-completion -docstring 'Open files with dmenu' %{
+    $ %(:edit $(fd --type file . "$@" | dmenu -l 20 -i -p 'Open files')) -- %arg{@}
   }
-  define-command dmenu-buffers -params ..1 -buffer-completion -docstring 'Open selected buffers with Rofi' %{
-    connect-shell %{
-      buffer $(buffer | grep -F "$1" | dmenu -l 20 -i -p 'Open selected buffers')
-    } -- %arg{@}
+
+  define-command dmenu-buffers -params ..1 -buffer-completion -docstring 'Open buffers with dmenu' %{
+    $ %(:buffer $(:ls | grep -F "$1" | dmenu -l 20 -i -p 'Open buffers')) -- %arg{@}
   }
+
   alias global dmenu dmenu-files
 }

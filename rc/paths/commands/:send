@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. "$KAKOUNE_PRELUDE"
+
+# Send commands to the client
+kak_escape evaluate-commands -try-client "$KAKOUNE_CLIENT" "$@" | kak -p "$KAKOUNE_SESSION"

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Sync the Kakoune working directory to your current working directory.
-send cd "$PWD"

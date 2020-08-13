@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# List buffers
+kak_quoted_buflist=$(:get %val{buflist})
+eval "set -- $kak_quoted_buflist"
+printf '%s\n' "$@"

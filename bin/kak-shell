@@ -1,67 +1,35 @@
 #!/bin/sh
 
-# Environment variables
-XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
-KAKOUNE_CONNECT_SCRIPT=$XDG_DATA_HOME/kak/connect/script.sh
-
 main() {
-  # Interactively set the Kakoune session.
-  # Support to connect to a session by its index.
-  if test -z "$KAKOUNE_SESSION"; then
-    kak_session_list=$(kak -l | sort)
-    echo 'Kakoune sessions:'
-    echo_n "$kak_session_list" | number_lines
-    echo '+ create new session'
-    echo_n 'Kakoune session:'
-    read kak_session
-    if is_number "$kak_session"; then
-      kak_session=$(echo "$kak_session_list" | get_line "$kak_session")
-    fi
-    KAKOUNE_SESSION=$kak_session
-  fi
-  # Exit if the Kakoune session is empty.
-  if test -z "$KAKOUNE_SESSION"; then
-    exit 1
-  fi
-  # Start an interactive shell.
-  start "$@"
-}
+  prompt_kakoune_session
+  [ "$text" ] || exit 1
 
-start() {
-  # Start the session in daemon mode.
-  setsid kak -s "$KAKOUNE_SESSION" -d < /dev/null > /dev/null 2>&1
-  connect "$@"
+  connect "$text" "$@"
 }
 
 connect() {
-  # Alias terminal to connect-detach and enter in the connect environment.
-  # connect-detach allows to run CLI apps in the same terminal window.
-  kak -c "$KAKOUNE_SESSION" -e "
-    connect-set-detach global
-    connect-terminal $@
-  "
-  # Attach the connect terminal command.
-  # Act as a “boot loader”.
-  if test -e "$KAKOUNE_CONNECT_SCRIPT"; then
-    attach
+  session=$1
+  shift
+  setsid kak -s "$session" -d < /dev/null > /dev/null 2>&1 &
+  kak -c "$session" -e "connect-detach $@"
+  sh connect.sh
+}
+
+prompt_kakoune_session() {
+  kak_session_list=$(kak -l | sort)
+  echo 'Kakoune sessions:'
+  printf "$kak_session_list" | number_lines
+  echo '+ create new session'
+  printf 'Kakoune session:'
+  read kak_session
+  if is_number "$kak_session"; then
+    kak_session=$(echo "$kak_session_list" | get_line "$kak_session")
   fi
+
+  text=$kak_session
 }
 
-attach() {
-  mv "$KAKOUNE_CONNECT_SCRIPT" "$KAKOUNE_CONNECT_SCRIPT~"
-  sh "$KAKOUNE_CONNECT_SCRIPT~"
-  rm -f "$KAKOUNE_CONNECT_SCRIPT~"
-}
-
-# Utilities
-
-echo() {
-  printf '%s\n' "$*"
-}
-
-echo_n() {
-  printf '%s' "$*"
-}
+# Utility functions ────────────────────────────────────────────────────────────
 
 is_number() {
   test "$1" -eq "$1" 2> /dev/null

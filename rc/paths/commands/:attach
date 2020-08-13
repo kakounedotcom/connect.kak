@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Reattach to the session.
+kak -c "$KAKOUNE_SESSION" "$@"

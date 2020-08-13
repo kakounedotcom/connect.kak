@@ -1,24 +1,29 @@
 #!/bin/sh
 
 main() {
-  # Send the edit command to the client.
-  if test -n "$IN_KAKOUNE_CONNECT"; then
-    edit "$@"
-  # Terminal.
+  # Send the edit command to the client
+  if [ "$IN_KAKOUNE_CONNECT" ]; then
+    :edit "$@"
+
+  # Terminal
   elif test -t 0 -a -t 1; then
     kak "$@"
-  # GUI apps.
+
+  # GUI apps
   else
-    launch "$@"
+    open "$@"
   fi
 }
 
-launch() {
+open() {
+  # Skip options
+  [ "$1" = '--' ] && shift
+
   file=$1 line=$2 column=$3
   kak -ui dummy -e "
     new %{
       hook -always -once global ClientClose %val{client} kill!
-      edit %{$file} $line $column
+      edit %{$file} %{$line} %{$column}
     }
   "
 }

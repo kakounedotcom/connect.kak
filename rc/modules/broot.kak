@@ -3,7 +3,8 @@
 
 provide-module connect-broot %{
   require-module connect
+
   define-command broot -params .. -file-completion -docstring 'Open files with Broot' %{
-    connect-terminal broot %arg{@}
+    > broot %arg{@}
   }
 }

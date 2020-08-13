@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Get the current buffer.
-
-get %val{buffile}

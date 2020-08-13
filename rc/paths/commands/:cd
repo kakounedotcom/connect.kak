@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Sync to your current working directory
+:send cd "$PWD"
