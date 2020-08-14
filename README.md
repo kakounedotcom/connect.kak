@@ -107,6 +107,10 @@ glow `:it`
 
 [Glow]: https://github.com/charmbracelet/glow
 
+---
+
+Learn more about the [commands] and [aliases] in the [documentation].
+
 ## Configuration
 
 ``` kak
@@ -149,6 +153,8 @@ PS1='$(~/.local/share/kak/connect/prompt) $ '
 ```
 
 ## Documentation
+
+[Documentation]: #documentation
 
 - [Commands]
 - [Aliases]
