@@ -97,6 +97,16 @@ Kakoune session: 1█
 @kanto $ :a█
 ```
 
+## Example 6
+
+**Terminal** – [Glow] the current buffer:
+
+``` sh
+glow `:it`
+```
+
+[Glow]: https://github.com/charmbracelet/glow
+
 ## Configuration
 
 ``` kak
