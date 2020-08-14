@@ -29,7 +29,7 @@ commands=$(
   done
 )
 
-:send "$commands"
+: "$commands"
 
 # Focus back the client
-:send focus
+: focus
