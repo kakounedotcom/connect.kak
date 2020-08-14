@@ -3,5 +3,5 @@
 # Get a value from a client
 mkfifo connect.fifo
 trap 'rm connect.fifo' EXIT
-: echo -to-file "$PWD/connect.fifo" "$@"
+:send echo -to-file "$PWD/connect.fifo" "$@"
 cat connect.fifo

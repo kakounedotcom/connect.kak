@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Open buffer
-: buffer "$@"
+:send buffer "$@"
 
 # Focus back the client
-: focus
+:send focus
