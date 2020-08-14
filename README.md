@@ -35,6 +35,11 @@ Add [`rc`](rc) to your autoload or source [`connect.kak`](rc/connect.kak) and it
 
 ## Usage
 
+**>**, **$** and **&** are [Kakoune commands][Documentation].
+
+The **:** prefixes all [connect.kak shell commands][Commands],
+and usually have an [alias][Aliases] on a single key – `:[e]dit` and `:[o]pen` for example.
+
 ### Example 1
 
 **Kakoune** – Open a new terminal:
@@ -155,6 +160,12 @@ PS1='$(~/.local/share/kak/connect/prompt) $ '
 ## Documentation
 
 [Documentation]: #documentation
+
+- `>` ⇒ Open a new terminal
+- `$` ⇒ Execute commands in a shell
+- `&` ⇒ Write an attachable program to `connect.sh` and detach the client
+
+<!---->
 
 - [Commands]
 - [Aliases]
