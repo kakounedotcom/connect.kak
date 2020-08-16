@@ -140,6 +140,8 @@ map global normal <c-q> ': quit!<ret>'
 map global normal Y ': yank-ring<ret>'
 ```
 
+### Custom environment
+
 By setting the `connect_environment` option, you can specify commands that
 are run before the shell is executed.  This might be useful, if you want to
 change or export environment variables.
@@ -150,6 +152,12 @@ set-option global connect_environment %{
   export GIT_EDITOR=:attach
 }
 ```
+
+### Custom connect commands
+
+You can also define your own connect commands in
+`$XDG_CONFIG_HOME/kak/connect/commands` and `$XDG_CONFIG_HOME/kak/connect/aliases`.
+See [commands] and [aliases] for examples.
 
 ### Custom prompt
 
