@@ -149,7 +149,7 @@ change or export environment variables.
 ``` kak
 set-option global connect_environment %{
   SHELL=elvish
-  export GIT_EDITOR=:attach
+  export GIT_EDITOR=kak
 }
 ```
 

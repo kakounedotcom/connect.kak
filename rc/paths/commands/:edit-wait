@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Open files
+:edit "$@"
+
+# Prompt and wait
+printf '[e]dit, [c]ontinue or [a]bort'
+read -n 1 key
+
+# Attach the session
+[ "$key" = 'e' ] && :attach; edit_exit_code=$?
+
+# Close buffers
+for file do
+  :send delete-buffer "$file"
+done
+
+# Set exit code
+case "$key" in
+  e) exit_code=$edit_exit_code ;;
+  c) exit_code=0 ;;
+  a) exit_code=1 ;;
+  *) exit_code=0 ;;
+esac
+
+# Exit code
+exit "$exit_code"
