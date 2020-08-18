@@ -11,7 +11,7 @@ provide-module connect %{
   # Commands
   define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{
     terminal sh -c %{
-      kak_opt_prelude=$1
+      kak_opt_prelude_path=$1
       kak_opt_connect_path=$2
       kak_opt_connect_environment=$3
       kak_session=$4
@@ -28,7 +28,7 @@ provide-module connect %{
 
       [ "$1" ] && "$@" || "$SHELL"
     } -- \
-      %opt{prelude} \
+      %opt{prelude_path} \
       %opt{connect_path} \
       %opt{connect_environment} \
       %val{session} \
@@ -38,7 +38,7 @@ provide-module connect %{
 
   define-command connect-shell -params 1.. -shell-completion -docstring 'Execute commands in a shell' %{
     nop %sh{
-      # kak_opt_prelude
+      # kak_opt_prelude_path
       # kak_opt_connect_path
       # kak_opt_connect_environment
       # kak_session
@@ -59,7 +59,7 @@ provide-module connect %{
     echo -to-file "%val{client_env_PWD}/connect.sh" -quoting shell sh -c %{
       rm connect.sh
 
-      kak_opt_prelude=$1
+      kak_opt_prelude_path=$1
       kak_opt_connect_path=$2
       kak_opt_connect_environment=$3
       kak_session=$4
@@ -78,7 +78,7 @@ provide-module connect %{
 
       [ "$1" ] && "$@" || "$SHELL"
     } -- \
-      %opt{prelude} \
+      %opt{prelude_path} \
       %opt{connect_path} \
       %opt{connect_environment} \
       %val{session} \
