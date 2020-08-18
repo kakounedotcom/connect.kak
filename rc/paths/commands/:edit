@@ -10,18 +10,18 @@ commands=$(
   while [ "$1" ]; do
     file=$(realpath "$1")
     case "$2" in
-      '+'*':'*)
+      ('+'*':'*)
         line=${2#+}; line=${line%:*}
         column=${2#*:}
         shift 2
         kak_escape edit "$file" "$line" "$column"
         ;;
-      '+'*)
+      ('+'*)
         line=${2#+}
         shift 2
         kak_escape edit "$file" "$line"
         ;;
-      *)
+      (*)
         shift 1
         kak_escape edit "$file"
         ;;
