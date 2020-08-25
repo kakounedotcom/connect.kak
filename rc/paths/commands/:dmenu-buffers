@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# dmenu
+# https://tools.suckless.org/dmenu/
+
+# Arguments
+pattern=$1
+
+:buffer $(
+  :ls |
+  grep -F "$pattern" |
+  dmenu -l 20 -i -p 'Open buffers'
+)

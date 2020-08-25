@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Rofi
+# https://github.com/davatorium/rofi
+
+# Dependencies:
+# – fd (https://github.com/sharkdp/fd)
+
+:edit $(
+  fd --type file . "$@" |
+  rofi -dmenu -i -p 'Open files'
+)

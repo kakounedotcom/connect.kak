@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Wofi
+# https://hg.sr.ht/~scoopta/wofi
+
+# Arguments
+pattern=$1
+
+:buffer $(
+  :ls |
+  grep -F "$pattern" |
+  wofi --dmenu --prompt 'Open buffers'
+)

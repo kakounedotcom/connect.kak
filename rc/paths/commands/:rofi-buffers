@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Rofi
+# https://github.com/davatorium/rofi
+
+# Arguments
+pattern=$1
+
+:buffer $(
+  :ls |
+  grep -F "$pattern" |
+  rofi -dmenu -i -p 'Open buffers'
+)
