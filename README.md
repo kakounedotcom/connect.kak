@@ -18,10 +18,12 @@ Leverage the client-server architecture of [Kakoune] to connect programs to clie
 - [explore.kak]
 - [terminal-mode.kak]
 - [yank-ring.kak]
+- [batch.kak]
 
 [explore.kak]: https://github.com/alexherbo2/explore.kak
 [terminal-mode.kak]: https://github.com/alexherbo2/terminal-mode.kak
 [yank-ring.kak]: https://github.com/alexherbo2/yank-ring.kak
+[batch.kak]: https://github.com/alexherbo2/batch.kak
 
 ## Installation
 
