@@ -1,12 +1,12 @@
 #!/bin/sh
 
-# Wofi
-# https://hg.sr.ht/~scoopta/wofi
+# Rofi
+# https://github.com/davatorium/rofi
 
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
 
 :edit $(
   fd --type file . "$@" |
-  wofi --dmenu --prompt 'Open files'
+  rofi -dmenu -i -p 'Open files'
 )
