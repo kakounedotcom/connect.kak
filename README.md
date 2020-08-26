@@ -129,7 +129,7 @@ alias global explore-files fzf-files
 alias global explore-buffers fzf-buffers
 
 # Terminal settings
-map global normal <c-w> ': enter-user-mode terminal<ret>' -docstring 'Terminal'
+map global normal -docstring 'Terminal' <c-w> ': enter-user-mode terminal<ret>'
 
 # Create a new window
 map global normal <c-t> ': connect-terminal<ret>'
