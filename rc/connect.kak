@@ -46,10 +46,10 @@ provide-module connect %{
       kak_session=$5
       kak_client=$6
 
-      . "$kak_opt_connect_path/env/default.env"
-      . "$kak_opt_connect_path/env/overrides.env"
-      . "$kak_opt_connect_path/env/kakoune.env"
-      . "$kak_opt_connect_path/env/git.env"
+      . "$kak_opt_connect_path/connect/env/default.env"
+      . "$kak_opt_connect_path/connect/env/overrides.env"
+      . "$kak_opt_connect_path/connect/env/kakoune.env"
+      . "$kak_opt_connect_path/connect/env/git.env"
 
       eval "$kak_opt_connect_environment"
 
@@ -75,10 +75,10 @@ provide-module connect %{
       # kak_session
       # kak_client
 
-      . "$kak_opt_connect_path/env/default.env"
-      . "$kak_opt_connect_path/env/overrides.env"
-      . "$kak_opt_connect_path/env/kakoune.env"
-      . "$kak_opt_connect_path/env/git.env"
+      . "$kak_opt_connect_path/connect/env/default.env"
+      . "$kak_opt_connect_path/connect/env/overrides.env"
+      . "$kak_opt_connect_path/connect/env/kakoune.env"
+      . "$kak_opt_connect_path/connect/env/git.env"
 
       eval "$kak_opt_connect_environment"
 
@@ -97,10 +97,10 @@ provide-module connect %{
       kak_session=$5
       kak_server_working_directory=$6
 
-      . "$kak_opt_connect_path/env/default.env"
-      . "$kak_opt_connect_path/env/overrides.env"
-      . "$kak_opt_connect_path/env/kakoune.env"
-      . "$kak_opt_connect_path/env/git.env"
+      . "$kak_opt_connect_path/connect/env/default.env"
+      . "$kak_opt_connect_path/connect/env/overrides.env"
+      . "$kak_opt_connect_path/connect/env/kakoune.env"
+      . "$kak_opt_connect_path/connect/env/git.env"
 
       eval "$kak_opt_connect_environment"
 

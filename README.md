@@ -181,6 +181,6 @@ PS1='$(~/.local/share/kak/connect/prompt) $ '
 - [Aliases]
 - [Modules]
 
-[Commands]: rc/paths/commands
-[Aliases]: rc/paths/aliases
+[Commands]: rc/connect/commands
+[Aliases]: rc/connect/aliases
 [Modules]: rc/modules
