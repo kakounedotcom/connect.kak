@@ -6,10 +6,10 @@ provide-module connect %{
   require-module prelude
 
   # Options
-  declare-option str connect_environment
+  declare-option -docstring 'connect environment' str connect_environment
 
   # Connect paths
-  declare-option str-list connect_paths
+  declare-option -docstring 'connect paths' str-list connect_paths
 
   # Internal variable to mirror the connect paths as PATH.
   declare-option -hidden str connect_environment_paths
@@ -34,7 +34,7 @@ provide-module connect %{
   }
 
   # Initialize the option with the user config paths
-  declare-option str-list connect_paths "%val{config}/connect/aliases" "%val{config}/connect/commands"
+  set-option global connect_paths "%val{config}/connect/aliases" "%val{config}/connect/commands"
 
   # Commands
   define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{

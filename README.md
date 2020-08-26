@@ -157,8 +157,8 @@ set-option global connect_environment %{
 
 ### Custom connect commands
 
-You can also define your own connect commands in
-`$XDG_CONFIG_HOME/kak/connect/commands` and `$XDG_CONFIG_HOME/kak/connect/aliases`.
+You can also define your own connect commands by setting the `connect_paths` option.
+By default, it is set to your `$XDG_CONFIG_HOME/kak/connect/commands` and `$XDG_CONFIG_HOME/kak/connect/aliases`.
 See [commands] and [aliases] for examples.
 
 ### Custom prompt
