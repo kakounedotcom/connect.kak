@@ -142,6 +142,42 @@ map global normal <c-q> ': quit!<ret>'
 map global normal Y ': yank-ring<ret>'
 ```
 
+### Turn Kakoune into an IDE
+
+``` kak
+define-command ide -params 0..1 -docstring 'ide [session-name]: Turn Kakoune into an IDE' %{
+  # Session name
+  try %{
+    rename-session %arg{1}
+  }
+
+  # Main client
+  rename-client main
+  set-option global jumpclient main
+
+  # Tools client
+  new %{
+    rename-client tools
+    set-option global toolsclient tools
+  }
+
+  # Docs client
+  new %{
+    rename-client docs
+    set-option global docsclient docs
+  }
+
+  # Project drawer
+  dolphin
+
+  # Git
+  > lazygit
+
+  # Terminal
+  >
+}
+```
+
 ### Custom environment
 
 By setting the `connect_environment` option, you can specify commands that
