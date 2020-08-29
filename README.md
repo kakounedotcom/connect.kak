@@ -7,6 +7,19 @@ Leverage the client-server architecture of [Kakoune] to connect programs to clie
 [![connect.kak](https://img.youtube.com/vi_webp/jca2N-cE_mM/maxresdefault.webp)](https://youtube.com/playlist?list=PLdr-HcjEDx_k-Y_9uSV0YAUCNHzqHjmz3 "YouTube – connect.kak")
 [![YouTube Play Button](https://www.iconfinder.com/icons/317714/download/png/16)](https://youtube.com/playlist?list=PLdr-HcjEDx_k-Y_9uSV0YAUCNHzqHjmz3) · [connect.kak](https://youtube.com/playlist?list=PLdr-HcjEDx_k-Y_9uSV0YAUCNHzqHjmz3)
 
+The objective of connect.kak is
+to synchronize external applications with Kakoune clients easily.
+A typical use case is opening a file browser and
+having it open the files in the Kakoune client.
+Another very typical use case is connecting a terminal.
+
+connect.kak provides basic [commands] to interact with the connected client interactively
+or to write your own scripts
+(check [`:batch`], which is an integration crafted from the rest of the commands)
+as well as a set of officially supported [modules] (Kakoune commands to programs).
+
+[`:batch`]: https://github.com/alexherbo2/batch.kak/blob/master/rc/connect/commands/:batch
+
 ## Dependencies
 
 - [prelude.kak]
@@ -33,24 +46,24 @@ Run the following in your terminal:
 make install
 ```
 
-Add [`rc`](rc) to your autoload or source [`connect.kak`](rc/connect.kak) and its [modules](rc/modules) manually.
+Add [`rc`](rc) to your autoload or source [`connect.kak`](rc/connect.kak) and its [modules] manually.
 
-## Usage
+## Usage examples
 
 **>**, **$** and **&** are [Kakoune commands][Documentation].
 
-The **:** prefixes all [connect.kak shell commands][Commands],
-and usually have an [alias][Aliases] on a single key – `:[e]dit` and `:[o]pen` for example.
+The colon (**:**) prefixes all [connect.kak shell commands][Commands],
+which usually have an [alias][Aliases] of a single key – `:[e]dit` and `:[o]pen` for example.
 
 ### Example 1
 
-**Kakoune** – Open a new terminal:
+**Kakoune** – Launch a new connected terminal:
 
 ``` kak
 >
 ```
 
-**Terminal** – Open all `.txt` files:
+**Terminal** – Open all `.txt` files in the connected client:
 
 ``` sh
 :e *.txt
@@ -58,7 +71,7 @@ and usually have an [alias][Aliases] on a single key – `:[e]dit` and `:[o]pen`
 
 ### Example 2
 
-**Terminal** – Same in a new client:
+**Terminal** – Open all `.txt` files in a new client:
 
 ``` sh
 :o *.txt
@@ -66,7 +79,7 @@ and usually have an [alias][Aliases] on a single key – `:[e]dit` and `:[o]pen`
 
 ### Example 3
 
-**Kakoune** – Open [Dolphin]:
+**Kakoune** – Launch a connected [Dolphin] instance:
 
 ``` kak
 $ dolphin
@@ -76,7 +89,9 @@ $ dolphin
 
 ### Example 4
 
-**Kakoune** – Same with [modules]:
+**Kakoune** – Use [Dolphin’s module] to do the same as example 3:
+
+[dolphin’s module]: rc/modules/dolphin.kak
 
 ``` kak
 require-module connect-dolphin
@@ -86,7 +101,17 @@ dolphin
 
 ### Example 5
 
-**Terminal** – Manage sessions:
+**Terminal** – Render with [Glow] the current buffer:
+
+``` sh
+glow `:it`
+```
+
+[Glow]: https://github.com/charmbracelet/glow
+
+### Example 6
+
+**Terminal** – Run a shell connected to an arbitrary session from your terminal:
 
 ``` sh
 kak-shell
@@ -104,21 +129,27 @@ Kakoune session: 1█
 @kanto $ :a█
 ```
 
-## Example 6
+### Example 7
 
-**Terminal** – [Glow] the current buffer:
+**Kakoune** – Detach from the client and generate a file to connect to the session.
 
-``` sh
-glow `:it`
+``` kak
+&
 ```
 
-[Glow]: https://github.com/charmbracelet/glow
+**In the terminal that spawned the client**
 
----
-
-Learn more about the [commands] and [aliases] in the [documentation].
+```
+$ sh connect.sh
+@kanto $ █
+```
 
 ## Configuration
+
+## Example configuration
+
+A typical workflow is mapping `<c-q>` to `quit!` and use the alias `:a`/`a` to
+reattach back and forth inside a `kak-shell` (or any connected terminal).
 
 ``` kak
 # Modules
@@ -142,46 +173,17 @@ map global normal <c-q> ': quit!<ret>'
 map global normal Y ': yank-ring<ret>'
 ```
 
-### Turn Kakoune into an IDE
+### Custom connect commands
 
-``` kak
-define-command ide -params 0..1 -docstring 'ide [session-name]: Turn Kakoune into an IDE' %{
-  # Session name
-  try %{
-    rename-session %arg{1}
-  }
-
-  # Main client
-  rename-client main
-  set-option global jumpclient main
-
-  # Tools client
-  new %{
-    rename-client tools
-    set-option global toolsclient tools
-  }
-
-  # Docs client
-  new %{
-    rename-client docs
-    set-option global docsclient docs
-  }
-
-  # Project drawer
-  dolphin
-
-  # Git
-  > lazygit
-
-  # Terminal
-  >
-}
-```
+You can also define your own connect [commands] and [aliases] and
+locate them in a path set in the `connect_paths` option.
+By default, it is set to your
+`$XDG_CONFIG_HOME/kak/connect/commands` and `$XDG_CONFIG_HOME/kak/connect/aliases` folders.
 
 ### Custom environment
 
 By setting the `connect_environment` option, you can specify commands that
-are run before the shell is executed.  This might be useful, if you want to
+are evaluated before launching/running the programs.  This might be useful if you want to
 change or export environment variables.
 
 ``` kak
@@ -191,31 +193,16 @@ set-option global connect_environment %{
 }
 ```
 
-### Custom connect commands
-
-You can also define your own connect commands by setting the `connect_paths` option.
-By default, it is set to your `$XDG_CONFIG_HOME/kak/connect/commands` and `$XDG_CONFIG_HOME/kak/connect/aliases`.
-See [commands] and [aliases] for examples.
-
-### Change directory
-
-In complement to `:cd!` which syncs the client to your current working directory,
-you can do the opposite.
-
-Add to your bashrc:
-
-``` bash
-if [ "$IN_KAKOUNE_CONNECT" = 1 ]; then
-  alias :cd='cd `:pwd`'
-  alias :cd?='cd `:bwd`'
-fi
-```
-
 ### Custom prompt
+
+You can modify your shell [prompt][Prompt customization]
+to notify you whenever you are connected to a session.
 
 ``` bash
 PS1='$(~/.local/share/kak/connect/prompt) $ '
 ```
+
+[Prompt customization]: https://wiki.archlinux.org/index.php/Bash/Prompt_customization
 
 ## Documentation
 
@@ -230,7 +217,13 @@ PS1='$(~/.local/share/kak/connect/prompt) $ '
 - [Commands]
 - [Aliases]
 - [Modules]
-
+- [Extra documentation for users][user-extra-documentation]
+- [Recipes]
+- [Integration with other tools][integration]
+ 
 [Commands]: rc/connect/commands
 [Aliases]: rc/connect/aliases
 [Modules]: rc/modules
+[user-extra-documentation]: docs/user-extra-documentation.md
+[recipes]: docs/recipes.md
+[integration]: docs/integration.md
