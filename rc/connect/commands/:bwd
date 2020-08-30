@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Buffer working directory
+dirname `:it`
