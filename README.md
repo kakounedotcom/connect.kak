@@ -197,6 +197,20 @@ You can also define your own connect commands by setting the `connect_paths` opt
 By default, it is set to your `$XDG_CONFIG_HOME/kak/connect/commands` and `$XDG_CONFIG_HOME/kak/connect/aliases`.
 See [commands] and [aliases] for examples.
 
+### Change directory
+
+In complement to `:cd!` which syncs the client to your current working directory,
+you can do the opposite.
+
+Add to your bashrc:
+
+``` bash
+if [ "$IN_KAKOUNE_CONNECT" = 1 ]; then
+  alias :cd='cd `:pwd`'
+  alias :cd?='cd `:bwd`'
+fi
+```
+
 ### Custom prompt
 
 ``` bash
