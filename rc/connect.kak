@@ -82,7 +82,7 @@ provide-module connect %{
 
       eval "$kak_opt_connect_environment"
 
-      setsid sh -c "$@" < /dev/null > /dev/null 2>&1 &
+      setsid "$@" < /dev/null > /dev/null 2>&1 &
     }
   }
 
