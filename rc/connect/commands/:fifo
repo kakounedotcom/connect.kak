@@ -8,7 +8,7 @@ trap 'rm buffer.fifo' EXIT
 # Send to fifo buffer the output of the given command,
 # or read from stdin if available.
 if test -t 0; then
-  "$@" > buffer.fifo 2>&1
+  "$@" > buffer.fifo 2>&1 &
 else
   cat > buffer.fifo
 fi
