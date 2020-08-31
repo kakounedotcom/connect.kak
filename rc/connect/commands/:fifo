@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Edit fifo buffer in a client
+mkfifo buffer.fifo
+trap 'rm buffer.fifo' EXIT
+:send edit! -fifo "$PWD/buffer.fifo" '*fifo*'
+cat > buffer.fifo
