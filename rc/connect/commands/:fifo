@@ -4,4 +4,11 @@
 mkfifo buffer.fifo
 trap 'rm buffer.fifo' EXIT
 :send edit! -fifo "$PWD/buffer.fifo" '*fifo*'
-cat > buffer.fifo
+
+# Send to fifo buffer the output of the given command,
+# or read from stdin if available.
+if test -t 0; then
+  "$@" > buffer.fifo 2>&1
+else
+  cat > buffer.fifo
+fi
