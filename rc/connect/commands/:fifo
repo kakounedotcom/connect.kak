@@ -12,3 +12,6 @@ if test $# -gt 0; then
 elif test ! -t 0; then
   cat > buffer.fifo
 fi
+
+# Focus back the client
+:send focus
