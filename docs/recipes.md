@@ -1,28 +1,31 @@
 # Recipes
 
-## Appending Kakoune’s shell prompt to the usual prompt
+## Custom prompt
 
-If you are using `bash`, you can add the following lines to your `.bashrc`.
+You can modify your shell [prompt][Prompt customization] to notify you whenever you are connected to a session.
 
-``` sh
-if [ -e ~/.local/share/kak/connect/prompt ]; then
-    PS1="\$(~/.local/share/kak/connect/prompt)$PS1"
-fi
+[Prompt customization]: https://wiki.archlinux.org/index.php/Bash/Prompt_customization
+
+**Example** – for Bash:
+
+``` bash
+PS1="\$(~/.local/share/kak/connect/prompt)$PS1"
 ```
+
+See [`share/kak/connect/prompt`].
+
+[`share/kak/connect/prompt`]: ../share/kak/connect/prompt
 
 ## Working with headless sessions with `kak-shell`
 
-`kak-shell :attach` lets your run a client connected to a session,
-just like `kak -c <session id>`.
-But with `kak-shell :attach` you have a list of all the active sessions
-and you can also create a new named session which starts in headless mode,
-which is very useful for detaching and reattaching continually.
+`kak-shell :attach` lets you run a client connected to a session, just like the plain `kak -c <session-name>`.
+But with `kak-shell :attach`, you have a list of all the active sessions and you can also create a new named session
+which starts in headless mode, which is very useful for detaching and reattaching continually.
 
-Therefore, `kak-shell :attach` replaces `kak -c <session id>` and `kak -d -s <session id>`
+Therefore, `kak-shell :attach` replaces `kak -c <session-name>` and `kak -d -s <session-name>`
 and can serve to spawn a client in whatever situation you are.
 
-**Tip**: You can alias `kak-shell` to something like `ks`,
-and you’d only need to type `ks :a`.
+**Tip**: Alias `kak-shell` to `ks` and connect to a session with `ks a`.
 
 ## Turn Kakoune into an IDE
 
@@ -60,12 +63,12 @@ define-command ide -params 0..1 -docstring 'ide [session-name]: Turn Kakoune int
 }
 ```
 
-### Change directory
+## Change directory
 
 In complement to `:cd!` which syncs the client to your current working directory,
 you can do the opposite.
 
-Add to your `.bashrc`:
+Add to your bashrc:
 
 ``` bash
 if [ "$IN_KAKOUNE_CONNECT" = 1 ]; then
@@ -73,4 +76,3 @@ if [ "$IN_KAKOUNE_CONNECT" = 1 ]; then
   alias :cd?='cd `:bwd`'
 fi
 ```
-

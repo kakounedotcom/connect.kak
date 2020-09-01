@@ -1,6 +1,6 @@
-# Integration with other apps
+# Integration with other tools
 
-connect.kak is also framework for developing your own plugins.
+connect.kak is also a framework for developing your own plugins.
 
 ## Plugins that use or can work with connect.kak
 
@@ -12,33 +12,38 @@ connect.kak is also framework for developing your own plugins.
 
 ## Interacting with Kakoune
 
-Integration with other applications usually comes from writing a small program
-(typically a shell script).
-Plugin’s can add folders to the `connect_paths` option to add their utilities,
-and the same programs can be called inside Kakoune
-using the commands `>` or `$` ([Example][yank-ring.kak]).
-Though it's common for plugin’s authors to provide wrappers inside a module.
+Integration with other applications usually comes from writing a small program,
+typically a shell script, and prefixed with **:** (e.g. `:dolphin`) by convention.
+Plugins can register their paths to the `connect_paths` option to add their utilities,
+and the same programs can be called inside Kakoune using the `>` or `$` commands (e.g. `> :yank-ring`).
+Usually, plugin authors also provide a Kakoune command for them (e.g. `yank-ring`).
 
 The basic [commands] for plugin crafting are:
 
-- [`:get`]: Gets the result of a Kakoune’s `echo` command from the client.
-- [`:send`]: Sends commands to the client.
+[Commands]: ../rc/connect/commands
 
----
+- [`:send`]: Send commands to the client.
+- [`:attach`]: Reattach to the session.
+- [`:get`]: Get a value from a client.  Example: `:get -quoting shell %val{selections}`.
 
-- [`:it`]: Prints the current buffer.
-- [`:ls`] and [`:buffer`]: Show the list of buffers or change buffers.
-- [`:attach`]: Starts a client connected to the session.
-- [`:edit`] and [`:edit-wait`]: Open files in the client.
-`:edit-wait` does the same but waits for user confirmation
-(useful for applications that check the return value of the editor, like git).
-
-[commands]:   ../rc/connect/commands/
+[`:send`]: ../rc/connect/commands/:send
 [`:attach`]: ../rc/connect/commands/:attach
-[`:buffer`]: ../rc/connect/commands/:buffer
-[`:edit`]: ../rc/connect/commands/:edit
-[`:edit-wait`]: ../rc/connect/commands/:edit-wait
 [`:get`]: ../rc/connect/commands/:get
+
+<!---->
+
+- [`:edit`]: Open files.
+- [`:buffer`]: Open buffer.
+- [`:fifo`]: Send to fifo buffer the output of the given command, or read from **stdin** if available.  Example: `:fifo make`.
+
+[`:edit`]: ../rc/connect/commands/:edit
+[`:buffer`]: ../rc/connect/commands/:buffer
+[`:fifo`]: ../rc/connect/commands/:fifo
+
+<!---->
+
+- [`:it`]: Get the current buffer path.
+- [`:ls`]: List buffers.
+
 [`:it`]: ../rc/connect/commands/:it
 [`:ls`]: ../rc/connect/commands/:ls
-[`:send`]: ../rc/connect/commands/:send

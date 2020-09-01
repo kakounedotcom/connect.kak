@@ -1,6 +1,11 @@
 #!/bin/sh
 
-# Get a value from a client
+# Get a value from a client.
+#
+# Example:
+#
+# :get -quoting shell %val{selections}
+#
 mkfifo connect.fifo
 trap 'rm connect.fifo' EXIT
 :send echo -to-file "$PWD/connect.fifo" "$@"
