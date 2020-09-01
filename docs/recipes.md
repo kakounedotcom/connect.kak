@@ -1,6 +1,6 @@
 # Recipes
 
-## Working with headless sessions with `kak-shell`
+## Working with headless sessions with _kak-shell_
 
 `kak-shell :attach` lets you run a client connected to a session, just like the plain `kak -c <session-name>`.
 But with `kak-shell :attach`, you have a list of all the active sessions and you can also create a new named session
