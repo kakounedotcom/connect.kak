@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# fzy
+# https://github.com/jhawthorn/fzy
+
+# Dependencies:
+# – fd (https://github.com/sharkdp/fd)
+
+:edit $(
+  fd --type file . "$@" |
+  fzy --prompt='(f)>'
+)

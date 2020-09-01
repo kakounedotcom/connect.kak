@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# fzy
+# https://github.com/jhawthorn/fzy
+
+# Arguments
+pattern=$1
+
+:buffer $(
+  :ls |
+  grep -F "$pattern" |
+  fzy --prompt='(b)>'
+)
