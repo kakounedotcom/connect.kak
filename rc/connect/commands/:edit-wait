@@ -5,7 +5,7 @@
 
 # Prompt and wait
 printf '[e]dit, [c]ontinue or [a]bort'
-read -n 1 key
+read key
 
 # Attach the session
 [ "$key" = 'e' ] && :attach; edit_exit_code=$?
