@@ -43,7 +43,10 @@ provide-module connect %{
 
   # Require modules
   define-command connect-require -params 1 -shell-script-candidates %(find "$kak_opt_connect_path/connect/modules" -type f -name '*.kak' -exec basename '{}' .kak ';') -docstring 'Require connect module' %{
-    source "%opt{connect_path}/connect/modules/%arg{1}/%arg{1}.kak"
+    # Handle “Already defined module”
+    try %{
+      source "%opt{connect_path}/connect/modules/%arg{1}/%arg{1}.kak"
+    }
     require-module "connect-%arg{1}"
   }
 
