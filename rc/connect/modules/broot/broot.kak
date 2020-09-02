@@ -12,4 +12,7 @@ provide-module connect-broot %{
   define-command broot -params .. -file-completion -docstring 'Open files with Broot' %{
     > broot %arg{@}
   }
+
+  # Aliases
+  alias global br broot
 }
