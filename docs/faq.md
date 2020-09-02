@@ -59,7 +59,7 @@ The term [module][Modules] is used for small program integrations for Kakoune
 The term [command][Commands] is used for small binaries that can be used by a connected application.
 
 [Commands]: ../rc/connect/commands
-[Modules]: ../rc/modules
+[Modules]: ../rc/connect/modules
 
 ## Why do all connect commands start with _:_?
 

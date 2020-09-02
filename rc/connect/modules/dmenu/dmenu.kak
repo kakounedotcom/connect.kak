@@ -5,15 +5,23 @@
 # – fd (https://github.com/sharkdp/fd)
 
 provide-module connect-dmenu %{
+  # Modules
   require-module connect
 
+  # Register our paths
+  set-option -add global connect_paths "%opt{connect_path}/connect/modules/dmenu/aliases" "%opt{connect_path}/connect/modules/dmenu/commands"
+
+  # Commands
+  # Files
   define-command dmenu-files -params .. -file-completion -docstring 'Open files with dmenu' %{
     $ :dmenu-files %arg{@}
   }
 
+  # Buffers
   define-command dmenu-buffers -params ..1 -buffer-completion -docstring 'Open buffers with dmenu' %{
     $ :dmenu-buffers %arg{@}
   }
 
+  # Aliases
   alias global dmenu dmenu-files
 }

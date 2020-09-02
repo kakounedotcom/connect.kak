@@ -1,6 +1,11 @@
 # Save the connect path
 declare-option -hidden str connect_path %sh(dirname "$kak_source")
 
+# Default modules
+hook global ModuleLoaded connect %{
+  connect-require fifo
+}
+
 provide-module connect %{
   # Modules
   require-module prelude
@@ -35,6 +40,12 @@ provide-module connect %{
 
   # Initialize the option with the user config paths
   set-option global connect_paths "%val{config}/connect/aliases" "%val{config}/connect/commands"
+
+  # Require modules
+  define-command connect-require -params 1 -shell-script-candidates %(find "$kak_opt_connect_path/connect/modules" -type f -name '*.kak' -exec basename '{}' .kak ';') -docstring 'Require connect module' %{
+    source "%opt{connect_path}/connect/modules/%arg{1}/%arg{1}.kak"
+    require-module "connect-%arg{1}"
+  }
 
   # Commands
   define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{
