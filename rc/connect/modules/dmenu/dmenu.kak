@@ -9,7 +9,7 @@ provide-module connect-dmenu %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/dmenu/aliases" "%opt{connect_path}/connect/modules/dmenu/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/dmenu/aliases" "%opt{connect_modules_path}/dmenu/commands"
 
   # Commands
   # Files

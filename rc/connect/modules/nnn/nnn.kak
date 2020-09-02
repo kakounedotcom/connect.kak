@@ -6,7 +6,7 @@ provide-module connect-nnn %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/nnn/aliases" "%opt{connect_path}/connect/modules/nnn/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/nnn/aliases" "%opt{connect_modules_path}/nnn/commands"
 
   # Commands
   define-command nnn -params .. -file-completion -docstring 'Open files with nnn' %{

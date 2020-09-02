@@ -1,5 +1,6 @@
-# Save the connect path
-declare-option -hidden str connect_path %sh(dirname "$kak_source")
+# Save the connect paths
+declare-option -hidden str connect_root_path %sh(dirname "$kak_source")
+declare-option -hidden str connect_modules_path "%opt{connect_root_path}/connect/modules"
 
 # Default modules
 hook global ModuleLoaded connect %{
@@ -42,10 +43,10 @@ provide-module connect %{
   set-option global connect_paths "%val{config}/connect/aliases" "%val{config}/connect/commands"
 
   # Require modules
-  define-command connect-require -params 1 -shell-script-candidates %(find "$kak_opt_connect_path/connect/modules" -type f -name '*.kak' -exec basename '{}' .kak ';') -docstring 'Require connect module' %{
+  define-command connect-require -params 1 -shell-script-candidates %(find "$kak_opt_connect_modules_path" -type f -name '*.kak' -exec basename '{}' .kak ';') -docstring 'Require connect module' %{
     # Handle “Already defined module”
     try %{
-      source "%opt{connect_path}/connect/modules/%arg{1}/%arg{1}.kak"
+      source "%opt{connect_modules_path}/%arg{1}/%arg{1}.kak"
     }
     require-module "connect-%arg{1}"
   }
@@ -54,16 +55,16 @@ provide-module connect %{
   define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{
     terminal sh -c %{
       kak_opt_prelude_path=$1
-      kak_opt_connect_path=$2
+      kak_opt_connect_root_path=$2
       kak_opt_connect_environment=$3
       kak_opt_connect_environment_paths=$4
       kak_session=$5
       kak_client=$6
 
-      . "$kak_opt_connect_path/connect/env/default.env"
-      . "$kak_opt_connect_path/connect/env/overrides.env"
-      . "$kak_opt_connect_path/connect/env/kakoune.env"
-      . "$kak_opt_connect_path/connect/env/git.env"
+      . "$kak_opt_connect_root_path/connect/env/default.env"
+      . "$kak_opt_connect_root_path/connect/env/overrides.env"
+      . "$kak_opt_connect_root_path/connect/env/kakoune.env"
+      . "$kak_opt_connect_root_path/connect/env/git.env"
 
       eval "$kak_opt_connect_environment"
 
@@ -72,7 +73,7 @@ provide-module connect %{
       [ "$1" ] && "$@" || "$SHELL"
     } -- \
       %opt{prelude_path} \
-      %opt{connect_path} \
+      %opt{connect_root_path} \
       %opt{connect_environment} \
       %opt{connect_environment_paths} \
       %val{session} \
@@ -83,16 +84,16 @@ provide-module connect %{
   define-command connect-shell -params 1.. -shell-completion -docstring 'Execute commands in a shell' %{
     nop %sh{
       # kak_opt_prelude_path
-      # kak_opt_connect_path
+      # kak_opt_connect_root_path
       # kak_opt_connect_environment
       # kak_opt_connect_environment_paths
       # kak_session
       # kak_client
 
-      . "$kak_opt_connect_path/connect/env/default.env"
-      . "$kak_opt_connect_path/connect/env/overrides.env"
-      . "$kak_opt_connect_path/connect/env/kakoune.env"
-      . "$kak_opt_connect_path/connect/env/git.env"
+      . "$kak_opt_connect_root_path/connect/env/default.env"
+      . "$kak_opt_connect_root_path/connect/env/overrides.env"
+      . "$kak_opt_connect_root_path/connect/env/kakoune.env"
+      . "$kak_opt_connect_root_path/connect/env/git.env"
 
       eval "$kak_opt_connect_environment"
 
@@ -105,16 +106,16 @@ provide-module connect %{
       rm connect.sh
 
       kak_opt_prelude_path=$1
-      kak_opt_connect_path=$2
+      kak_opt_connect_root_path=$2
       kak_opt_connect_environment=$3
       kak_opt_connect_environment_paths=$4
       kak_session=$5
       kak_server_working_directory=$6
 
-      . "$kak_opt_connect_path/connect/env/default.env"
-      . "$kak_opt_connect_path/connect/env/overrides.env"
-      . "$kak_opt_connect_path/connect/env/kakoune.env"
-      . "$kak_opt_connect_path/connect/env/git.env"
+      . "$kak_opt_connect_root_path/connect/env/default.env"
+      . "$kak_opt_connect_root_path/connect/env/overrides.env"
+      . "$kak_opt_connect_root_path/connect/env/kakoune.env"
+      . "$kak_opt_connect_root_path/connect/env/git.env"
 
       eval "$kak_opt_connect_environment"
 
@@ -125,7 +126,7 @@ provide-module connect %{
       [ "$1" ] && "$@" || "$SHELL"
     } -- \
       %opt{prelude_path} \
-      %opt{connect_path} \
+      %opt{connect_root_path} \
       %opt{connect_environment} \
       %opt{connect_environment_paths} \
       %val{session} \

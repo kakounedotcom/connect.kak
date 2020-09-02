@@ -3,7 +3,7 @@ provide-module connect-fifo %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/fifo/aliases" "%opt{connect_path}/connect/modules/fifo/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/fifo/aliases" "%opt{connect_modules_path}/fifo/commands"
 
   # Commands
   define-command fifo -params 1.. -shell-completion -docstring 'Run command in a fifo buffer' %{

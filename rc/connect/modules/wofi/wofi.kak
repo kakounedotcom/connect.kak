@@ -9,7 +9,7 @@ provide-module connect-wofi %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/wofi/aliases" "%opt{connect_path}/connect/modules/wofi/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/wofi/aliases" "%opt{connect_modules_path}/wofi/commands"
 
   # Commands
   # Files

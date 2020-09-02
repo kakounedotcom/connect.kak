@@ -9,7 +9,7 @@ provide-module connect-fzy %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/fzy/aliases" "%opt{connect_path}/connect/modules/fzy/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/fzy/aliases" "%opt{connect_modules_path}/fzy/commands"
 
   # Commands
   # Files

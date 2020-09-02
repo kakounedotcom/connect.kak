@@ -6,7 +6,7 @@ provide-module connect-dolphin %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/dolphin/aliases" "%opt{connect_path}/connect/modules/dolphin/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/dolphin/aliases" "%opt{connect_modules_path}/dolphin/commands"
 
   # Commands
   define-command dolphin -params .. -file-completion -docstring 'Open files with Dolphin' %{

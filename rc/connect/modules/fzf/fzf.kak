@@ -10,7 +10,7 @@ provide-module connect-fzf %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/fzf/aliases" "%opt{connect_path}/connect/modules/fzf/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/fzf/aliases" "%opt{connect_modules_path}/fzf/commands"
 
   # Commands
   # Files

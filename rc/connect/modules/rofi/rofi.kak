@@ -9,7 +9,7 @@ provide-module connect-rofi %{
   require-module connect
 
   # Register our paths
-  set-option -add global connect_paths "%opt{connect_path}/connect/modules/rofi/aliases" "%opt{connect_path}/connect/modules/rofi/commands"
+  set-option -add global connect_paths "%opt{connect_modules_path}/rofi/aliases" "%opt{connect_modules_path}/rofi/commands"
 
   # Commands
   # Files
