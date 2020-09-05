@@ -10,6 +10,6 @@ provide-module connect-dolphin %{
 
   # Commands
   define-command dolphin -params .. -file-completion -docstring 'Open files with Dolphin' %{
-    $ sh -c %(dolphin "${@:-.}") -- %arg{@}
+    $ :dolphin %arg{@}
   }
 }

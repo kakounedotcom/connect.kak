@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Dolphin
+# https://dolphin.kde.org
+
+# Unlike most applications,
+# Dolphin does not honor the current working directory,
+# and opens in the home directory.
+
+# Mitigate the need to explicitely:
+#
+# dolphin .
+#
+if [ $# = 0 ]; then
+  set -- '.'
+fi
+
+dolphin "$@"
