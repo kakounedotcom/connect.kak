@@ -4,7 +4,7 @@ declare-option -hidden str connect_modules_path "%opt{connect_root_path}/connect
 
 # Default modules
 hook global ModuleLoaded connect %{
-  connect-require fifo
+  require-module connect-fifo
 }
 
 provide-module connect %{
@@ -41,15 +41,6 @@ provide-module connect %{
 
   # Initialize the option with the user config paths
   set-option global connect_paths "%val{config}/connect/aliases" "%val{config}/connect/commands"
-
-  # Require modules
-  define-command connect-require -params 1 -shell-script-candidates %(find "$kak_opt_connect_modules_path" -type f -name '*.kak' -exec basename '{}' .kak ';') -docstring 'Require connect module' %{
-    # Handle “Already defined module”
-    try %{
-      source "%opt{connect_modules_path}/%arg{1}/%arg{1}.kak"
-    }
-    require-module "connect-%arg{1}"
-  }
 
   # Commands
   define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{
@@ -142,5 +133,3 @@ provide-module connect %{
   alias global $ connect-shell
   alias global & connect-detach
 }
-
-require-module connect

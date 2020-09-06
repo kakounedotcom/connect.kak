@@ -43,7 +43,11 @@ Run the following in your terminal:
 make install
 ```
 
-Add [`connect.kak`](rc/connect.kak) to your autoload or source it manually.
+Add [`connect.kak`](rc/connect.kak) and its [modules] to your autoload or source them manually.
+
+``` kak
+require-module connect
+```
 
 ## Usage
 
@@ -89,7 +93,7 @@ $ dolphin
 **Kakoune** – Same, but with a dedicated [`dolphin`][`dolphin.kak`] command:
 
 ``` kak
-connect-require dolphin
+require-module connect-dolphin
 
 dolphin
 ```
@@ -158,7 +162,7 @@ use the alias `:a` or `a` to reattach back and forth inside a `kak-shell`
 
 ``` kak
 # Modules
-connect-require fzf
+require-module connect-fzf
 
 # Explore files and buffers with fzf
 alias global explore-files fzf-files
