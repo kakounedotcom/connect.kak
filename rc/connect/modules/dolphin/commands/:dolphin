@@ -7,7 +7,7 @@
 # Dolphin does not honor the current working directory,
 # and opens in the home directory.
 
-# Mitigate the need to explicitely type `dolphin` with the current path:
+# Mitigate the need to explicitely type `dolphin` with the current path.
 if [ $# = 0 ]; then
   set -- '.'
 fi
