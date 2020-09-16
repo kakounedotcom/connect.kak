@@ -20,12 +20,8 @@ You can modify your shell [prompt][Prompt customization] to notify you whenever 
 **Example** – for Bash:
 
 ``` bash
-PS1="\$(~/.local/share/kak/connect/prompt)$PS1"
+PS1='$(test "$IN_KAKOUNE_CONNECT" && printf 🐈)$ '
 ```
-
-See [`share/kak/connect/prompt`].
-
-[`share/kak/connect/prompt`]: ../share/kak/connect/prompt
 
 ## Change directory
 
