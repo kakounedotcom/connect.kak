@@ -12,4 +12,7 @@ provide-module connect-nnn %{
   define-command nnn -params .. -file-completion -docstring 'Open files with nnn' %{
     > nnn %arg{@}
   }
+
+  # Aliases
+  alias global n nnn
 }
