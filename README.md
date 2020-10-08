@@ -194,7 +194,7 @@ This might be useful, if you want to change or export environment variables.
 
 ``` kak
 set-option global connect_environment %{
-  SHELL=elvish
+  export SHELL=elvish
   export GIT_EDITOR=kak
 }
 ```
