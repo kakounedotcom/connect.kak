@@ -11,6 +11,7 @@ connect() {
   session=$1
   shift
   setsid kak -s "$session" -d < /dev/null > /dev/null 2>&1 &
+  wait_for_session "$session"
   kak -c "$session" -e "connect-detach $@"
   sh connect.sh
 }
@@ -27,6 +28,16 @@ prompt_kakoune_session() {
   fi
 
   text=$kak_session
+}
+
+wait_for_session() {
+  session=$1
+
+  # Wait for session
+  # Grep in quiet mode with fixed strings and whole line switches
+  while ! kak -l | grep -q -F -x "$session"; do
+    continue
+  done
 }
 
 # Utility functions ────────────────────────────────────────────────────────────
