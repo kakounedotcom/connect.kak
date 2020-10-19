@@ -19,8 +19,7 @@ to start a shell connected to that client’s server.
 **Notes**
 
 - The file is automatically erased after being sourced.
-- The Kakoune server is deleted if you detach the last client and you didn’t start it in daemon mode.
-- The implementation uses the `quit!` command.
+- Kakoune refuses to quit if you try to detach the last client and you didn’t start it in daemon mode.
 
 ### What is _kak-shell_?
 

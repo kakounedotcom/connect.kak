@@ -125,7 +125,7 @@ provide-module connect %{
       %arg{@}
 
     # Detach the client
-    quit!
+    quit
   }
 
   # Aliases

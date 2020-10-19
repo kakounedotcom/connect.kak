@@ -154,7 +154,7 @@ Learn more about the [commands] and [aliases] in the [documentation].
 
 ## Configuration
 
-A typical workflow is mapping <kbd>Control</kbd> + <kbd>q</kbd> to `quit!` and
+A typical workflow is mapping <kbd>Control</kbd> + <kbd>q</kbd> to `quit` and
 use the alias `:a` or `a` to reattach back and forth inside a `kak-shell`
 (or any connected terminal).
 
@@ -176,7 +176,7 @@ map global normal <c-t> ': connect-terminal<ret>'
 map global normal <c-n> ': connect-shell alacritty<ret>'
 
 # Quit
-map global normal <c-q> ': quit!<ret>'
+map global normal <c-q> ': quit<ret>'
 
 # Yank ring
 map global normal Y ': yank-ring<ret>'
