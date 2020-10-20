@@ -1,11 +1,21 @@
 #!/bin/sh
 
+# Open files.
+#
+# Usage:
+#
+# :edit <file>
+# :edit +<line> <file>
+# :edit +<line>:<column> <file>
+#
+# Note: Order matters.
+
 . "$KAKOUNE_PRELUDE"
 
 # Skip options
 [ "$1" = '--' ] && shift
 
-# Open files
+# Open files at the given position (line and column) if specified.
 commands=$(
   while [ "$1" ]; do
     case "$1" in
