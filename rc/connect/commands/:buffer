@@ -15,7 +15,7 @@ if [ ! -t 0 ]; then
 fi
 
 # Open buffer
-:send buffer "$@"
+:send -verbatim buffer "$@"
 
 # Focus back the client
 :send focus
