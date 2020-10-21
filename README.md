@@ -105,11 +105,17 @@ We just provide the nicety to have a `dolphin` command from Kakoune.
 
 ## Example 5
 
-**Terminal** – Render with [Glow] the current buffer:
+**Terminal** – Render with [Glow] the current file or buffer content:
 
 ``` sh
 glow `:it`
 ```
+
+``` sh
+:cat | glow -
+```
+
+The latter outputs the buffer content, which is useful when the file is not saved.
 
 [Glow]: https://github.com/charmbracelet/glow
 

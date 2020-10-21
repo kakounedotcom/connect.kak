@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Get the current buffer content.
+mkfifo buffer.fifo
+trap 'rm buffer.fifo' EXIT
+:send write buffer.fifo
+cat buffer.fifo
