@@ -3,11 +3,13 @@
 # Rofi
 # https://github.com/davatorium/rofi
 
+. "$KAKOUNE_PRELUDE"
+
 # Arguments
 pattern=$1
 
-:buffer $(
+:buffer "$(kak_escape "$(
   :ls |
   grep -F "$pattern" |
   rofi -dmenu -i -p 'Open buffers'
-)
+)")"

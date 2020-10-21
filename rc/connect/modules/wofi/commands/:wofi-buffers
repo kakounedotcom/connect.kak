@@ -3,11 +3,13 @@
 # Wofi
 # https://hg.sr.ht/~scoopta/wofi
 
+. "$KAKOUNE_PRELUDE"
+
 # Arguments
 pattern=$1
 
-:buffer $(
+:buffer "$(kak_escape "$(
   :ls |
   grep -F "$pattern" |
   wofi --dmenu --prompt 'Open buffers'
-)
+)")"

@@ -6,7 +6,9 @@
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
 
-:edit $(
+. "$KAKOUNE_PRELUDE"
+
+:edit "$(kak_escape "$(
   fd --type file . "$@" |
   wofi --dmenu --prompt 'Open files'
-)
+)")"
