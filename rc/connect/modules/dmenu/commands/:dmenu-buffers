@@ -6,8 +6,7 @@
 # Arguments
 pattern=$1
 
-:buffer $(
-  :ls |
-  grep -F "$pattern" |
-  dmenu -l 20 -i -p 'Open buffers'
-)
+:ls |
+grep -F "$pattern" |
+dmenu -l 20 -i -p 'Open buffers' |
+:buffer

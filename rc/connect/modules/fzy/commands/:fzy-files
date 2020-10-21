@@ -6,7 +6,6 @@
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
 
-:edit $(
-  fd --type file . "$@" |
-  fzy --prompt='(f)>'
-)
+fd --type file . "$@" |
+fzy --prompt='(f)>' |
+:edit

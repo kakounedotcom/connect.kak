@@ -6,7 +6,6 @@
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
 
-:edit $(
-  fd --type file . "$@" |
-  wofi --dmenu --prompt 'Open files'
-)
+fd --type file . "$@" |
+wofi --dmenu --prompt 'Open files' |
+:edit

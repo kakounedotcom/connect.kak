@@ -6,8 +6,7 @@
 # Arguments
 pattern=$1
 
-:buffer $(
-  :ls |
-  grep -F "$pattern" |
-  fzy --prompt='(b)>'
-)
+:ls |
+grep -F "$pattern" |
+fzy --prompt='(b)>' |
+:buffer

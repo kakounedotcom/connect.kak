@@ -9,8 +9,7 @@
 # Arguments
 pattern=$1
 
-:buffer $(
-  :ls |
-  grep -F "$pattern" |
-  fzf --preview-window=down:60% --preview 'bat --style=numbers --color=always --line-range :500 {}' --prompt='(b)>'
-)
+:ls |
+grep -F "$pattern" |
+fzf --preview-window=down:60% --preview 'bat --style=numbers --color=always --line-range :500 {}' --prompt='(b)>' |
+:buffer

@@ -7,10 +7,18 @@
 # :edit <file>
 # :edit +<line> <file>
 # :edit +<line>:<column> <file>
+# [files] | :edit
 #
 # Note: Order matters.
 
 . "$KAKOUNE_PRELUDE"
+
+# Read files from stdin
+if [ ! -t 0 ]; then
+  while read file; do
+    set -- "$file" "$@"
+  done
+fi
 
 # Skip options
 [ "$1" = '--' ] && shift

@@ -1,5 +1,19 @@
 #!/bin/sh
 
+# Open buffers.
+#
+# Usage:
+#
+# :buffer <buffer>
+# [buffers] | :buffer
+
+# Read buffers from stdin
+if [ ! -t 0 ]; then
+  while read buffer; do
+    set -- "$buffer" "$@"
+  done
+fi
+
 # Open buffer
 :send buffer "$@"
 

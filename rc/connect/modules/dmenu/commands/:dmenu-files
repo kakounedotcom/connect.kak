@@ -6,7 +6,6 @@
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
 
-:edit $(
-  fd --type file . "$@" |
-  dmenu -l 20 -i -p 'Open files'
-)
+fd --type file . "$@" |
+dmenu -l 20 -i -p 'Open files' |
+:edit
