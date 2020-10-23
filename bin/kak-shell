@@ -36,7 +36,7 @@ wait_for_session() {
   # Wait for session
   # Grep in quiet mode with fixed strings and whole line switches
   while ! kak -l | grep -q -F -x "$session"; do
-    continue
+    sleep 0.1
   done
 }
 
