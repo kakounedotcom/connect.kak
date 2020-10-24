@@ -13,8 +13,9 @@
 
 . "$KAKOUNE_PRELUDE"
 
-# Read files from stdin
-if [ ! -t 0 ]; then
+# Read files from stdin when a terminal is available.
+# Reason: kak-desktop
+if [ ! -t 0 -a -t 1 ]; then
   while read file; do
     set -- "$file" "$@"
   done
