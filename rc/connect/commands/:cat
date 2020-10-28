@@ -3,6 +3,5 @@
 # Get the current buffer content.
 mkfifo buffer.fifo
 trap 'rm buffer.fifo' EXIT
-:send set-option buffer writemethod overwrite
-:send write buffer.fifo
+:send write -method overwrite buffer.fifo
 cat buffer.fifo
