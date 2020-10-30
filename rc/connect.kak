@@ -43,8 +43,8 @@ provide-module connect %{
   set-option global connect_paths "%val{config}/connect/aliases" "%val{config}/connect/commands"
 
   # Commands
-  define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{
-    terminal sh -c %{
+  define-command -hidden connect-terminal-impl -params .. -docstring 'Open a new terminal or repl' %{
+    %arg{1} sh -c %{
       kak_opt_prelude_path=$1
       kak_opt_connect_root_path=$2
       kak_opt_connect_environment=$3
@@ -59,7 +59,7 @@ provide-module connect %{
 
       eval "$kak_opt_connect_environment"
 
-      shift 6
+      shift 7
 
       [ "$1" ] && "$@" || "$SHELL"
     } -- \
@@ -70,6 +70,14 @@ provide-module connect %{
       %val{session} \
       %val{client} \
       %arg{@}
+  }
+
+  define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{
+    connect-terminal-impl terminal %arg{@}
+  }
+
+  define-command connect-repl -params .. -shell-completion -docstring 'Open a new repl' %{
+    connect-terminal-impl repl-new %arg{@}
   }
 
   define-command connect-shell -params 1.. -shell-completion -docstring 'Execute commands in a shell' %{
