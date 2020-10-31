@@ -44,7 +44,15 @@ provide-module connect %{
 
   # Commands
   define-command connect-terminal -params .. -shell-completion -docstring 'Open a new terminal' %{
-    terminal sh -c %{
+    connect terminal %arg{@}
+  }
+
+  define-command connect-shell -params 1.. -shell-completion -docstring 'Execute commands in a shell' %{
+    connect sh %arg{@}
+  }
+
+  define-command connect -params 1.. -command-completion -docstring 'Run the given command as <command> sh -c {connect} -- [arguments].  Example: connect terminal sh' %{
+    %arg{1} sh -c %{
       kak_opt_prelude_path=$1
       kak_opt_connect_root_path=$2
       kak_opt_connect_environment=$3
@@ -59,7 +67,7 @@ provide-module connect %{
 
       eval "$kak_opt_connect_environment"
 
-      shift 6
+      shift 7
 
       [ "$1" ] && "$@" || "$SHELL"
     } -- \
@@ -72,22 +80,15 @@ provide-module connect %{
       %arg{@}
   }
 
-  define-command connect-shell -params 1.. -shell-completion -docstring 'Execute commands in a shell' %{
+  # Note:
+  #
+  # The `sh` command is out of connect.kak’s scope,
+  # as the command does not connect things.
+  # It is used as an interface to run GUI programs.
+  #
+  # Example: connect sh dolphin
+  define-command sh -params 1.. -shell-completion -docstring 'Execute commands in a shell' %{
     nop %sh{
-      # kak_opt_prelude_path
-      # kak_opt_connect_root_path
-      # kak_opt_connect_environment
-      # kak_opt_connect_environment_paths
-      # kak_session
-      # kak_client
-
-      . "$kak_opt_connect_root_path/connect/env/default.env"
-      . "$kak_opt_connect_root_path/connect/env/overrides.env"
-      . "$kak_opt_connect_root_path/connect/env/kakoune.env"
-      . "$kak_opt_connect_root_path/connect/env/git.env"
-
-      eval "$kak_opt_connect_environment"
-
       setsid "$@" < /dev/null > /dev/null 2>&1 &
     }
   }
