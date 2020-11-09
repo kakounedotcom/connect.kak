@@ -51,6 +51,10 @@ provide-module connect %{
     connect sh %arg{@}
   }
 
+  define-command connect-detach -params .. -shell-completion -docstring 'Write an attachable program to connect.sh and detach the client' %{
+    connect detach %arg{@}
+  }
+
   define-command connect -params 1.. -command-completion -docstring 'Run the given command as <command> sh -c {connect} -- [arguments].  Example: connect terminal sh' %{
     %arg{1} sh -c %{
       kak_opt_prelude_path=$1
@@ -59,6 +63,7 @@ provide-module connect %{
       kak_opt_connect_environment_paths=$4
       kak_session=$5
       kak_client=$6
+      kak_server_working_directory=$7
 
       . "$kak_opt_connect_root_path/connect/env/default.env"
       . "$kak_opt_connect_root_path/connect/env/overrides.env"
@@ -67,7 +72,9 @@ provide-module connect %{
 
       eval "$kak_opt_connect_environment"
 
-      shift 7
+      shift 8
+
+      cd "$kak_server_working_directory"
 
       [ "$1" ] && "$@" || "$SHELL"
     } -- \
@@ -77,6 +84,7 @@ provide-module connect %{
       %opt{connect_environment_paths} \
       %val{session} \
       %val{client} \
+      %sh{pwd} \
       %arg{@}
   }
 
@@ -93,37 +101,13 @@ provide-module connect %{
     }
   }
 
-  define-command connect-detach -params .. -shell-completion -docstring 'Write an attachable program to connect.sh and detach the client' %{
-    echo -to-file "%val{client_env_PWD}/connect.sh" -quoting shell sh -c %{
-      rm connect.sh
+  define-command detach -params 1.. -shell-completion -docstring 'Write an attachable program to connect.sh and detach the client' %{
+    echo -to-file connect.sh -quoting shell %arg{@}
 
-      kak_opt_prelude_path=$1
-      kak_opt_connect_root_path=$2
-      kak_opt_connect_environment=$3
-      kak_opt_connect_environment_paths=$4
-      kak_session=$5
-      kak_server_working_directory=$6
-
-      . "$kak_opt_connect_root_path/connect/env/default.env"
-      . "$kak_opt_connect_root_path/connect/env/overrides.env"
-      . "$kak_opt_connect_root_path/connect/env/kakoune.env"
-      . "$kak_opt_connect_root_path/connect/env/git.env"
-
-      eval "$kak_opt_connect_environment"
-
-      shift 6
-
-      cd "$kak_server_working_directory"
-
-      [ "$1" ] && "$@" || "$SHELL"
-    } -- \
-      %opt{prelude_path} \
-      %opt{connect_root_path} \
-      %opt{connect_environment} \
-      %opt{connect_environment_paths} \
-      %val{session} \
-      %sh{pwd} \
-      %arg{@}
+    # Remove connect.sh on source
+    nop %sh{
+      echo 'rm "$0"' >> connect.sh
+    }
 
     # Detach the client
     quit
