@@ -102,11 +102,14 @@ provide-module connect %{
   }
 
   define-command detach -params 1.. -shell-completion -docstring 'Write an attachable program to connect.sh and detach the client' %{
-    echo -to-file connect.sh -quoting shell %arg{@}
+    # Could be simpler with `echo -to-file <file> -append <text>`
+    # https://github.com/mawww/kakoune/issues/3874
+    echo -to-file connect.sh~ -quoting shell %arg{@}
 
     # Remove connect.sh on source
     nop %sh{
-      echo 'rm "$0"' >> connect.sh
+      echo 'rm "$0"' | cat - connect.sh~ > connect.sh
+      rm connect.sh~
     }
 
     # Detach the client
