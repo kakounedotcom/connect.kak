@@ -24,7 +24,7 @@ fi
 # Skip options
 [ "$1" = '--' ] && shift
 
-# Open files at the given position (line and column) if specified.
+# Open files at the given position (line and column) if specified (before or after the file).
 commands=$(
   while [ "$1" ]; do
     case "$1" in
@@ -43,8 +43,23 @@ commands=$(
         ;;
       (*)
         file=$(realpath "$1")
-        shift 1
-        kak_escape edit "$file"
+        shift
+        case "$1" in
+          ('+'*':'*)
+            line=${1#+}; line=${line%:*}
+            column=${1#*:}
+            shift
+            kak_escape edit "$file" "$line" "$column"
+            ;;
+          ('+'*)
+            line=${1#+}
+            shift
+            kak_escape edit "$file" "$line"
+            ;;
+          (*)
+            kak_escape edit "$file"
+            ;;
+        esac
         ;;
     esac
   done
