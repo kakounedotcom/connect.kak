@@ -23,6 +23,12 @@ You can modify your shell [prompt][Prompt customization] to notify you whenever 
 PS1='$(test "$IN_KAKOUNE_CONNECT" && printf 🐈)$ '
 ```
 
+Available variables are:
+
+- `IN_KAKOUNE_CONNECT` (_1_ when _true_)
+- `KAKOUNE_SESSION`
+- `KAKOUNE_CLIENT`
+
 ## Change directory
 
 In complement to `:cd!` which syncs the client to your current working directory,
