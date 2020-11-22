@@ -193,6 +193,9 @@ map global normal Y ': yank-ring<ret>'
 You can also define your own connect [commands] and [aliases] and locate them in a path set in the `connect_paths` option.
 By default, it is set to your `%val{config}/connect/commands` and `%val{config}/connect/aliases` folders.
 
+Take a look at the [default modules][Modules].
+You can use them as a skeleton to your connect commands.
+
 ### Custom environment
 
 By setting the `connect_environment` option, you can specify shell commands to run before running your program.

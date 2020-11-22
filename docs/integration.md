@@ -2,6 +2,12 @@
 
 connect.kak is also a framework for developing your own plugins.
 
+## Default modules
+
+- [Modules]
+
+[Modules]: ../rc/connect/modules
+
 ## Plugins that use or can work with connect.kak
 
 - [yank-ring.kak]
