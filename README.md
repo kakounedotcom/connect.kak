@@ -25,11 +25,13 @@ as well as a set of officially supported [modules] (Kakoune commands to programs
 
 ### Optional integrations
 
+- [alacritty.kak]
 - [explore.kak]
 - [terminal-mode.kak]
 - [yank-ring.kak]
 - [batch.kak]
 
+[alacritty.kak]: https://github.com/alexherbo2/alacritty.kak
 [explore.kak]: https://github.com/alexherbo2/explore.kak
 [terminal-mode.kak]: https://github.com/alexherbo2/terminal-mode.kak
 [yank-ring.kak]: https://github.com/alexherbo2/yank-ring.kak
@@ -169,6 +171,12 @@ use the alias `:a` or `a` to reattach back and forth inside a `kak-shell`
 ``` kak
 # Modules
 require-module connect-fzf
+
+# Windowing
+hook global ModuleLoaded x11 %{
+  alias global terminal alacritty
+  alias global popup alacritty-popup
+}
 
 # Explore files and buffers with fzf
 alias global explore-files fzf-files
