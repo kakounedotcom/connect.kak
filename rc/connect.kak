@@ -47,6 +47,10 @@ provide-module connect %{
     connect terminal %arg{@}
   }
 
+  define-command connect-popup -params 1.. -shell-completion -docstring 'Open a new popup' %{
+    connect popup %arg{@}
+  }
+
   define-command connect-repl -params .. -shell-completion -docstring 'Open a new REPL' %{
     connect repl-new %arg{@}
   }
@@ -122,6 +126,7 @@ provide-module connect %{
 
   # Aliases
   alias global > connect-terminal
+  alias global + connect-popup
   alias global @ connect-repl
   alias global $ connect-shell
   alias global & connect-detach
