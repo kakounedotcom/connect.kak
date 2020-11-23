@@ -14,12 +14,12 @@ provide-module connect-fzy %{
   # Commands
   # Files
   define-command fzy-files -params .. -file-completion -docstring 'Open files with fzy' %{
-    > :fzy-files %arg{@}
+    + :fzy-files %arg{@}
   }
 
   # Buffers
   define-command fzy-buffers -params ..1 -buffer-completion -docstring 'Open buffers with fzy' %{
-    > :fzy-buffers %arg{@}
+    + :fzy-buffers %arg{@}
   }
 
   # Aliases

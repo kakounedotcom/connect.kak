@@ -15,12 +15,12 @@ provide-module connect-fzf %{
   # Commands
   # Files
   define-command fzf-files -params .. -file-completion -docstring 'Open files with fzf' %{
-    > :fzf-files %arg{@}
+    + :fzf-files %arg{@}
   }
 
   # Buffers
   define-command fzf-buffers -params ..1 -buffer-completion -docstring 'Open buffers with fzf' %{
-    > :fzf-buffers %arg{@}
+    + :fzf-buffers %arg{@}
   }
 
   # Aliases
