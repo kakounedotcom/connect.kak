@@ -1,5 +1,39 @@
 # FAQ
 
+## I don’t have a _popup_ command
+
+Popups (`+`) are used for [`fzf`][fzf.kak] commands.
+
+[fzf.kak]: ../rc/connect/modules/fzf
+
+**Example**
+
+``` kak
++ :fzf
+```
+
+If your terminal does not have popups, you can add a fallback to the underlying terminal.
+
+**Example** – [X11] configuration:
+
+``` kak
+hook global ModuleLoaded x11 %{
+  alias global popup x11-terminal
+}
+```
+
+[X11]: https://x.org
+
+**Example** – [tmux] configuration:
+
+``` kak
+hook global ModuleLoaded tmux %{
+  alias global popup tmux-terminal-vertical
+}
+```
+
+[tmux]: https://github.com/tmux/tmux
+
 ## What is the difference between _>_ and _$_?
 
 The `>` or `connect-terminal` command runs its arguments (by default your shell) inside a connected terminal,

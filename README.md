@@ -176,6 +176,9 @@ require-module connect-fzf
 hook global ModuleLoaded x11 %{
   alias global terminal alacritty
   alias global popup alacritty-popup
+
+  # If your terminal does not have popups, fall back to x11-terminal.
+  # alias global popup x11-terminal
 }
 
 # Explore files and buffers with fzf
