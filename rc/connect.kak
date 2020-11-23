@@ -47,6 +47,10 @@ provide-module connect %{
     connect terminal %arg{@}
   }
 
+  define-command connect-repl -params .. -shell-completion -docstring 'Open a new REPL' %{
+    connect repl-new %arg{@}
+  }
+
   define-command connect-shell -params 1.. -shell-completion -docstring 'Execute commands in a shell' %{
     connect sh %arg{@}
   }
@@ -118,6 +122,7 @@ provide-module connect %{
 
   # Aliases
   alias global > connect-terminal
+  alias global @ connect-repl
   alias global $ connect-shell
   alias global & connect-detach
 }

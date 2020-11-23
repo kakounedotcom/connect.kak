@@ -51,7 +51,7 @@ require-module connect
 
 ## Usage
 
-**>**, **$** and **&** are [Kakoune commands][Documentation].
+**>**, **@**, **$** and **&** are [Kakoune commands][Documentation].
 
 The **:** prefixes all [connect.kak shell commands][Commands],
 and usually have an [alias][Aliases] on a single key – `:[e]dit` and `:[o]pen` for example.
@@ -231,6 +231,7 @@ Available variables are:
 [Documentation]: #documentation
 
 - `>` ⇒ Open a new terminal
+- `@` ⇒ Open a new REPL
 - `$` ⇒ Execute commands in a shell
 - `&` ⇒ Write an attachable program to `connect.sh` and detach the client
 
