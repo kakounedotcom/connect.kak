@@ -1,5 +1,13 @@
 # connect.kak
 
+###### [Installation] | [Usage] | [Configuration] | [Documentation] | [FAQ]
+
+[Installation]: #installation
+[Usage]: #usage
+[Configuration]: #configuration
+[Documentation]: #documentation
+[FAQ]: docs/faq.md
+
 Leverage the client-server architecture of [Kakoune] to connect programs to clients.
 
 [Kakoune]: https://kakoune.org
