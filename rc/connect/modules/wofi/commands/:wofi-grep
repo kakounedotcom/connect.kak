@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Wofi
+# https://hg.sr.ht/~scoopta/wofi
+
+# Dependencies:
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
+
+rg --line-number --with-filename '.+' "$@" |
+wofi --dmenu --prompt 'Open files (search by content)' |
+
+while read line; do
+  # Output format: <file>:<line>:<text>
+  file=${line%%:*}
+  line_number=${line#*:}; line_number=${line_number%%:*}
+
+  :edit "$file" "+$line_number"
+done

@@ -3,6 +3,7 @@
 
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
 
 provide-module connect-wofi %{
   # Modules
@@ -20,6 +21,11 @@ provide-module connect-wofi %{
   # Buffers
   define-command wofi-buffers -params ..1 -buffer-completion -docstring 'Open buffers with Wofi' %{
     $ :wofi-buffers %arg{@}
+  }
+
+  # Grep
+  define-command wofi-grep -params .. -file-completion -docstring 'Open files (search by content) with Wofi' %{
+    $ :wofi-grep %arg{@}
   }
 
   # Aliases

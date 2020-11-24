@@ -3,6 +3,7 @@
 
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
 
 provide-module connect-dmenu %{
   # Modules
@@ -20,6 +21,11 @@ provide-module connect-dmenu %{
   # Buffers
   define-command dmenu-buffers -params ..1 -buffer-completion -docstring 'Open buffers with dmenu' %{
     $ :dmenu-buffers %arg{@}
+  }
+
+  # Grep
+  define-command dmenu-grep -params .. -file-completion -docstring 'Open files (search by content) with dmenu' %{
+    $ :dmenu-grep %arg{@}
   }
 
   # Aliases

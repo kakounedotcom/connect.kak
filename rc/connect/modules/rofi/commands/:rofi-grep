@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Rofi
+# https://github.com/davatorium/rofi
+
+# Dependencies:
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
+
+rg --line-number --with-filename '.+' "$@" |
+rofi -dmenu -i -p 'Open files (search by content)' |
+
+while read line; do
+  # Output format: <file>:<line>:<text>
+  file=${line%%:*}
+  line_number=${line#*:}; line_number=${line_number%%:*}
+
+  :edit "$file" "+$line_number"
+done

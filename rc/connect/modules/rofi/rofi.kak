@@ -3,6 +3,7 @@
 
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
 
 provide-module connect-rofi %{
   # Modules
@@ -20,6 +21,11 @@ provide-module connect-rofi %{
   # Buffers
   define-command rofi-buffers -params ..1 -buffer-completion -docstring 'Open buffers with Rofi' %{
     $ :rofi-buffers %arg{@}
+  }
+
+  # Grep
+  define-command rofi-grep -params .. -file-completion -docstring 'Open files (search by content) with Rofi' %{
+    $ :rofi-grep %arg{@}
   }
 
   # Aliases
