@@ -4,6 +4,7 @@
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
 # – bat (https://github.com/sharkdp/bat)
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
 
 provide-module connect-fzf %{
   # Modules
@@ -21,6 +22,11 @@ provide-module connect-fzf %{
   # Buffers
   define-command fzf-buffers -params ..1 -buffer-completion -docstring 'Open buffers with fzf' %{
     + :fzf-buffers %arg{@}
+  }
+
+  # Grep
+  define-command fzf-grep -params .. -file-completion -docstring 'Open files (search by content) with fzf' %{
+    + :fzf-grep %arg{@}
   }
 
   # Aliases

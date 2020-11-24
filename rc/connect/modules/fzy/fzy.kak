@@ -3,6 +3,7 @@
 
 # Dependencies:
 # – fd (https://github.com/sharkdp/fd)
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
 
 provide-module connect-fzy %{
   # Modules
@@ -20,6 +21,11 @@ provide-module connect-fzy %{
   # Buffers
   define-command fzy-buffers -params ..1 -buffer-completion -docstring 'Open buffers with fzy' %{
     + :fzy-buffers %arg{@}
+  }
+
+  # Grep
+  define-command fzy-grep -params .. -file-completion -docstring 'Open files (search by content) with fzy' %{
+    + :fzy-grep %arg{@}
   }
 
   # Aliases

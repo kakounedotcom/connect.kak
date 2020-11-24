@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# fzf
+# https://github.com/junegunn/fzf
+
+# Dependencies:
+# – ripgrep (https://github.com/BurntSushi/ripgrep)
+
+rg --line-number --with-filename '.+' "$@" |
+fzf --prompt='(g)>' |
+
+while read line; do
+  # Output format: <file>:<line>:<text>
+  file=${line%%:*}
+  line_number=${line#*:}; line_number=${line_number%%:*}
+
+  :edit "$file" "+$line_number"
+done
