@@ -34,6 +34,16 @@ hook global ModuleLoaded tmux %{
 
 [tmux]: https://github.com/tmux/tmux
 
+**Example** – [kitty] configuration:
+
+``` kak
+hook global ModuleLoaded kitty %{
+  alias global popup kitty-terminal-tab # or kitty-terminal
+}
+```
+
+[kitty]: https://sw.kovidgoyal.net/kitty/
+
 ## What is the difference between _>_ and _$_?
 
 The `>` or `connect-terminal` command runs its arguments (by default your shell) inside a connected terminal,
