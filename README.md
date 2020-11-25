@@ -182,8 +182,8 @@ require-module connect-fzf
 
 # Windowing
 hook global ModuleLoaded x11 %{
-  alias global terminal alacritty
-  alias global popup alacritty-popup
+  alias global terminal alacritty-terminal
+  alias global popup alacritty-terminal-popup
 
   # If your terminal does not have popups, fall back to x11-terminal.
   # alias global popup x11-terminal
