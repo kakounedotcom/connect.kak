@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Open files from search result.
+#
+# Input format: <file>:<line>:<column>:<text>
+
+# Execute the following Kakoune commands.
+#
+# Input: <file>:<line>:<column>:<text>
+# Output: <file>␤<line>␤<column>
+select_each_line='<a-s>_'
+select_search_fields='s^(.+):(\d+):(\d+):(.+)$<ret>'
+save_selections='Z'
+select_file_save_and_restore='1s<ret>"fZz'
+select_line_save_and_restore='2s<ret>"f<a-Z>az'
+select_column_save_and_restore='3s<ret>"f<a-Z>az'
+select_data='"fz'
+prepare_output='y%<a-R>a<ret><esc>'
+delete_end_of_file='ged'
+
+kak -f "${select_each_line}${select_search_fields}${save_selections}${select_file_save_and_restore}${select_line_save_and_restore}${select_column_save_and_restore}${select_data}${prepare_output}${delete_end_of_file}" |
+
+while read file; read line; read column; do
+  :edit "$file" "+$line:$column"
+done
