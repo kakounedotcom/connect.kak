@@ -137,7 +137,7 @@ dolphin
 As you can notice by its [content][`dolphin.kak`], the module is fairly simple and seamless.
 We just provide the nicety to have a `dolphin` command from Kakoune.
 
-## Example 5
+### Example 5
 
 **Terminal** – Render with [Glow] the current file or buffer content:
 
