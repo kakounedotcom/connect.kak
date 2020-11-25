@@ -268,3 +268,7 @@ Available variables are:
 - `IN_KAKOUNE_CONNECT` (_1_ when _true_)
 - `KAKOUNE_SESSION`
 - `KAKOUNE_CLIENT`
+
+[Commands]: rc/connect/commands
+[Aliases]: rc/connect/aliases
+[Modules]: rc/connect/modules
