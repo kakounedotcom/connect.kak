@@ -5,7 +5,7 @@
 [Installation]: #installation
 [Usage]: #usage
 [Configuration]: #configuration
-[Documentation]: #documentation
+[Documentation]: docs
 [FAQ]: docs/faq.md
 
 Leverage the client-server architecture of [Kakoune] to connect programs to clients.
@@ -268,33 +268,3 @@ Available variables are:
 - `IN_KAKOUNE_CONNECT` (_1_ when _true_)
 - `KAKOUNE_SESSION`
 - `KAKOUNE_CLIENT`
-
-## Documentation
-
-[Documentation]: #documentation
-
-- `>` ⇒ Open a new terminal
-- `+` ⇒ Open a new popup
-- `@` ⇒ Open a new REPL
-- `$` ⇒ Execute commands in a shell
-- `&` ⇒ Write an attachable program to `connect.sh` and detach the client
-
-<!---->
-
-- [Commands]
-- [Aliases]
-- [Modules]
-
-[Commands]: rc/connect/commands
-[Aliases]: rc/connect/aliases
-[Modules]: rc/connect/modules
-
-<!---->
-
-- [FAQ]
-- [Recipes]
-- [Integration with other tools]
-
-[FAQ]: docs/faq.md
-[Recipes]: docs/recipes.md
-[Integration with other tools]: docs/integration.md
