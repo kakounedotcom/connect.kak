@@ -53,6 +53,30 @@ Run the following in your terminal:
 make install
 ```
 
+It will install [`kak-shell`] and [`kak-desktop`] to your `~/.local/bin` directory
+and create a [`kakoune-connect.desktop`] desktop entry.
+
+[`kak-shell`]: bin/kak-shell
+[`kak-desktop`]: bin/kak-desktop
+[`kakoune-connect.desktop`]: share/applications/kakoune-connect.desktop
+
+If you want to use Kakoune as your default editor, for example when opening files in [Dolphin],
+open `$XDG_CONFIG_HOME/mimeapps.list` and add the following MIME type association:
+
+[Dolphin]: https://dolphin.kde.org
+
+`~/.config/mimeapps.list`
+
+```
+[Default Applications]
+text/plain=kakoune-connect.desktop
+text/xml=kakoune-connect.desktop
+```
+
+Add more entries to your liking.
+
+---
+
 Add [`connect.kak`](rc/connect.kak) and its [modules] to your autoload or source them manually.
 
 ``` kak
