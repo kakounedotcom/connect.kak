@@ -272,3 +272,9 @@ Available variables are:
 [Commands]: rc/connect/commands
 [Aliases]: rc/connect/aliases
 [Modules]: rc/connect/modules
+
+## Similar projects
+
+- [kakoune-remote-control]
+
+[kakoune-remote-control]: https://github.com/danr/kakoune-remote-control
