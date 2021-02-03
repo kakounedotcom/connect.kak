@@ -275,6 +275,7 @@ when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_
 shell = ['dash']
 description = 'Indicates that the current shell is connected to a Kakoune client'
 style = 'green italic'
+format = '[$symbol ($output )]($style)'
 
 [custom.kakoune_connect_session]
 symbol = '🐈'
@@ -283,6 +284,7 @@ when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -z "$KAKOUNE_
 shell = ['dash']
 description = 'Indicates that the current shell is connected to a Kakoune session'
 style = 'green italic'
+format = '[$symbol ($output )]($style)'
 ```
 
 [Starship]: https://starship.rs
