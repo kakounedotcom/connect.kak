@@ -263,6 +263,28 @@ You can modify your shell [prompt][Prompt customization] to notify you whenever 
 PS1='$(test "$IN_KAKOUNE_CONNECT" && printf 🐈)$ '
 ```
 
+**Example** – with [Starship]:
+
+`~/.config/starship.toml`
+
+``` toml
+[custom.kakoune_connect_client]
+command = 'printf "🐈(${KAKOUNE_CLIENT}@${KAKOUNE_SESSION})"'
+when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"'
+shell = ['dash']
+description = 'Indicates that the current shell is connected to a Kakoune client'
+style = 'green italic'
+
+[custom.kakoune_connect_session]
+command = 'printf "🐈(${KAKOUNE_SESSION})"'
+when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -z "$KAKOUNE_CLIENT"'
+shell = ['dash']
+description = 'Indicates that the current shell is connected to a Kakoune session'
+style = 'green italic'
+```
+
+[Starship]: https://starship.rs
+
 Available variables are:
 
 - `IN_KAKOUNE_CONNECT` (_1_ when _true_)
