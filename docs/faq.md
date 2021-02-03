@@ -90,7 +90,7 @@ Otherwise, it will interpret the entry as a session name and connect to it.
 If the session does not exists, the session will be started in daemon mode.
 
 Apart from running a connected shell, you can use `kak-shell` to run commands in the context of the session.
-For example, you can run `kak-shell lazygit` to run [lazygit] connected to an arbitrary session.
+For example, you can run `kak-shell kanto lazygit` to run [lazygit] connected to an arbitrary session.
 
 [lazygit]: https://github.com/jesseduffield/lazygit
 

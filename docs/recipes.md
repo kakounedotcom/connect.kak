@@ -2,14 +2,14 @@
 
 ## Working with headless sessions with _kak-shell_
 
-`kak-shell :attach` lets you run a client connected to a session, just like the plain `kak -c <session-name>`.
-But with `kak-shell :attach`, you have a list of all the active sessions and you can also create a new named session
-which starts in headless mode, which is very useful for detaching and reattaching continually.
+`kak-shell kanto :attach` lets you run a client connected to a session, just like the plain `kak -c <session-name>`.
+But with `kak-shell kanto :attach`, you can create a new named session which starts in headless mode,
+which is very useful for detaching and reattaching continually.
 
-Therefore, `kak-shell :attach` replaces `kak -c <session-name>` and `kak -d -s <session-name>`
+Therefore, `kak-shell kanto :attach` replaces `kak -c <session-name>` and `kak -d -s <session-name>`
 and can serve to spawn a client in whatever situation you are.
 
-**Tip**: Alias `kak-shell` to `ks` and connect to a session with `ks a`.
+**Tip**: Alias `kak-shell` to `ks` and connect to a session with `ks kanto a`.
 
 ## Custom prompt
 

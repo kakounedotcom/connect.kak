@@ -1,10 +1,37 @@
 #!/bin/sh
 
+# Usage:
+#
+# kak-shell [session] [commands]
+#
+# Example – Basic:
+#
+# kak-shell
+#
+# Example – Connect to a session from the command-line and attach:
+#
+# kak-shell kanto :attach
+#
+# Example – Connect to a session interactively and attach:
+#
+# kak-shell '' :attach
 main() {
-  prompt_kakoune_session
-  [ "$text" ] || exit 1
+  # Session
+  session=$1
+  shift
 
-  connect "$text" "$@"
+  # Shell commands
+  commands=$@
+
+  # Prompt for a Kakoune session
+  if test -z "$session"; then
+    prompt_kakoune_session
+    [ "$text" ] || exit 1
+    session=$text
+  fi
+
+  # Connect to the given session and execute the shell commands
+  connect "$session" "$@"
 }
 
 connect() {
