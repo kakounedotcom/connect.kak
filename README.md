@@ -269,14 +269,16 @@ PS1='$(test "$IN_KAKOUNE_CONNECT" && printf 🐈)$ '
 
 ``` toml
 [custom.kakoune_connect_client]
-command = 'printf "🐈(${KAKOUNE_CLIENT}@${KAKOUNE_SESSION})"'
+symbol = '🐈'
+command = 'printf "${KAKOUNE_CLIENT}@${KAKOUNE_SESSION}"'
 when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"'
 shell = ['dash']
 description = 'Indicates that the current shell is connected to a Kakoune client'
 style = 'green italic'
 
 [custom.kakoune_connect_session]
-command = 'printf "🐈(${KAKOUNE_SESSION})"'
+symbol = '🐈'
+command = 'printf "${KAKOUNE_SESSION}"'
 when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -z "$KAKOUNE_CLIENT"'
 shell = ['dash']
 description = 'Indicates that the current shell is connected to a Kakoune session'
