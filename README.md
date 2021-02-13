@@ -268,19 +268,19 @@ PS1='$(test "$IN_KAKOUNE_CONNECT" && printf 🐈)$ '
 `~/.config/starship.toml`
 
 ``` toml
-[custom.kakoune_connect_client]
+[custom.kakoune_client]
 symbol = '🐈'
 command = 'printf "${KAKOUNE_CLIENT}@${KAKOUNE_SESSION}"'
-when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"'
+when = 'test -n "$KAKOUNE_SESSION" -a -n "$KAKOUNE_CLIENT"'
 shell = ['dash']
 description = 'Indicates that the current shell is connected to a Kakoune client'
 style = 'green italic'
 format = '[$symbol ($output )]($style)'
 
-[custom.kakoune_connect_session]
+[custom.kakoune_session]
 symbol = '🐈'
 command = 'printf "${KAKOUNE_SESSION}"'
-when = 'test "$IN_KAKOUNE_CONNECT" = 1 -a -n "$KAKOUNE_SESSION" -a -z "$KAKOUNE_CLIENT"'
+when = 'test -n "$KAKOUNE_SESSION" -a -z "$KAKOUNE_CLIENT"'
 shell = ['dash']
 description = 'Indicates that the current shell is connected to a Kakoune session'
 style = 'green italic'
