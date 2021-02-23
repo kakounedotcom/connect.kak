@@ -1,3 +1,9 @@
+# Archived
+
+**connect.kak** has been replaced by [kakoune.cr].
+
+[kakoune.cr]: https://github.com/alexherbo2/kakoune.cr
+
 # connect.kak
 
 ###### [Installation] | [Usage] | [Configuration] | [Documentation] | [FAQ]
