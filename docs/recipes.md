@@ -76,5 +76,8 @@ define-command ide -params 0..1 -docstring 'ide [session-name]: Turn Kakoune int
 
   # Terminal
   >
+  
+  # keep focus on Main client
+  focus main
 }
 ```
