@@ -298,4 +298,6 @@ Available variables are:
 
 # Alternatives
 
+- [kakoune.cr]
+
 [kakoune.cr]: https://github.com/alexherbo2/kakoune.cr
