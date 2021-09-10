@@ -8,7 +8,7 @@
 #
 # Input: <file>:<line>:<column>:<text>
 # Output: <file>␤<line>␤<column>
-select_each_line='<a-s>_'
+select_each_line='<a-s>_x'
 select_search_fields='s^(.+?):(\d+):(\d+):(.+?)$<ret>'
 save_selections='Z'
 select_file_save_and_restore='1s<ret>"fZz'
