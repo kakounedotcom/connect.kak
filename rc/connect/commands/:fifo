@@ -1,9 +1,11 @@
 #!/bin/sh
 
+BUFNAME=${BUFNAME:-*fifo*}
 # Edit fifo buffer in a client
-mkfifo buffer.fifo
-trap 'rm buffer.fifo' EXIT
-:send edit! -fifo "$PWD/buffer.fifo" '*fifo*'
+FIFODIR=$(mktemp -d -t "connect.kak")
+mkfifo "$FIFODIR/buffer.fifo"
+trap "rm -rf '$FIFODIR'" EXIT
+:send edit! -fifo "$FIFODIR/buffer.fifo" "$BUFNAME"
 
 # Send to fifo buffer the output of the given command,
 # or read from stdin if available.
@@ -13,9 +15,9 @@ trap 'rm buffer.fifo' EXIT
 # :fifo make
 #
 if test $# -gt 0; then
-  "$@" > buffer.fifo 2>&1 &
+  "$@" > "$FIFODIR/buffer.fifo" 2>&1 &
 elif test ! -t 0; then
-  cat > buffer.fifo
+  cat > "$FIFODIR/buffer.fifo"
 fi
 
 # Focus back the client
